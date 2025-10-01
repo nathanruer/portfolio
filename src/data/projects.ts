@@ -240,7 +240,7 @@ const projectsEN_LANG: ProjectLang[] = [
   },
   {
     title: "Crypto prices dashboard",
-    shortDescription: "Near real-time dashboard for tracking and displaying cryptocurrency prices via the Binance API",
+    shortDescription: "Near real-time dashboard for tracking and displaying cryptocurrency prices via the Binance API.",
     fullDescription: "Web app built with React and TypeScript utilizing the Binance API to fetch and display the prices of major trading pairs with low latency. This learning project focused on mastering external data stream management. The dashboard focuses on the dynamic display of price variations, all within a fast and responsive Tailwind CSS interface.",
     challenges: [
       "Maintaining a stable WebSocket connection and handling reconnections upon interruption.",
