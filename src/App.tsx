@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
+import { Toaster } from "./components/ui/toaster";
+import { Toaster as Sonner } from "./components/ui/sonner";
+import { TooltipProvider } from "./components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import Navigation from "@/components/ui/navigation";
+import Navigation from "./components/ui/navigation";
 import { PageTransition } from './components/PageTransition';
 import Index from "./pages/Index";
-import ProjectsPage from "@/components/pages/ProjectsPage";
-import SkillsPage from "@/components/pages/SkillsPage";
-import ContactPage from "@/components/pages/ContactPage";
+import ProjectsPage from "./pages/ProjectsPage";
+import SkillsPage from "./pages/SkillsPage";
+import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +22,17 @@ type Lang = 'fr' | 'en';
 interface PageProps {
   currentLang: Lang;
 }
+
+// Clé de stockage pour la langue dans localStorage
+const STORAGE_KEY = 'appLanguage';
+
+const getInitialLang = (): Lang => {
+  const storedLang = localStorage.getItem(STORAGE_KEY) as Lang | null;
+  if (storedLang === 'fr' || storedLang === 'en') {
+    return storedLang;
+  }
+  return 'fr';
+};
 
 const RouterWrapper: React.FC<{ 
   currentLang: Lang; 
@@ -83,7 +94,12 @@ const RouterWrapper: React.FC<{
 
 
 const App: React.FC = () => {
-  const [currentLang, setCurrentLang] = useState<Lang>('fr');
+  const [currentLang, setCurrentLang] = useState<Lang>(getInitialLang);
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, currentLang);
+  }, [currentLang]);
+
 
   return (
     <QueryClientProvider client={queryClient}>

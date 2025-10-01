@@ -51,7 +51,7 @@ const Navigation = ({ currentLang, onLanguageChange }: NavigationProps) => {
       })}
 
       <Button
-        variant="ghost"
+        variant="nav"
         size="sm"
         onClick={() => onLanguageChange(currentLang === 'fr' ? 'en' : 'fr')}
         className="ml-4 p-2 bg-transparent text-foreground"

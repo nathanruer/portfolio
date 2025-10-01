@@ -6,8 +6,8 @@ import {
 import * as React from "react";
 import Masonry from "react-masonry-css"; 
 
-import ProjectDetailsContent from "../projects/ProjectDetailsContent";
-import ProjectCard from "../projects/ProjectCard";
+import ProjectDetailsContent from "@/components/projects/ProjectDetailsContent";
+import ProjectCard from "@/components/projects/ProjectCard";
 
 interface ProjectsPageProps {
   currentLang: 'fr' | 'en';

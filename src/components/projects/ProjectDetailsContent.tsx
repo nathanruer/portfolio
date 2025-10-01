@@ -21,7 +21,6 @@ const getLabels = (isFrench: boolean) => ({
     learnings: isFrench ? "Apprentissages" : "Learnings",
     demo: isFrench ? "Démo" : "Demo",
     github: "GitHub",
-    disclaimerTitle: isFrench ? "Avertissement" : "Disclaimer"
 });
 
 const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, locale }) => {
@@ -43,22 +42,35 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, 
             {label} <span className="ml-1.5">{icon}</span> 
         </a>
     );
+    
+    const SectionSeparator = () => (
+        <div className="w-full h-px bg-border my-8 transition-colors duration-300 group-hover:bg-primary-dark" />
+    );
+    const SectionTitle: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+        <h4 className="text-xl font-semibold text-foreground mb-4 uppercase tracking-wider">
+            {children}
+        </h4>
+    );
 
     return (
-        <div className="transition-opacity duration-300"> 
-            <DialogHeader>
-                <DialogTitle className="text-3xl text-foreground">{project.title}</DialogTitle>
-                <DialogDescription className="text-lg text-foreground-muted">
+        <div className="transition-opacity duration-300 p-4 sm:p-6 md:p-8"> 
+            
+            <DialogHeader className="mb-6 space-y-1">
+                <DialogTitle className="text-4xl font-extrabold text-primary tracking-wide">
+                    {project.title}
+                </DialogTitle>
+                <DialogDescription className="text-lg text-foreground-muted pt-1">
                     {project.shortDescription}
                 </DialogDescription>
             </DialogHeader>
             
             {project.imageUrl && (
                 <div 
-                    className="relative w-full mt-4 mb-4 rounded-lg overflow-hidden border border-border bg-zinc-900 h-64 flex items-center justify-center" 
+                    className="relative w-full mt-6 mb-8 rounded-xl overflow-hidden shadow-xl bg-background-tertiary 
+                    h-64 sm:h-80 flex items-center justify-center" 
                 >
                     {!imageLoaded && (
-                        <div className="absolute inset-0 flex items-center justify-center bg-zinc-900 z-10">
+                        <div className="absolute inset-0 flex items-center justify-center bg-background-tertiary z-10">
                             <Loader />
                         </div>
                     )}
@@ -74,27 +86,26 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, 
             )}
             
             {project.disclaimer && (
-                <div className="p-4 rounded-lg bg-yellow-900/20 border border-yellow-800/50 text-yellow-300 mb-4">
-                    <h4 className="flex items-center text-m font-semibold mb-1">
-                        <span className="mr-2">⚠️</span> {labels.disclaimerTitle}
-                    </h4>
+                <div className="p-4 rounded-lg bg-yellow-900/20 border border-yellow-800/50 text-yellow-300 my-6">
                     <p className="text-sm">{project.disclaimer}</p>
                 </div>
             )}
             
-            <div className={`py-4 space-y-6 ${!project.imageUrl ? 'pt-2' : ''}`}>
+            <div className="pt-2"> 
                 
-                <div className="space-y-2">
-                    <p className="text-m text-foreground">{project.fullDescription}</p>
-                </div>
+                <p className="text-m text-foreground mb-8 leading-relaxed">
+                    {project.fullDescription}
+                </p>
 
-                <div className="space-y-2">
-                    <h4 className="text-xl text-foreground">{labels.technologies}</h4>
-                    <div className="flex flex-wrap gap-2">
+                <SectionSeparator />
+
+                <div>
+                    <SectionTitle>{labels.technologies}</SectionTitle>
+                    <div className="flex flex-wrap gap-3">
                         {project.technologies.map(t => (
                             <Badge 
                                 key={t} 
-                                className="bg-transparent text-foreground-muted border border-border"
+                                className="bg-background-secondary text-foreground-muted border border-gray-700/50"
                             >
                                 {t}
                             </Badge>
@@ -102,29 +113,34 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, 
                     </div>
                 </div>
 
-                <div className="space-y-2">
-                    <h4 className="text-xl text-foreground">{labels.challenges}</h4>
-                    <ul className="list-disc list-inside text-foreground-muted space-y-1">
-                        {project.challenges.map((c, i) => <li key={i}>{c}</li>)}
+                <SectionSeparator />
+
+                <div>
+                    <SectionTitle>{labels.challenges}</SectionTitle>
+                    <ul className="list-disc list-inside text-foreground-muted space-y-2 ml-4">
+                        {project.challenges.map((c, i) => <li key={i} className="pl-1">{c}</li>)}
                     </ul>
                 </div>
 
-                <div className="space-y-2">
-                    <h4 className="text-xl text-foreground">{labels.learnings}</h4>
-                    <ul className="list-disc list-inside text-foreground-muted space-y-1">
-                        {project.learnings.map((l, i) => <li key={i}>{l}</li>)}
+                <SectionSeparator />
+
+                {/* Apprentissages */}
+                <div>
+                    <SectionTitle>{labels.learnings}</SectionTitle>
+                    <ul className="list-disc list-inside text-foreground-muted space-y-2 ml-4">
+                        {project.learnings.map((l, i) => <li key={i} className="pl-1">{l}</li>)}
                     </ul>
                 </div>
             </div>
             
             {hasLinks && (
-                <DialogFooter className="flex flex-col sm:flex-row sm:justify-end sm:space-x-4 pt-4 border-t border-border">
+                <DialogFooter className="flex flex-col sm:flex-row sm:justify-end sm:space-x-4 pt-8 mt-8 border-t border-primary-dark">
                     {project.demoUrl && (
                         <LinkButton 
                             url={project.demoUrl} 
                             label={labels.demo} 
                             icon="↗" 
-                            style="bg-transparent border border-border text-foreground-muted mb-2 sm:mb-0 transform transition-transform duration-300 hover:scale-105"
+                            style="bg--primary text-primary-foreground transform transition-all duration-300 hover:scale-[1.03]"
                         />
                     )}
                     {project.githubUrl && (
@@ -132,7 +148,7 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, 
                             url={project.githubUrl} 
                             label={labels.github} 
                             icon="↗" 
-                            style="text-foreground-muted border border-border transform transition-transform duration-300 hover:scale-105"
+                            style="bg-transparent border border-border text-foreground-muted transform transition-all duration-300 hover:scale-[1.03]"
                         />
                     )}
                 </DialogFooter>

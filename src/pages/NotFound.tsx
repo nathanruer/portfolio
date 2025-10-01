@@ -27,22 +27,21 @@ const NotFound: React.FC<NotFoundProps> = ({ currentLang, onLanguageChange }) =>
 
   return (
     <div className="flex min-h-screen items-center justify-center 
-                    bg-gradient-to-b from-[#17171A] to-[#0F0F10] text-[hsl(var(--foreground))]">
+                    bg-gradient-to-b from-[#17171A] to-[#0F0F10] text-foreground">
       
       <div className="text-center p-8 rounded-lg">
-        <h1 className="mb-4 text-7xl sm:text-9xl font-extrabold text-[hsl(var(--primary))] 
+        <h1 className="mb-4 text-7xl sm:text-9xl font-extrabold text-primary] 
                        tracking-widest relative">
           404
-          <span className="absolute inset-0 block blur-lg opacity-75 
-                         bg-[hsl(var(--primary-glow))] -z-10"></span>
+          <span className="absolute inset-0 block blur-lg opacity-75 bg-primary-glow -z-10"></span>
         </h1>
         
         <p className="mt-4 text-xl sm:text-2xl font-light 
-                      text-[hsl(var(--foreground-muted))]">
+                      text-foreground-muted">
           {text.title}
         </p>
         <p className="mb-8 text-md sm:text-lg font-light 
-                      text-[hsl(var(--foreground-muted))]">
+                      text-foreground-muted">
           {text.message}
         </p>
       </div>

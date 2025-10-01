@@ -3,15 +3,11 @@ import * as THREE from 'three';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Environment, MeshTransmissionMaterial, Text, Stars, useGLTF } from '@react-three/drei';
 import { GLTF } from 'three-stdlib';
-import { Loader } from '../../components/Loader'; 
-import { SpaceBackground } from '../../components/SpaceBackground'; 
+import { Loader } from '../components/Loader'; 
+import { SpaceBackground } from '../components/SpaceBackground'; 
 
 // Préchargement du modèle
 useGLTF.preload('/medias/torus.glb');
-
-// ====================================================================
-// 1. TYPES
-// ====================================================================
 
 interface TorusGLTF extends GLTF {
   nodes: { Torus002: THREE.Mesh };
@@ -20,10 +16,6 @@ interface TorusGLTF extends GLTF {
 interface HomePageProps {
   currentLang: 'fr' | 'en';
 }
-
-// ====================================================================
-// 2. UTILITAIRE DE NETTOYAGE
-// ====================================================================
 
 function ContextDisposer() {
   const { gl } = useThree();
@@ -37,11 +29,6 @@ function ContextDisposer() {
 
   return null;
 }
-
-
-// ====================================================================
-// 3. COMPOSANT 3D (Torus)
-// ====================================================================
 
 function Torus({ title }: { title: string }) {
   const { nodes } = useGLTF('/medias/torus.glb') as unknown as TorusGLTF;
@@ -161,11 +148,6 @@ function Torus({ title }: { title: string }) {
     </group>
   );
 }
-
-
-// ====================================================================
-// 4. PAGE PRINCIPALE (HomePage)
-// ====================================================================
 
 const HomePage: React.FC<HomePageProps> = ({ currentLang }) => {
   const [is3dLoaded, setIs3dLoaded] = useState(false);

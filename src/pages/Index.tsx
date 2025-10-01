@@ -1,5 +1,5 @@
-import React from 'react';
-import HeroSection from "@/components/pages/HomePage";
+ import React from 'react';
+import HeroSection from "./HomePage"; 
 
 type Lang = 'fr' | 'en';
 
