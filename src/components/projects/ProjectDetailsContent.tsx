@@ -7,6 +7,8 @@ import {
   DialogFooter
 } from "@/components/ui/dialog"; 
 import * as React from "react";
+import { useState } from "react";
+import { Loader } from "../Loader";
 
 interface ProjectDetailsContentProps {
     project: Project;
@@ -28,6 +30,9 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, 
     const labels = getLabels(isFrench);
     
     const hasLinks = project.demoUrl || project.githubUrl;
+    
+    // 💡 État pour suivre le chargement de l'image
+    const [imageLoaded, setImageLoaded] = useState(false); 
 
     const LinkButton: React.FC<{ url: string; label: string; icon: string; style: string }> = ({ url, label, icon, style }) => (
         <a 
@@ -51,14 +56,22 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, 
             
             {project.imageUrl && (
                 <div 
-                    // 🚨 CHANGEMENT CLÉ : `h-64` pour une hauteur fixe, et suppression de `max-h-[70vh]`
-                    className="relative w-full mt-4 mb-4 rounded-lg overflow-hidden border border-border bg-gray-900 h-64 flex items-center justify-center" 
+                    className="relative w-full mt-4 mb-4 rounded-lg overflow-hidden border border-border bg-zinc-900 h-64 flex items-center justify-center" 
                 >
+                    {!imageLoaded && (
+                        <div className="absolute inset-0 flex items-center justify-center bg-zinc-900 z-10">
+                            <Loader />
+                        </div>
+                    )}
+
                     <img 
                         src={project.imageUrl} 
                         alt={`Aperçu du projet ${project.title}`}
-                        // 🚨 CHANGEMENT CLÉ : `object-cover` pour remplir la zone fixe de la bannière
-                        className="w-full h-full object-cover" 
+                        // 💡 Mise à jour de l'état au chargement ou en cas d'erreur
+                        onLoad={() => setImageLoaded(true)} 
+                        onError={() => setImageLoaded(true)} 
+                        // Application de la classe d'opacité pour la transition et le masquage initial
+                        className={`w-full h-full object-cover transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`} 
                     />
                 </div>
             )}
