@@ -51,12 +51,14 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, 
             
             {project.imageUrl && (
                 <div 
-                    className="relative w-full mt-4 mb-4 rounded-lg overflow-hidden border border-border bg-gray-900 max-h-[70vh] flex items-center justify-center"
+                    // 🚨 CHANGEMENT CLÉ : `h-64` pour une hauteur fixe, et suppression de `max-h-[70vh]`
+                    className="relative w-full mt-4 mb-4 rounded-lg overflow-hidden border border-border bg-gray-900 h-64 flex items-center justify-center" 
                 >
                     <img 
                         src={project.imageUrl} 
                         alt={`Aperçu du projet ${project.title}`}
-                        className="object-contain" 
+                        // 🚨 CHANGEMENT CLÉ : `object-cover` pour remplir la zone fixe de la bannière
+                        className="w-full h-full object-cover" 
                     />
                 </div>
             )}
