@@ -36,18 +36,6 @@ export default {
           glow: "hsl(var(--primary-glow))",
           dark: "hsl(var(--primary-dark))",
         },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-          light: "hsl(var(--secondary-light))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-          cyan: "hsl(var(--accent-cyan))",
-          green: "hsl(var(--accent-green))",
-          blue: "hsl(var(--accent-blue))",
-        },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
@@ -56,38 +44,6 @@ export default {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
         },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-          border: "hsl(var(--card-border))",
-        },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
-        },
-      },
-      backgroundImage: {
-        'gradient-primary': 'var(--gradient-primary)',
-        'gradient-cyber': 'var(--gradient-cyber)', 
-        'gradient-holographic': 'var(--gradient-holographic)',
-        'gradient-background': 'var(--gradient-background)',
-      },
-      boxShadow: {
-        'cyber': 'var(--shadow-cyber)',
-        'neon': 'var(--shadow-neon)',
-        'card': 'var(--shadow-card)',
-        'glow-primary': 'var(--glow-primary)',
-        'glow-cyan': 'var(--glow-cyan)',
       },
       borderRadius: {
         lg: "var(--radius)",

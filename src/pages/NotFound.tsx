@@ -1,21 +1,50 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import React, { Dispatch, SetStateAction } from 'react';
 
-const NotFound = () => {
+interface NotFoundProps {
+  currentLang: 'fr' | 'en';
+  onLanguageChange: Dispatch<SetStateAction<'fr' | 'en'>>;
+}
+
+const NotFound: React.FC<NotFoundProps> = ({ currentLang, onLanguageChange }) => {
   const location = useLocation();
 
-  useEffect(() => {
-    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
-  }, [location.pathname]);
+  const content = {
+    fr: {
+      title: "Échoué dans l'espace",
+      message: "La page que vous cherchez est introuvable.",
+      link: "Retourner à l'Accueil"
+    },
+    en: {
+      title: "Lost in Space",
+      message: "The page you are looking for cannot be found.",
+      link: "Return to Home"
+    }
+  };
+
+  const text = content[currentLang];
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        <p className="mb-4 text-xl text-gray-600">Oops! Page not found</p>
-        <a href="/" className="text-blue-500 underline hover:text-blue-700">
-          Return to Home
-        </a>
+    <div className="flex min-h-screen items-center justify-center 
+                    bg-gradient-to-b from-[#17171A] to-[#0F0F10] text-[hsl(var(--foreground))]">
+      
+      <div className="text-center p-8 rounded-lg">
+        <h1 className="mb-4 text-7xl sm:text-9xl font-extrabold text-[hsl(var(--primary))] 
+                       tracking-widest relative">
+          404
+          <span className="absolute inset-0 block blur-lg opacity-75 
+                         bg-[hsl(var(--primary-glow))] -z-10"></span>
+        </h1>
+        
+        <p className="mt-4 text-xl sm:text-2xl font-light 
+                      text-[hsl(var(--foreground-muted))]">
+          {text.title}
+        </p>
+        <p className="mb-8 text-md sm:text-lg font-light 
+                      text-[hsl(var(--foreground-muted))]">
+          {text.message}
+        </p>
       </div>
     </div>
   );

@@ -15,22 +15,13 @@ import SkillsPage from "@/components/pages/SkillsPage";
 import ContactPage from "@/components/pages/ContactPage";
 import NotFound from "./pages/NotFound";
 
-// Configuration du client de requête
 const queryClient = new QueryClient();
-
-// ====================================================================
-// 1. TYPES
-// ====================================================================
 
 type Lang = 'fr' | 'en';
 
 interface PageProps {
   currentLang: Lang;
 }
-
-// ====================================================================
-// 2. WRAPPER DE ROUTAGE (Avec AnimatePresence pour les transitions)
-// ====================================================================
 
 const RouterWrapper: React.FC<{ 
   currentLang: Lang; 
@@ -78,7 +69,10 @@ const RouterWrapper: React.FC<{
           path="*" 
           element={
             <PageTransition routeKey="/404">
-              <NotFound />
+              <NotFound 
+                currentLang={currentLang} 
+                onLanguageChange={setCurrentLang} 
+              />
             </PageTransition>
           } 
         /> 
@@ -88,14 +82,10 @@ const RouterWrapper: React.FC<{
 };
 
 
-// ====================================================================
-// 3. COMPOSANT PRINCIPAL APP
-// ====================================================================
-
 const App: React.FC = () => {
   const [currentLang, setCurrentLang] = useState<Lang>('fr');
 
-   return (
+  return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
@@ -104,11 +94,16 @@ const App: React.FC = () => {
         <BrowserRouter>
           <div className="w-screen h-screen overflow-hidden font-sans">
             
-            {/* Barre de navigation visible sur toutes les pages */}
-            <Navigation currentLang={currentLang} onLanguageChange={setCurrentLang} />
-
+            <Navigation 
+              currentLang={currentLang} 
+              onLanguageChange={setCurrentLang} 
+            />
+            
             <main className="w-full h-full relative overflow-y-auto">
-              <RouterWrapper currentLang={currentLang} setCurrentLang={setCurrentLang} />
+              <RouterWrapper 
+                currentLang={currentLang} 
+                setCurrentLang={setCurrentLang} 
+              />
             </main>
             
           </div>

@@ -27,20 +27,17 @@ const ProjectCard = ({ project, onClick, index }: ProjectCardProps) => {
                     onClick={() => onClick(project)}
                 >
                     <CardSpotlight 
-                        className="group border-gray-700/50 hover:border-white/70 shadow-lg hover:shadow-white/10 active:translate-y-0 
-                                   transition-all duration-300 transform 
-                                   hover:rotate-x-2 hover:rotate-y-2 hover:scale-[1.02] active:scale-[0.98]"
-                    >
+                        className="group border-gray-700/50 hover:border-white/70 shadow-lg hover:shadow-white/10 active:translate-y-0">
                         <div className="p-6"> 
                             <div className="flex mb-2">
-                                <h3 className="text-xl font-semibold text-white group-hover:text-white/80 transition-colors">{project.title}</h3>                  
+                                <h3 className="text-xl font-semibold text-foreground group-hover:text-foreground/80 transition-colors">{project.title}</h3>                  
                             </div>
-                            <p className="text-gray-400 mb-4">{project.shortDescription}</p>
+                            <p className="text-foreground-muted mb-4">{project.shortDescription}</p>
                             <div className="flex flex-wrap gap-2 mb-4">
                                 {project.technologies.map(t => ( 
                                     <Badge 
                                         key={t} 
-                                        className="bg-transparent text-green border border-gray-600/50"
+                                        className="bg-transparent border border-gray-600/50"
                                     >
                                         {t}
                                     </Badge>

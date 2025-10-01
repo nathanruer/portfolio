@@ -43,8 +43,8 @@ const ProjectsPage = ({ currentLang }: ProjectsPageProps) => {
     <section className="py-20 relative overflow-hidden bg-transparent"> 
       <div className="container mx-auto px-6 relative z-10">
         
-        <div className="mb-12 border-b border-zinc-800/50 pb-2">
-          <h1 className="text-4xl font-light text-white uppercase tracking-widest">{text.title}</h1>
+        <div className="mb-12 border-b border-primary pb-2">
+          <h1 className="text-4xl font-light text-primary uppercase tracking-widest">{text.title}</h1>
         </div>
         
         <Masonry

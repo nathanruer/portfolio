@@ -20,7 +20,9 @@ const Navigation = ({ currentLang, onLanguageChange }: NavigationProps) => {
   ];
 
   return (
-    <nav className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 bg-background/70 backdrop-blur-md rounded-full px-6 py-2 flex items-center gap-6 shadow-lg border border-card-border">
+    <nav className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 
+      bg-[#27272A]/70 backdrop-blur-md rounded-full px-6 py-2 flex items-center gap-6 shadow-lg"
+    >
       {navItems.map((item) => {
         const IconComponent = item.icon;
         
@@ -52,7 +54,7 @@ const Navigation = ({ currentLang, onLanguageChange }: NavigationProps) => {
         variant="ghost"
         size="sm"
         onClick={() => onLanguageChange(currentLang === 'fr' ? 'en' : 'fr')}
-        className="ml-4 p-2 border-gradient"
+        className="ml-4 p-2 bg-transparent text-foreground"
         title={currentLang === 'fr' ? 'Changer la langue' : 'Change language'}
       >
         <Languages className="w-5 h-5" />

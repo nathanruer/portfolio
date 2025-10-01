@@ -31,7 +31,6 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, 
     
     const hasLinks = project.demoUrl || project.githubUrl;
     
-    // 💡 État pour suivre le chargement de l'image
     const [imageLoaded, setImageLoaded] = useState(false); 
 
     const LinkButton: React.FC<{ url: string; label: string; icon: string; style: string }> = ({ url, label, icon, style }) => (
@@ -67,10 +66,8 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, 
                     <img 
                         src={project.imageUrl} 
                         alt={`Aperçu du projet ${project.title}`}
-                        // 💡 Mise à jour de l'état au chargement ou en cas d'erreur
                         onLoad={() => setImageLoaded(true)} 
                         onError={() => setImageLoaded(true)} 
-                        // Application de la classe d'opacité pour la transition et le masquage initial
                         className={`w-full h-full object-cover transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`} 
                     />
                 </div>
@@ -127,15 +124,15 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, 
                             url={project.demoUrl} 
                             label={labels.demo} 
                             icon="↗" 
-                            style="bg-background-tertiary hover:bg-background-secondary text-foreground mb-2 sm:mb-0"
+                            style="bg-transparent border border-border text-foreground-muted mb-2 sm:mb-0 transform transition-transform duration-300 hover:scale-105"
                         />
                     )}
                     {project.githubUrl && (
                         <LinkButton 
                             url={project.githubUrl} 
                             label={labels.github} 
-                            icon="💾" 
-                            style="bg-background-secondary hover:bg-background-tertiary text-foreground-muted border border-border"
+                            icon="↗" 
+                            style="text-foreground-muted border border-border transform transition-transform duration-300 hover:scale-105"
                         />
                     )}
                 </DialogFooter>

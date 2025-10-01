@@ -13,7 +13,6 @@ useGLTF.preload('/medias/torus.glb');
 // 1. TYPES
 // ====================================================================
 
-// Interface GLTF simplifiée
 interface TorusGLTF extends GLTF {
   nodes: { Torus002: THREE.Mesh };
 }
@@ -26,9 +25,6 @@ interface HomePageProps {
 // 2. UTILITAIRE DE NETTOYAGE
 // ====================================================================
 
-/**
- * Composant pour forcer la libération du contexte WebGL lors du démontage du Canvas.
- */
 function ContextDisposer() {
   const { gl } = useThree();
 
@@ -135,21 +131,25 @@ function Torus({ title }: { title: string }) {
     backside: true,
     distortionScale: 0.2,
     temporalDistortion: 0.2,
-    color: '#ffffff',
   };
 
   return (
     <group scale={viewport.width / 3.75}>
-      <Text
-        font="/fonts/PPNeueMontreal-Bold.otf"
-        position={[0, 0, 0]}
-        fontSize={0.45}
-        color="white"
-        anchorX="center"
-        anchorY="middle"
-      >
-        {title}
-      </Text>
+    <Text
+      font="/fonts/PPNeueMontreal-Bold.otf"
+      position={[0, 0, 0]}
+      fontSize={0.45}
+      color="rgb(165, 85, 247)"
+      anchorX="center"
+      anchorY="middle"
+    >
+      {title}
+      <meshBasicMaterial 
+        attach="material" 
+        color="rgb(165, 85, 247)" 
+        toneMapped={false} 
+      />
+    </Text>
       <mesh
         ref={torus}
         geometry={nodes.Torus002.geometry}
@@ -195,7 +195,6 @@ const HomePage: React.FC<HomePageProps> = ({ currentLang }) => {
         style={{ opacity: is3dLoaded ? 1 : 0, transition: 'opacity 0.7s ease-in-out' }}
         camera={{ position: [0, 0, 5], fov: 45 }}
       >
-        {/* UTILISEZ LE NETTOYEUR DE CONTEXTE ICI */}
         <ContextDisposer /> 
 
         <Suspense fallback={<group />}>
