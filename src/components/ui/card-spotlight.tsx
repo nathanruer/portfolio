@@ -50,7 +50,7 @@ const CardSpotlight: React.FC<CardSpotlightProps> = ({ children, className, ...p
       onBlur={handleBlur}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`relative overflow-hidden rounded-xl border border-zinc-800 bg-transparent shadow-2xl transition-all duration-300 ${className}`}
+      className={`relative overflow-hidden rounded-xl border border-border bg-transparent shadow-2xl transition-all duration-300 ${className}`}
       {...props}
     >
       <div

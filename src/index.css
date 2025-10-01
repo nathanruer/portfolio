@@ -48,7 +48,7 @@
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 20% 15%;
+    --border: 240 5% 17%;
     --input: 240 20% 15%;
     --ring: 270 91% 65%;
 
@@ -202,7 +202,6 @@
     animation: scale-in 0.4s ease-out;
   }
 }
-
 @layer base {
   * {
     @apply border-border;
@@ -210,5 +209,33 @@
 
   body {
     @apply bg-background text-foreground;
+
+    scrollbar-width: thin;
+    scrollbar-color: hsl(240 10% 25%) hsl(var(--background-secondary)); 
+  }
+
+  ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+      background: hsl(var(--background-secondary));
+      border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+      background: hsl(240 10% 25%); 
+      border-radius: 10px;
+      box-shadow: none; 
+      border: 1px solid transparent; 
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+      background: hsl(var(--primary) / 0.7);
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+      background: hsl(var(--primary));
   }
 }
