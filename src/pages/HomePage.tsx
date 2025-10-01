@@ -1,12 +1,11 @@
 import React, { useState, useRef, Suspense, useCallback, useEffect } from 'react';
 import * as THREE from 'three';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { Environment, MeshTransmissionMaterial, Text, Stars, useGLTF } from '@react-three/drei';
+import { Environment, MeshTransmissionMaterial, Text, useGLTF } from '@react-three/drei';
 import { GLTF } from 'three-stdlib';
 import { Loader } from '../components/Loader'; 
 import { SpaceBackground } from '../components/SpaceBackground'; 
 
-// Préchargement du modèle
 useGLTF.preload('/medias/torus.glb');
 
 interface TorusGLTF extends GLTF {
@@ -43,6 +42,21 @@ function Torus({ title }: { title: string }) {
   const lastMouse = useRef({ x: 0, y: 0 });
 
   const isHovered = useRef(false);
+
+  const [isPaused, setIsPaused] = useState(false);
+  
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      // Met l'animation en pause si l'onglet est masqué (document.hidden est true)
+      setIsPaused(document.hidden);
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
 
   useEffect(() => {
     const handlePointerMove = (event: PointerEvent) => {
@@ -82,11 +96,20 @@ function Torus({ title }: { title: string }) {
     };
   }, []);
 
+  // Logique d'animation
   useFrame((_, delta) => {
     if (!torus.current) return;
 
-    const baseRotationSpeedX = delta * 0.5;
-    const baseRotationSpeedY = delta * 1.0;
+    // Si l'onglet est masqué, on sort immédiatement. L'animation est gelée.
+    if (isPaused) {
+        return;
+    }
+
+    const maxDelta = 0.05; 
+    const clampedDelta = Math.min(delta, maxDelta);
+    
+    const baseRotationSpeedX = clampedDelta * 0.5;
+    const baseRotationSpeedY = clampedDelta * 1.0;
 
     const mouseInfluence = 0.5; 
     const smoothFactor = 0.05;
