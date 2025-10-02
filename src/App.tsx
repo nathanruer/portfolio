@@ -33,7 +33,6 @@ const getInitialLang = (): Lang => {
 const RouterWrapper: React.FC<{ 
   currentLang: Lang; 
   setCurrentLang: React.Dispatch<React.SetStateAction<Lang>>; 
-  // 💡 NOUVELLE PROP : Fonction setter pour l'état d'ouverture de la modale
   setIsDialogOpen: (isOpen: boolean) => void; 
 }> = ({ currentLang, setCurrentLang, setIsDialogOpen }) => {
   const location = useLocation();
@@ -55,7 +54,6 @@ const RouterWrapper: React.FC<{
             <PageTransition routeKey="/projects">
               <ProjectsPage 
                 currentLang={currentLang} 
-                // 💡 PASSAGE DE LA FONCTION SETTER À PROJECTS PAGE
                 setIsDialogOpen={setIsDialogOpen} 
               />
             </PageTransition>
@@ -96,7 +94,6 @@ const RouterWrapper: React.FC<{
 
 const App: React.FC = () => {
   const [currentLang, setCurrentLang] = useState<Lang>(getInitialLang);
-  // 💡 NOUVEL ÉTAT GLOBAL pour savoir si une modale est ouverte
   const [isDialogOpenGlobally, setIsDialogOpenGlobally] = useState(false); 
 
   useEffect(() => {
@@ -113,7 +110,6 @@ const App: React.FC = () => {
         <BrowserRouter>
           <div className="w-screen h-screen overflow-hidden font-sans">
             
-            {/* 💡 Rendu conditionnel : La navigation s'affiche seulement si aucune modale n'est ouverte */}
             {!isDialogOpenGlobally && (
                 <Navigation 
                   currentLang={currentLang} 
@@ -125,7 +121,6 @@ const App: React.FC = () => {
               <RouterWrapper 
                 currentLang={currentLang} 
                 setCurrentLang={setCurrentLang}
-                // 💡 PASSAGE DE LA FONCTION SETTER
                 setIsDialogOpen={setIsDialogOpenGlobally} 
               />
             </main>

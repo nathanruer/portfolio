@@ -19,6 +19,10 @@
     --primary-glow: 270 100% 80%;
     --primary-dark: 270 91% 45%;
 
+    /* Utility Colors */
+    --border: 240 5% 17%;
+    --radius: 0.75rem;
+
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
