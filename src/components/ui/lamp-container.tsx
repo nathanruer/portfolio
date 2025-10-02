@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
-const Lamp = ({
+const LampContainer = ({
     children,
     className,
 }: {
@@ -80,4 +80,4 @@ const Lamp = ({
     );
 };
 
-export default Lamp;
+export default LampContainer;

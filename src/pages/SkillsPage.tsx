@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
-import Lamp from '@/components/ui/Lamp';
+import LampContainer from '@/components/ui/lamp-container';
 import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from '@/components/ui/tooltip';
 
 import { skills } from '@/data/skills';
@@ -34,7 +34,7 @@ const SkillsPage = ({ currentLang }: SkillsPageProps) => {
             </div>
             
             <div className=" w-full"> 
-                <Lamp><></></Lamp>
+                <LampContainer><></></LampContainer>
                 <motion.div
                     initial={{ opacity: 0, y: -50 }}
                     whileInView={{ opacity: 1, y: -200 }} 
@@ -105,6 +105,3 @@ const SkillsPage = ({ currentLang }: SkillsPageProps) => {
 };
 
 export default SkillsPage;
-
-
-                <Lamp><></></Lamp>
