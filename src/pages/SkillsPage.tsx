@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
 import Lamp from '@/components/ui/Lamp';
-import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/components/ui/tooltip";
+import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from '@/components/ui/tooltip';
 
 import { skills } from '@/data/skills';
 import { getContrastColor } from '@/lib/utils';
