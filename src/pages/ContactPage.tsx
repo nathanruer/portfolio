@@ -42,7 +42,7 @@ const ContactPage = ({ currentLang }: ContactPageProps) => {
     e.preventDefault(); 
     
     const link = document.createElement('a');
-    link.href = 'public/medias/CV_RUER_NATHAN_2025.pdf';
+    link.href = '/medias/CV_RUER_NATHAN_2025.pdf';
     link.download = 'CV-Nathan-Ruer.pdf';
     document.body.appendChild(link);
     link.click();
