@@ -1,6 +1,7 @@
-import { Home, FileText, Code, User, Languages } from "lucide-react";
+import { Home, Mail, Briefcase, User, Languages } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate, useLocation } from "react-router-dom";
+import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/components/ui/tooltip";
 
 interface NavigationProps {
   currentLang: 'fr' | 'en';
@@ -14,52 +15,65 @@ const Navigation = ({ currentLang, onLanguageChange }: NavigationProps) => {
 
   const navItems = [
     { icon: Home, path: "/", label: currentLang === 'fr' ? "Accueil" : "Home" },
-    { icon: Code, path: "/projects", label: currentLang === 'fr' ? "Projets" : "Projects" },
+    { icon: Briefcase, path: "/projects", label: currentLang === 'fr' ? "Projets" : "Projects" },
     { icon: User, path: "/skills", label: currentLang === 'fr' ? "Compétences" : "Skills" },
-    { icon: FileText, path: "/contact", label: currentLang === 'fr' ? "Contact" : "Contact" },
+    { icon: Mail, path: "/contact", label: currentLang === 'fr' ? "Contact" : "Contact" },
   ];
 
   return (
     <nav className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 
       bg-[#27272A]/70 backdrop-blur-md rounded-full px-6 py-2 flex items-center gap-6 shadow-lg"
     >
-      {navItems.map((item) => {
-        const IconComponent = item.icon;
-        
-        const isActive = item.path === "/" 
-          ? currentPath === "/" 
-          : currentPath.startsWith(item.path);
+      <TooltipProvider delayDuration={300}> 
+        {navItems.map((item) => {
+          const IconComponent = item.icon;
+          
+          const isActive = item.path === "/" 
+            ? currentPath === "/" 
+            : currentPath.startsWith(item.path);
 
-        const buttonClasses = `
-          flex flex-col items-center justify-center transition-colors 
-          ${isActive 
-            ? "text-primary"
-            : "text-foreground hover:text-primary"
-          }
-        `;
+          const buttonClasses = `
+            flex flex-col items-center justify-center transition-colors group relative
+            ${isActive 
+              ? "text-primary"
+              : "text-white hover:text-primary"
+            }
+          `;
 
-        return (
-          <button
-            key={item.path}
-            onClick={() => navigate(item.path)}
-            className={buttonClasses}
-            title={item.label}
-          >
-            <IconComponent className="w-6 h-6" />
-          </button>
-        );
-      })}
+          return (
+            <Tooltip key={item.path}>
+              <TooltipTrigger asChild>
+                <button
+                  onClick={() => navigate(item.path)}
+                  className={buttonClasses}
+                >
+                  <IconComponent className="w-6 h-6" />
+                </button>
+              </TooltipTrigger>
+              <TooltipContent side="top" sideOffset={10} className="bg-[#27272A]/70 text-white"> 
+                {item.label}
+              </TooltipContent>
+            </Tooltip>
+          );
+        })}
 
-      <Button
-        variant="nav"
-        size="sm"
-        onClick={() => onLanguageChange(currentLang === 'fr' ? 'en' : 'fr')}
-        className="ml-4 p-2 bg-transparent text-foreground"
-        title={currentLang === 'fr' ? 'Changer la langue' : 'Change language'}
-      >
-        <Languages className="w-5 h-5" />
-        <span className="ml-1 text-xs">{currentLang.toUpperCase()}</span>
-      </Button>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant="nav"
+              size="sm"
+              onClick={() => onLanguageChange(currentLang === 'fr' ? 'en' : 'fr')}
+              className="ml-4 p-2 bg-transparent text-white relative group"
+            >
+              <Languages className="w-5 h-5" />
+              <span className="ml-1 text-xs">{currentLang.toUpperCase()}</span>
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent side="top" sideOffset={10} className="bg-[#27272A] text-white">
+            {currentLang === 'fr' ? 'Changer la langue' : 'Change language'}
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
     </nav>
   );
 };

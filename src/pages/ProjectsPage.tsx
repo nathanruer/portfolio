@@ -19,10 +19,10 @@ const ProjectsPage = ({ currentLang }: ProjectsPageProps) => {
 
   const text = {
     fr: {
-      title: "Projets", 
+      title: "Mes projets", 
     },
     en: {
-      title: "Projects",
+      title: "My projects",
     }
   }[currentLang];
   
