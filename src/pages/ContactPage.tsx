@@ -38,25 +38,18 @@ const LinkItem: React.FC<LinkItemProps> = ({
 
 const ContactPage = ({ currentLang }: ContactPageProps) => {
 
-  const handleDownloadCV = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault(); 
-    
-    const link = document.createElement('a');
-    link.href = '/medias/CV_RUER_NATHAN_2025.pdf';
-    link.download = 'CV-Nathan-Ruer.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const handleOpenCV = () => {
+    window.open(`${window.location.origin}/medias/CV_RUER_Nathan_2025.pdf`, '_blank', 'noopener,noreferrer');
   };
 
   const texts = {
     fr: {
       title: 'Contactez-moi',
-      cvButton: 'Télécharger mon CV',
+      cvButton: 'Voir mon CV',
     },
     en: {
       title: 'Contact Me',
-      cvButton: 'Download my CV',
+      cvButton: 'View my CV',
     }
   };
 
@@ -102,7 +95,7 @@ const ContactPage = ({ currentLang }: ContactPageProps) => {
         </div>
 
         <button
-          onClick={handleDownloadCV}
+          onClick={handleOpenCV}
           className={`
             w-full md:w-auto px-10 py-4 text-white rounded-xl font-bold text-lg 
             bg-primary shadow-lg 
