@@ -11,11 +11,20 @@ import ProjectCard from "@/components/projects/ProjectCard";
 
 interface ProjectsPageProps {
   currentLang: 'fr' | 'en';
+  // 💡 NOUVELLE PROP : Fonction pour communiquer l'état d'ouverture au parent (App.tsx)
+  setIsDialogOpen: (isOpen: boolean) => void; 
 }
 
-const ProjectsPage = ({ currentLang }: ProjectsPageProps) => {
+const ProjectsPage = ({ currentLang, setIsDialogOpen }: ProjectsPageProps) => {
   const projects = currentLang === 'fr' ? projectsFR : projectsEN; 
   const [selectedProject, setSelectedProject] = React.useState<Project | null>(null);
+  
+  const isDialogOpen = selectedProject !== null; 
+
+  // 💡 NOUVEAU useEffect : Notifie le composant parent à chaque changement d'état
+  React.useEffect(() => {
+      setIsDialogOpen(isDialogOpen);
+  }, [isDialogOpen, setIsDialogOpen]);
 
   const text = {
     fr: {
@@ -30,6 +39,7 @@ const ProjectsPage = ({ currentLang }: ProjectsPageProps) => {
     if (!isOpen) {
         setSelectedProject(null);
     }
+    // L'état est géré par setSelectedProject, et l'useEffect gère la propagation au parent.
   };
   
   const breakpointColumnsObj = {
@@ -39,8 +49,17 @@ const ProjectsPage = ({ currentLang }: ProjectsPageProps) => {
     640: 1,     
   };
 
+  // On maintient l'effet d'assombrissement ici
+  const dimmingClasses = isDialogOpen ? 'opacity-5 pointer-events-none' : 'opacity-100';
+
   return (
-    <section className="py-20 relative overflow-hidden bg-transparent"> 
+    <section 
+        className={`
+            py-20 relative overflow-hidden 
+            transition-opacity duration-300
+            ${dimmingClasses}
+        `}
+    > 
       <div className="container mx-auto px-6 relative z-10">
         
         <div className="mb-12 border-b border-primary pb-2">

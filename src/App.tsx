@@ -19,10 +19,6 @@ const queryClient = new QueryClient();
 
 type Lang = 'fr' | 'en';
 
-interface PageProps {
-  currentLang: Lang;
-}
-
 // Clé de stockage pour la langue dans localStorage
 const STORAGE_KEY = 'appLanguage';
 
@@ -37,11 +33,12 @@ const getInitialLang = (): Lang => {
 const RouterWrapper: React.FC<{ 
   currentLang: Lang; 
   setCurrentLang: React.Dispatch<React.SetStateAction<Lang>>; 
-}> = ({ currentLang, setCurrentLang }) => {
+  // 💡 NOUVELLE PROP : Fonction setter pour l'état d'ouverture de la modale
+  setIsDialogOpen: (isOpen: boolean) => void; 
+}> = ({ currentLang, setCurrentLang, setIsDialogOpen }) => {
   const location = useLocation();
 
   return (
-    // mode="wait" assure que l'ancienne page sort avant que la nouvelle n'entre
     <AnimatePresence mode="wait"> 
       <Routes location={location} key={location.pathname}>
         <Route
@@ -56,7 +53,11 @@ const RouterWrapper: React.FC<{
           path="/projects" 
           element={
             <PageTransition routeKey="/projects">
-              <ProjectsPage currentLang={currentLang} />
+              <ProjectsPage 
+                currentLang={currentLang} 
+                // 💡 PASSAGE DE LA FONCTION SETTER À PROJECTS PAGE
+                setIsDialogOpen={setIsDialogOpen} 
+              />
             </PageTransition>
           }
         />
@@ -95,6 +96,8 @@ const RouterWrapper: React.FC<{
 
 const App: React.FC = () => {
   const [currentLang, setCurrentLang] = useState<Lang>(getInitialLang);
+  // 💡 NOUVEL ÉTAT GLOBAL pour savoir si une modale est ouverte
+  const [isDialogOpenGlobally, setIsDialogOpenGlobally] = useState(false); 
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, currentLang);
@@ -110,15 +113,20 @@ const App: React.FC = () => {
         <BrowserRouter>
           <div className="w-screen h-screen overflow-hidden font-sans">
             
-            <Navigation 
-              currentLang={currentLang} 
-              onLanguageChange={setCurrentLang} 
-            />
+            {/* 💡 Rendu conditionnel : La navigation s'affiche seulement si aucune modale n'est ouverte */}
+            {!isDialogOpenGlobally && (
+                <Navigation 
+                  currentLang={currentLang} 
+                  onLanguageChange={setCurrentLang} 
+                />
+            )}
             
             <main className="w-full h-full relative overflow-y-auto">
               <RouterWrapper 
                 currentLang={currentLang} 
-                setCurrentLang={setCurrentLang} 
+                setCurrentLang={setCurrentLang}
+                // 💡 PASSAGE DE LA FONCTION SETTER
+                setIsDialogOpen={setIsDialogOpenGlobally} 
               />
             </main>
             

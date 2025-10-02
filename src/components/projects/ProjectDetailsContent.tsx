@@ -37,7 +37,7 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, 
             href={url} 
             target="_blank" 
             rel="noopener noreferrer" 
-            className={`inline-flex items-center justify-center rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none h-10 py-2 px-4 ${style}`}
+            className={`inline-flex items-center justify-center text-sm transition-colors focus-visible:outline-none focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none h-10 py-2 px-4 ${style}`}
         >
             {label} <span className="ml-1.5">{icon}</span> 
         </a>
@@ -140,7 +140,7 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, 
                             url={project.demoUrl} 
                             label={labels.demo} 
                             icon="↗" 
-                            style="bg--primary text-primary-foreground transform transition-all duration-300 hover:scale-[1.03]"
+                            style="text-primary-foreground transform transition-all duration-300 hover:scale-[1.03]"
                         />
                     )}
                     {project.githubUrl && (
@@ -148,7 +148,7 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, 
                             url={project.githubUrl} 
                             label={labels.github} 
                             icon="↗" 
-                            style="bg-transparent border border-border text-foreground-muted transform transition-all duration-300 hover:scale-[1.03]"
+                            style="border border-border rounded text-foreground-muted transform transition-all duration-300 hover:scale-[1.03]"
                         />
                     )}
                 </DialogFooter>

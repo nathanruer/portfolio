@@ -70,7 +70,6 @@ export const projectsBase: ProjectBase[] = [
     },
     {
         id: 8,
-        imageUrl: "/images/smart-contracts-frontend.png",
         technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Ethers.js", "Wagmi", "RainbowKit"],
         demoUrl: "https://web3-swap-app-v3.vercel.app/",
         githubUrl: "https://github.com/nathanruer/web3-frontend",

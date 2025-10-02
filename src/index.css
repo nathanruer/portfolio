@@ -7,7 +7,7 @@
 @layer base {
   :root {
     /* Core Background System */
-    --background: 240, 3%, 6%;
+    --background: 240, 3%, 7%;
     --background-secondary: 240, 4%, 16%;
     --background-tertiary: 240 10% 12%;
     --foreground: 0 0% 98%;
@@ -18,19 +18,6 @@
     --primary-foreground: 0 0% 100%;
     --primary-glow: 270 100% 80%;
     --primary-dark: 270 91% 45%;
-    
-    /* Utility Colors */
-    --muted: 240 10% 15%;
-    --muted-foreground: 240 5% 65%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 240 5% 17%;
-    --input: 240 20% 15%;
-    --ring: 270 91% 65%;
-
-    --radius: 0.75rem;
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -130,7 +117,7 @@
   }
 
   body {
-    background: #0F0F10;
+    background: #121213;
     
     scrollbar-width: thin;
     scrollbar-color: hsl(240 10% 25%) hsl(var(--background-secondary)); 
