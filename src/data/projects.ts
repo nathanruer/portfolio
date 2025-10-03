@@ -126,7 +126,7 @@ const projectsFR_LANG: ProjectLang[] = [
     ]
   },
   {
-    title: "Airbnb clone",
+    title: "Clone Airbnb",
     shortDescription: "Réplique fonctionnelle d'Airbnb avec authentification, réservation et affichage cartographique des logements.",
     fullDescription: "Clone fonctionnel et complet d'Airbnb utilisant le stack moderne Next.js 13 et TypeScript. Ce projet inclut un système d'authentification robuste avec NextAuth (supportant Google Auth), la gestion des logements (création, édition), un système de réservation avec calcul des coûts, et l'affichage dynamique des propriétés sur une carte interactive grâce à Leaflet.",
     challenges: [
@@ -158,7 +158,7 @@ const projectsFR_LANG: ProjectLang[] = [
     disclaimer: PROJECT_DISCLAIMERS.NOT_UPDATED.fr,
   },
   {
-    title: "Twitter clone",
+    title: "Clone Twitter",
     shortDescription: "Clone du réseau social Twitter (X) avec fonctionnalités principales : tweets, likes, et abonnements.",
     fullDescription: "Clone fonctionnel de Twitter développé avec Next.js 13, TypeScript et MongoDB. Le projet permet aux utilisateurs de s'authentifier, de poster des 'tweets', de les aimer, et de suivre d'autres utilisateurs. L'interface utilisateur est construite avec Tailwind CSS et utilise des formulaires gérés par React Hook Form.",
     challenges: [
@@ -282,7 +282,7 @@ const projectsEN_LANG: ProjectLang[] = [
     disclaimer: PROJECT_DISCLAIMERS.NOT_UPDATED.en,
   },
   {
-    title: "Messenger clone",
+    title: "Clone Messenger",
     shortDescription: "Real-time messaging application with notifications and group conversation management.",
     fullDescription: "A messaging application clone using Next.js and Pusher (WebSockets) for real-time chat. The project integrates authentication with NextAuth, manages group conversations and private messages. The backend architecture uses Prisma and a relational database for data persistence.",
     challenges: [
