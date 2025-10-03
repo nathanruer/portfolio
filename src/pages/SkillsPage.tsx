@@ -61,50 +61,60 @@ const SkillsPage = ({ currentLang }: SkillsPageProps) => {
                                 const shadowColor = getShadowColor(color);
 
                                 return (
-                                    <TooltipProvider key={name} delayDuration={300}>
-                                        <Tooltip>
-                                            <TooltipTrigger asChild>
-                                                <motion.span
-                                                    animate={anim ? {
-                                                        boxShadow: [
-                                                            `0 0 0px ${shadowColor}00`,
-                                                            `0 0 25px ${shadowColor}30`, 
-                                                            `0 0 0px ${shadowColor}00`,
-                                                            `0 0 40px ${shadowColor}60`,
-                                                            `0 0 15px ${shadowColor}30`,
-                                                            `0 0 30px ${shadowColor}9a`,
-                                                        ],
-                                                    } : undefined}
-                                                    transition={anim ? {
-                                                        duration: 0.5,
-                                                        times: [0, 0.1, 0.3, 0.5, 0.7, 1],
-                                                        ease: "easeInOut",
-                                                        delay: 0.3 + index * 0.1, 
-                                                    } : undefined}
+                                    <div key={name} className="flex flex-col items-center">
+                                        <TooltipProvider delayDuration={300}>
+                                            <Tooltip>
+                                                <TooltipTrigger asChild>
+                                                    <motion.span
+                                                        animate={anim ? {
+                                                            boxShadow: [
+                                                                `0 0 0px ${shadowColor}00`,
+                                                                `0 0 25px ${shadowColor}30`, 
+                                                                `0 0 0px ${shadowColor}00`,
+                                                                `0 0 40px ${shadowColor}60`,
+                                                                `0 0 15px ${shadowColor}30`,
+                                                                `0 0 30px ${shadowColor}9a`,
+                                                            ],
+                                                        } : undefined}
+                                                        transition={anim ? {
+                                                            duration: 0.5,
+                                                            times: [0, 0.1, 0.3, 0.5, 0.7, 1],
+                                                            ease: "easeInOut",
+                                                            delay: 0.3 + index * 0.1, 
+                                                        } : undefined}
 
-                                                    viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-                                                    className="text-3xl md:text-5xl rounded-full p-4 md:p-5 backdrop-blur-md hover:scale-105 transition duration-500 cursor-pointer"
+                                                        viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+                                                        className="text-3xl md:text-5xl rounded-full p-4 md:p-5 backdrop-blur-md hover:scale-105 transition duration-500 cursor-pointer"
+                                                        style={{
+                                                            background: color,
+                                                            boxShadow: `0 0 8px ${shadowColor}60`,
+                                                            color: contrastColor,
+                                                        }}
+                                                    >
+                                                        <Icon />
+                                                    </motion.span>
+                                                </TooltipTrigger>
+                                                
+                                                <TooltipContent 
+                                                    sideOffset={8}
+                                                    className="px-3 py-2 rounded-md text-sm font-medium hidden lg:block"
                                                     style={{
                                                         background: color,
-                                                        boxShadow: `0 0 8px ${shadowColor}60`,
                                                         color: contrastColor,
                                                     }}
                                                 >
-                                                    <Icon />
-                                                </motion.span>
-                                            </TooltipTrigger>
-                                            <TooltipContent 
-                                                sideOffset={8}
-                                                className="px-3 py-2 rounded-md text-sm font-medium"
-                                                style={{
-                                                    background: color,
-                                                    color: contrastColor,
-                                                }}
-                                            >
-                                                {name}
-                                            </TooltipContent>
-                                        </Tooltip>
-                                    </TooltipProvider>
+                                                    {name}
+                                                </TooltipContent>
+                                            </Tooltip>
+                                        </TooltipProvider>
+                                        
+                                        <p 
+                                            className="mt-2 text-xs font-medium text-center lg:hidden"
+                                            style={{ color: shadowColor }}
+                                        >
+                                            {name}
+                                        </p>
+                                    </div>
                                 );
                             })}
                         </div>
