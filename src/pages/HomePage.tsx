@@ -16,11 +16,14 @@ interface HomePageProps {
   currentLang: 'fr' | 'en';
 }
 
+interface TorusProps {
+  currentLang: 'fr' | 'en';
+}
+
 function ContextDisposer() {
   const { gl } = useThree();
 
   useEffect(() => {
-    // Fonction de nettoyage exécutée au démontage du composant (changement de page)
     return () => {
       gl.dispose();
     };
@@ -29,7 +32,7 @@ function ContextDisposer() {
   return null;
 }
 
-function Torus({ title }: { title: string }) {
+function Torus({ currentLang }: TorusProps) {
   const { nodes } = useGLTF('/medias/torus.glb') as unknown as TorusGLTF;
   const { viewport } = useThree();
   const torus = useRef<THREE.Mesh>(null!);
@@ -45,9 +48,10 @@ function Torus({ title }: { title: string }) {
 
   const [isPaused, setIsPaused] = useState(false);
   
+  const jobTitle = currentLang === 'fr' ? 'développeur web' : 'web developer';
+  
   useEffect(() => {
     const handleVisibilityChange = () => {
-      // Met l'animation en pause si l'onglet est masqué (document.hidden est true)
       setIsPaused(document.hidden);
     };
 
@@ -96,11 +100,9 @@ function Torus({ title }: { title: string }) {
     };
   }, []);
 
-  // Logique d'animation
   useFrame((_, delta) => {
     if (!torus.current) return;
 
-    // Si l'onglet est masqué, on sort immédiatement. L'animation est gelée.
     if (isPaused) {
         return;
     }
@@ -114,17 +116,14 @@ function Torus({ title }: { title: string }) {
     const mouseInfluence = 0.5; 
     const smoothFactor = 0.05;
 
-    // 1. Rotation automatique uniquement si pas hover
     if (!isHovered.current) {
       spinAccumulator.current.x += baseRotationSpeedX;
       spinAccumulator.current.y += baseRotationSpeedY;
     }
 
-    // 2. Tilt (souris)
     const tiltX = -mouseTarget.current.y * mouseInfluence;
     const tiltY = -mouseTarget.current.x * mouseInfluence;
 
-    // 3. Rotation finale = Auto + Drag + Tilt
     const targetRotX = spinAccumulator.current.x + manualRotation.current.x + tiltX;
     const targetRotY = spinAccumulator.current.y + manualRotation.current.y + tiltY;
 
@@ -143,23 +142,49 @@ function Torus({ title }: { title: string }) {
     temporalDistortion: 0.2,
   };
 
+  // Logique d'ajustement de l'échelle pour mobile
+  const isMobile = viewport.width < 5;
+  const scaleDivider = isMobile ? 2.5 : 3.75; 
+  const currentScale = viewport.width / scaleDivider;
+  
+  const offsetRight = isMobile ? 1.0 : 1.15; 
+  const offsetBottom = isMobile ? 0.3 : 0.25; 
+  
+
   return (
-    <group scale={viewport.width / 3.75}>
-    <Text
-      font="/fonts/PPNeueMontreal-Bold.otf"
-      position={[0, 0, 0]}
-      fontSize={0.45}
-      color="rgb(165, 85, 247)"
-      anchorX="center"
-      anchorY="middle"
-    >
-      {title}
-      <meshBasicMaterial 
-        attach="material" 
-        color="rgb(165, 85, 247)" 
-        toneMapped={false} 
-      />
-    </Text>
+    <group scale={currentScale}>
+      <Text
+        font="/fonts/PPNeueMontreal-Bold.otf"
+        position={[0, 0, 0]} 
+        fontSize={0.45}
+        color="rgb(165, 85, 247)"
+        anchorX="center"
+        anchorY="middle"
+      >
+        nathan ruer
+        <meshBasicMaterial 
+          attach="material" 
+          color="rgb(165, 85, 247)" 
+          toneMapped={false} 
+        />
+      </Text>
+
+      <Text
+        font="/fonts/PPNeueMontreal-Bold.otf"
+        position={[offsetRight, -offsetBottom, 0.01]} 
+        fontSize={0.1} 
+        color="white"
+        anchorX="right"
+        anchorY="middle"
+      >
+        {jobTitle}
+        <meshBasicMaterial 
+          attach="material" 
+          color="white" 
+          toneMapped={false} 
+        />
+      </Text>
+
       <mesh
         ref={torus}
         geometry={nodes.Torus002.geometry}
@@ -174,12 +199,6 @@ function Torus({ title }: { title: string }) {
 
 const HomePage: React.FC<HomePageProps> = ({ currentLang }) => {
   const [is3dLoaded, setIs3dLoaded] = useState(false);
-
-  const content = {
-    fr: { title: "bienvenue" },
-    en: { title: "welcome" },
-  };
-  const text = content[currentLang];
 
   const onCanvasReady = useCallback(() => {
     setTimeout(() => {
@@ -205,7 +224,7 @@ const HomePage: React.FC<HomePageProps> = ({ currentLang }) => {
         <Suspense fallback={<group />}>
           <group>
            <SpaceBackground /> 
-            <Torus title={text.title} />
+            <Torus currentLang={currentLang} /> 
             <Environment preset="studio" />
           </group>
         </Suspense>

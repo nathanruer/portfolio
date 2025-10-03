@@ -37,7 +37,7 @@ const ProjectCard = ({ project, onClick, index }: ProjectCardProps) => {
                                 {project.technologies.map(t => ( 
                                     <Badge 
                                         key={t} 
-                                        className="bg-transparent border border-gray-600/50 text-foreground-muted"
+                                        className="bg-background-secondary rounded-xl border border-gray-700/50 text-foreground-muted"
                                     >
                                         {t}
                                     </Badge>

@@ -19,17 +19,8 @@ export const LinkItem: React.FC<LinkItemProps> = ({
   icon: Icon = null,
   isPrimary = false 
 }) => {
-  const primaryClasses = `
-    text-white backdrop-blur-md bg-primary/20 
-    border border-primary/30 hover:border-primary/60 
-    hover:bg-primary/30
-  `;
-  
-  const standardClasses = `
-    text-white backdrop-blur-md bg-white/5 
-    border border-white/10 hover:border-white/30 
-    hover:bg-white/10
-  `;
+  const primaryClasses = "text-white backdrop-blur-md bg-primary/20  border border-primary/30 hover:border-primary/60 hover:bg-primary/30"
+  const standardClasses = "text-white backdrop-blur-md bg-white/5 border border-white/10 hover:border-white/30 hover:bg-white/10";
 
   const dynamicClasses = isPrimary ? primaryClasses : standardClasses;
 

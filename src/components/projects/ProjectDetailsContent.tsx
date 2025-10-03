@@ -105,7 +105,7 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, 
                         {project.technologies.map(t => (
                             <Badge 
                                 key={t} 
-                                className="bg-background-secondary text-foreground-muted border border-gray-700/50"
+                                className="bg-background-secondary rounded-xl text-foreground-muted border border-gray-700/50"
                             >
                                 {t}
                             </Badge>
@@ -148,7 +148,7 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, 
                             url={project.githubUrl} 
                             label={labels.github} 
                             icon="↗" 
-                            style="border border-border rounded text-foreground-muted transform transition-all duration-300 hover:scale-[1.03]"
+                            style="bg-background-secondary rounded-xl border border-gray-600/50 text-foreground-muted transform transition-all duration-300 hover:scale-[1.03]"
                         />
                     )}
                 </DialogFooter>

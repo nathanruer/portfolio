@@ -85,7 +85,6 @@
   }
 }
 
-/* 💡 ANIMATION AJOUTÉE POUR LA COHÉRENCE AVEC VOTRE SYSTÈME */
 @keyframes pulse-glow {
   0%, 100% {
     box-shadow: 0 0 10px 0px hsl(var(--primary-glow) / 0.5);
