@@ -12,14 +12,11 @@ interface SkillsPageProps {
 
 // Fonction utilitaire pour déterminer la couleur d'ombre
 const getShadowColor = (color: string) => {
-    // Liste des couleurs très sombres que vous voulez éclaircir
     const darkColors = ["#000000", "#363636", "#303030", "#3776AB"]; 
     
     if (darkColors.includes(color.toUpperCase())) {
-        // Retourne un gris clair pour la shadow
         return "#AAAAAA"; 
     }
-    // Pour les autres couleurs, retourne la couleur originale
     return color;
 };
 
@@ -107,7 +104,7 @@ const SkillsPage = ({ currentLang }: SkillsPageProps) => {
                                                 </TooltipContent>
                                             </Tooltip>
                                         </TooltipProvider>
-                                        
+
                                         <p 
                                             className="mt-2 text-xs font-medium text-center lg:hidden"
                                             style={{ color: shadowColor }}
