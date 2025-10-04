@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 
 import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from '@/components/ui/tooltip';
 
-import { skills } from '@/data/skills';
-import { getContrastColor } from '@/lib/utils';
+import { skills } from '@/data/skills'; 
+import { getContrastColor } from '@/lib/utils'; 
 
 interface SkillsPageProps {
     currentLang: 'fr' | 'en';
@@ -14,8 +14,8 @@ interface SkillsPageProps {
 const getShadowColor = (color: string) => {
     const darkColors = ["#000000", "#363636", "#303030", "#3776AB"]; 
     
-    if (darkColors.includes(color.toUpperCase())) {
-        return "#AAAAAA"; 
+    if (darkColors.includes(color.toUpperCase())) { 
+        return "#AAAAAA";   
     }
     return color;
 };
@@ -51,7 +51,7 @@ const SkillsPage = ({ currentLang }: SkillsPageProps) => {
                     viewport={{ once: true, margin: "0px 0px -100px 0px" }}
                     className="w-full max-h-80d relative z-50 pt-5 pb-5" 
                 >
-                    <div className="flex justify-center w-full mt-0"> 
+                    <div className="flex justify-center w-full mt-0 px-4 md:px-0"> 
                         <div className="flex justify-center items-center gap-10 md:gap-14 flex-wrap max-w-5xl my-20">
                             {skills.map(({ Icon, name, color }, index) => {
                                 const contrastColor = getContrastColor(color);
@@ -94,7 +94,7 @@ const SkillsPage = ({ currentLang }: SkillsPageProps) => {
                                                 
                                                 <TooltipContent 
                                                     sideOffset={8}
-                                                    className="px-3 py-2 rounded-md text-sm font-medium hidden lg:block"
+                                                    className="px-3 py-2 rounded-md text-sm font-medium hidden lg:block max-w-xs"
                                                     style={{
                                                         background: color,
                                                         color: contrastColor,
@@ -106,7 +106,7 @@ const SkillsPage = ({ currentLang }: SkillsPageProps) => {
                                         </TooltipProvider>
 
                                         <p 
-                                            className="mt-2 text-xs font-medium text-center lg:hidden"
+                                            className="mt-1 font-medium text-center lg:hidden max-w-[80px] break-words leading-none text-[10px]"
                                             style={{ color: shadowColor }}
                                         >
                                             {name}

@@ -39,5 +39,5 @@ export const skills = [
     
     // Blockchain & Web3
     { Icon: SiSolidity, name: "Solidity", color: "#363636" },
-    { Icon: TbCube, name: "Ethers/Wagmi/Hardhat", color: "#303030" },
+    { Icon: TbCube, name: "Ethers/Hardhat", color: "#303030" },
 ];
