@@ -16,7 +16,7 @@ const ContactPage = ({ currentLang }: ContactPageProps) => {
     },
     en: {
       title: 'Contact me', 
-      cvTitle: 'Resume (PDF)', 
+      cvTitle: 'Resume', 
       cvSubtitle: 'View my Resume', 
       emailSubtitle: 'Email',
       linkedinSubtitle: 'LinkedIn',
@@ -25,7 +25,10 @@ const ContactPage = ({ currentLang }: ContactPageProps) => {
   };
 
   const t = texts[currentLang];
-  const cvLink = `${window.location.origin}/medias/CV_RUER_Nathan_2025.pdf`;
+  
+  // Logic to determine the correct suffix for the CV file
+  const cvSuffix = currentLang === 'fr' ? '-fr' : '-eng';
+  const cvLink = `${window.location.origin}/medias/CV_RUER_Nathan_2025${cvSuffix}.pdf`;
 
   const BackgroundBlur = () => (
     <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
