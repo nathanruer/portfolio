@@ -328,19 +328,19 @@ const projectsEN_LANG: ProjectLang[] = [
     ],
     disclaimer: PROJECT_DISCLAIMERS.NOT_UPDATED.en,
   },
-  {
-    title: "Web3 swap app",
-    shortDescription: "Frontend DApp for exchanging cryptocurrencies on the Ethereum network via Uniswap.",
-    fullDescription: "A Decentralized Application (DApp) allowing token exchange (swap) by interacting with the smart contracts Uniswap on the Ethereum network. The frontend handles Web3 wallet integration (Wagmi, RainbowKit), real-time price estimation, slippage calculation, and secure transaction submission via Ethers.js.",
-    challenges: [
-      "Établir une connexion sécurisée et stable avec le portefeuille de l'utilisateur (wallet connection).",
-      "Gérer et afficher le slippage et les estimations de gaz en temps réel.",
-      "Interaction asynchrone avec les fonctions des smart contracts (lecture et écriture de données)."
+{
+    "title": "Web3 Swap App",
+    "shortDescription": "Frontend DApp for exchanging cryptocurrencies on the Ethereum network via Uniswap.",
+    "fullDescription": "A Decentralized Application (DApp) allowing token exchange (swap) by interacting with the Uniswap smart contracts on the Ethereum network. The frontend handles Web3 wallet integration (Wagmi, RainbowKit), real-time price estimation, slippage calculation, and secure transaction submission via Ethers.js.",
+    "challenges": [
+      "Establishing a secure and stable connection with the user's wallet (wallet connection).",
+      "Managing and displaying slippage and gas estimations in real time.",
+      "Asynchronous interaction with smart contract functions (reading and writing data)."
     ],
-    learnings: [
-      "Maîtrise des librairies Wagmi et Ethers.js pour l'interaction avec l'EVM.",
-      "Compréhension des smart contracts de DEX (Decentralized Exchange) comme Uniswap.",
-      "Gestion des erreurs de transaction blockchain complexes côté frontend."
+    "learnings": [
+      "Mastery of the Wagmi and Ethers.js libraries for interacting with the EVM.",
+      "Understanding of DEX (Decentralized Exchange) smart contracts like Uniswap.",
+      "Handling complex blockchain transaction errors on the frontend."
     ]
   },
   {
