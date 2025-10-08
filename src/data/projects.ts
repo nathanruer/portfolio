@@ -142,7 +142,7 @@ const projectsFR_LANG: ProjectLang[] = [
     disclaimer: PROJECT_DISCLAIMERS.NOT_UPDATED.fr,
   },
   {
-    title: "Messenger clone",
+    title: "Clone Messenger",
     shortDescription: "Application de messagerie en temps réel avec notifications et gestion des conversations de groupe.",
     fullDescription: "Clone d'une application de messagerie utilisant Next.js et Pusher (WebSockets) pour le chat en temps réel. Le projet intègre l'authentification avec NextAuth, gère les conversations de groupe et les messages privés. L'architecture backend utilise Prisma et une base de données relationnelle pour la persistance des données.",
     challenges: [
@@ -282,7 +282,7 @@ const projectsEN_LANG: ProjectLang[] = [
     disclaimer: PROJECT_DISCLAIMERS.NOT_UPDATED.en,
   },
   {
-    title: "Clone Messenger",
+    title: "Messenger clone",
     shortDescription: "Real-time messaging application with notifications and group conversation management.",
     fullDescription: "A messaging application clone using Next.js and Pusher (WebSockets) for real-time chat. The project integrates authentication with NextAuth, manages group conversations and private messages. The backend architecture uses Prisma and a relational database for data persistence.",
     challenges: [
