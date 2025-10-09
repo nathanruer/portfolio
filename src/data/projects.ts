@@ -30,8 +30,8 @@ export const projectsBase: ProjectBase[] = [
         id: 1,
         imageUrl: "/images/crypto-news-feed.png",
         technologies: ["React", "TypeScript", "Tailwind CSS", "Supabase", "Node.js", "Context API"],
-        demoUrl: "https://crypto-news-feed-v2.vercel.app/",
-        githubUrl: "https://github.com/nathanruer/crypto-news-feed-v2",
+        demoUrl: "https://crypto-news-feed.vercel.app/",
+        githubUrl: "https://github.com/nathanruer/crypto-news-feed",
     },
     {
         id: 2,
