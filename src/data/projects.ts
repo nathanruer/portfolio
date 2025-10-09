@@ -86,15 +86,15 @@ const projectsFR_LANG: ProjectLang[] = [
   {
     title: "Fil d'actualités crypto",
     shortDescription: "Application web affichant les dernières actualités crypto en temps réel.",
-    fullDescription: "Application fullstack conçue pour agréger et afficher les actualités du marché crypto. Elle utilise Supabase pour la gestion de la base de données et des abonnements en temps réel, assurant que l'utilisateur dispose toujours des informations les plus fraîches. L'interface, construite avec React et Tailwind, est entièrement responsive.",
+    fullDescription: "Application fullstack conçue pour agréger et afficher les actualités du marché crypto. Elle utilise un système de gestion de base de donnée pour les données et les abonnements en temps réel, assurant que l'utilisateur dispose toujours des informations les plus fraîches. L'interface, construite avec React et Tailwind, est entièrement responsive.",
     challenges: [
-      "Mettre en place une architecture de données évolutive avec Supabase pour gérer un flux important de données.",
+      "Mettre en place une architecture de données évolutive pour gérer un flux important de données.",
       "Gérer l'actualisation des news en temps réel (via WebSockets) sans surcharger le frontend.",
     ],
     learnings: [
-      "Maîtrise de l'intégration de Supabase (Auth, DB, Realtime) dans une application React.",
+      "Maîtrise de l'intégration des fonctionnalités de base de données en temps réel (Authentification, Base de données, Temps réel) dans une application React.",
       "Optimisation des requêtes asynchrones côté frontend pour minimiser la latence.",
-      "Gestion de l'état global et du contexte dans des applications complexes."
+      "Gestion de l'état global et du contexte dans des applications complexes.",
     ]
   },
   {
@@ -226,15 +226,15 @@ const projectsEN_LANG: ProjectLang[] = [
   {
     title: "Crypto news feed",
     shortDescription: "Web application displaying the latest crypto news in real-time.",
-    fullDescription: "Fullstack application designed to aggregate and display crypto market news. It uses Supabase for database management and real-time subscriptions, ensuring users always have the freshest information. The interface, built with React and Tailwind, is fully responsive.",
+    fullDescription: "Fullstack application designed to aggregate and display crypto market news. It uses a database management system for data and real-time subscriptions, ensuring users always have the freshest information. The interface, built with React and Tailwind, is fully responsive.",
     challenges: [
-      "Setting up a scalable data architecture with Supabase to handle a high-volume data stream.",
+      "Setting up a scalable data architecture to handle a high-volume data stream.",
       "Managing real-time news updates (via WebSockets) without overloading the frontend.",
     ],
     learnings: [
-      "Mastering Supabase integration (Auth, DB, Realtime) into a React application.",
+      "Mastering the integration of real-time database feature (Auth, DB, Realtime) into a React application.",
       "Optimizing asynchronous frontend queries to minimize latency.",
-      "Managing global state and context in complex applications."
+      "Managing global state and context in complex applications.",
     ]
   },
   {
