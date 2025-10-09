@@ -84,18 +84,19 @@ export const projectsBase: ProjectBase[] = [
 
 const projectsFR_LANG: ProjectLang[] = [
   {
-    title: "Fil d'actualités crypto",
-    shortDescription: "Application web affichant les dernières actualités crypto en temps réel.",
-    fullDescription: "Application fullstack conçue pour agréger et afficher les actualités du marché crypto. Elle utilise un système de gestion de base de donnée pour les données et les abonnements en temps réel, assurant que l'utilisateur dispose toujours des informations les plus fraîches. L'interface, construite avec React et Tailwind, est entièrement responsive.",
-    challenges: [
-      "Mettre en place une architecture de données évolutive pour gérer un flux important de données.",
-      "Gérer l'actualisation des news en temps réel (via WebSockets) sans surcharger le frontend.",
-    ],
-    learnings: [
-      "Maîtrise de l'intégration des fonctionnalités de base de données en temps réel (Authentification, Base de données, Temps réel) dans une application React.",
-      "Optimisation des requêtes asynchrones côté frontend pour minimiser la latence.",
-      "Gestion de l'état global et du contexte dans des applications complexes.",
-    ]
+      title: "Fil d'actualité crypto en temps réel",
+      shortDescription: "Application web affichant un flux continu de news sur les cryptomonnaies via une connexion WebSocket.",
+      fullDescription: "Développement d'une interface utilisateur réactive (Front-end) pour visualiser un flux continu de news sur le marché des cryptomonnaies. L'application utilise une connexion WebSocket pour établir un canal de communication bidirectionnel et à faible latence, assurant que les utilisateurs reçoivent les mises à jour instantanément. Le projet se concentre sur l'efficacité de l'affichage des données en streaming et la fourniture d'une expérience utilisateur optimale, notamment dans la gestion du volume des données en temps réel.",
+      challenges: [
+        "Assurer la stabilité et l'efficacité de la connexion WebSocket face à un volume élevé de messages entrants.",
+        "Optimiser les performances du rendu UI pour maintenir la fluidité malgré l'arrivée constante de nouvelles données (gestion de listes virtuelles).",
+        "Mettre en œuvre des mécanismes de gestion des pannes et de reconnexion automatique pour garantir la continuité du service."
+      ],
+      learnings: [
+        "Maîtrise des protocoles de communication temps réel et de l'implémentation de WebSocket côté client.",
+        "Gestion de l'état de l'application et des mises à jour asynchrones avec les outils du framework (ex. Hooks, Context API, ou librairie dédiée).",
+        "Principes de conception d'interfaces réactives et d'optimisation du rendu pour les applications de streaming de données."
+      ]
   },
   {
     title: "Dashboard de prix crypto",
@@ -224,18 +225,19 @@ const projectsFR_LANG: ProjectLang[] = [
 
 const projectsEN_LANG: ProjectLang[] = [
   {
-    title: "Crypto news feed",
-    shortDescription: "Web application displaying the latest crypto news in real-time.",
-    fullDescription: "Fullstack application designed to aggregate and display crypto market news. It uses a database management system for data and real-time subscriptions, ensuring users always have the freshest information. The interface, built with React and Tailwind, is fully responsive.",
-    challenges: [
-      "Setting up a scalable data architecture to handle a high-volume data stream.",
-      "Managing real-time news updates (via WebSockets) without overloading the frontend.",
-    ],
-    learnings: [
-      "Mastering the integration of real-time database feature (Auth, DB, Realtime) into a React application.",
-      "Optimizing asynchronous frontend queries to minimize latency.",
-      "Managing global state and context in complex applications.",
-    ]
+      title: "Real-time crypto news feed",
+      shortDescription: "Web application displaying a continuous stream of cryptocurrency news using a WebSocket connection.",
+      fullDescription: "Development of a responsive user interface (Front-end) to visualize a continuous stream of cryptocurrency market news. The application utilizes a WebSocket connection to establish a low-latency, bi-directional communication channel, ensuring users receive instant updates. The project focused on the efficiency of streaming data display and providing an optimal user experience, particularly in handling the volume of real-time data.",
+      challenges: [
+        "Ensuring the stability and efficiency of the WebSocket connection under a high volume of incoming messages.",
+        "Optimizing UI rendering performance to maintain smoothness despite the constant arrival of new data (e.g., virtualized lists).",
+        "Implementing robust failure handling and automatic reconnection mechanisms to ensure service continuity."
+      ],
+      learnings: [
+        "Mastery of real-time communication protocols and the client-side implementation of WebSocket.",
+        "Application state management and asynchronous updates using framework tools (e.g., Hooks, Context API, or dedicated library).",
+        "Principles of reactive interface design and rendering optimization for data streaming applications."
+      ]
   },
   {
     title: "Crypto prices dashboard",
