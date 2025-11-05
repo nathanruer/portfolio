@@ -70,14 +70,20 @@ export const projectsBase: ProjectBase[] = [
     },
     {
         id: 8,
-        technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Ethers.js", "Wagmi", "RainbowKit"],
-        demoUrl: "https://web3-swap-app-v3.vercel.app/",
-        githubUrl: "https://github.com/nathanruer/web3-frontend",
+        imageUrl: "/images/uniswapV3-quotes-frontend.png",
+        technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Ethers.js", "Wagmi", "RainbowKit", "Viem", "Foundry"],
+        demoUrl:"https://nathanruer-frontend-uniswapv3-quotes.vercel.app/",
+        githubUrl: "https://github.com/nathanruer/frontend-uniswapV3-quotes",
     },
     {
         id: 9,
         technologies: ["Solidity", "Python (Brownie)", "JavaScript (Hardhat)", "Ethereum (EVM)", "ERC Standards"],
         githubUrl: "https://github.com/nathanruer/Wallet-Interaction",
+    },
+    {
+        id: 10,
+        technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Ethers.js", "Wagmi", "RainbowKit"],
+        githubUrl: "https://github.com/nathanruer/web3-frontend",
     },
 ];
 
@@ -191,19 +197,19 @@ const projectsFR_LANG: ProjectLang[] = [
     disclaimer: PROJECT_DISCLAIMERS.NOT_UPDATED.fr,
   },
   {
-    title: "Web3 swap app",
-    shortDescription: "DApp frontend pour l'échange de cryptomonnaies sur le réseau Ethereum via Uniswap.",
-    fullDescription: "Application Décentralisée (DApp) permettant l'échange de tokens (swap) en interagissant avec les smart contracts Uniswap sur le réseau Ethereum. Le frontend gère l'intégration des portefeuilles Web3 (Wagmi, RainbowKit), l'estimation des prix en temps réel, le calcul du slippage et la soumission sécurisée des transactions via Ethers.js.",
+    title: "Frontend d'estimation de cotations Uniswap V3",
+    shortDescription: "Application front-end pour le calcul et l'affichage des taux de swap en temps réel des pools de liquidité Uniswap V3.",
+    fullDescription: "Application web construite avec Next.js et TypeScript, focalisée sur l'interaction avec la blockchain. Elle utilise Wagmi/Viem pour la connexion aux portefeuilles et la lecture des données de contrats, ainsi que les utilitaires Ethers.js pour dériver et afficher les taux de change (quotes) précis à partir des pools Uniswap V3. Le projet met en avant la gestion de données blockchain en temps réel et l'intégration d'une UI réactive avec Tailwind CSS.",
     challenges: [
-      "Établir une connexion sécurisée et stable avec le portefeuille de l'utilisateur (wallet connection).",
-      "Gérer et afficher le slippage et les estimations de gaz en temps réel.",
-      "Interaction asynchrone avec les fonctions des smart contracts (lecture et écriture de données)."
+        "Maîtriser le modèle mathématique complexe d'Uniswap V3 pour calculer les prix à partir de la racine carrée du prix (sqrtPriceX96).",
+        "Assurer la synchronisation et la performance des données en temps réel via les hooks Wagmi (polling ou WebSockets).",
+        "Intégrer les librairies Web3 modernes (Viem) pour des interactions efficaces avec l'EVM."
     ],
     learnings: [
-      "Maîtrise des librairies Wagmi et Ethers.js pour l'interaction avec l'EVM.",
-      "Compréhension des smart contracts de DEX (Decentralized Exchange) comme Uniswap.",
-      "Gestion des erreurs de transaction blockchain complexes côté frontend."
-    ]
+        "Utilisation avancée de Wagmi et Viem pour construire une DApp front-end de qualité professionnelle.",
+        "Compréhension pratique de l'architecture d'un DEX (Decentralized Exchange) et de la lecture des données on-chain.",
+        "Développement d'une interface utilisateur performante capable de gérer et d'afficher des données financières critiques."
+    ],
   },
   {
     title: "Architecture blockchain et standards de contrat", 
@@ -218,6 +224,21 @@ const projectsFR_LANG: ProjectLang[] = [
       "Développement sécurisé en Solidity et compréhension des failles courantes.",
       "Utilisation des frameworks Python (Brownie) et JavaScript (Hardhat) pour le cycle de vie des smart contracts.",
       "Interaction avec les contrats déployés depuis un environnement frontend de test."
+    ]
+  },
+    {
+    title: "Web3 swap app",
+    shortDescription: "DApp frontend pour l'échange de cryptomonnaies sur le réseau Ethereum via Uniswap.",
+    fullDescription: "Application Décentralisée (DApp) permettant l'échange de tokens (swap) en interagissant avec les smart contracts Uniswap sur le réseau Ethereum. Le frontend gère l'intégration des portefeuilles Web3 (Wagmi, RainbowKit), l'estimation des prix en temps réel, le calcul du slippage et la soumission sécurisée des transactions via Ethers.js.",
+    challenges: [
+      "Établir une connexion sécurisée et stable avec le portefeuille de l'utilisateur (wallet connection).",
+      "Gérer et afficher le slippage et les estimations de gaz en temps réel.",
+      "Interaction asynchrone avec les fonctions des smart contracts (lecture et écriture de données)."
+    ],
+    learnings: [
+      "Maîtrise des librairies Wagmi et Ethers.js pour l'interaction avec l'EVM.",
+      "Compréhension des smart contracts de DEX (Decentralized Exchange) comme Uniswap.",
+      "Gestion des erreurs de transaction blockchain complexes côté frontend."
     ]
   },
 ];
@@ -330,20 +351,20 @@ const projectsEN_LANG: ProjectLang[] = [
     ],
     disclaimer: PROJECT_DISCLAIMERS.NOT_UPDATED.en,
   },
-{
-    "title": "Web3 Swap App",
-    "shortDescription": "Frontend DApp for exchanging cryptocurrencies on the Ethereum network via Uniswap.",
-    "fullDescription": "A Decentralized Application (DApp) allowing token exchange (swap) by interacting with the Uniswap smart contracts on the Ethereum network. The frontend handles Web3 wallet integration (Wagmi, RainbowKit), real-time price estimation, slippage calculation, and secure transaction submission via Ethers.js.",
-    "challenges": [
-      "Establishing a secure and stable connection with the user's wallet (wallet connection).",
-      "Managing and displaying slippage and gas estimations in real time.",
-      "Asynchronous interaction with smart contract functions (reading and writing data)."
+  {
+    title: "Uniswap V3 quotes frontend estimation",
+    shortDescription: "Front-end application for the calculation and display of real-time swap rates from Uniswap V3 liquidity pools.",
+    fullDescription: "Web application built with Next.js and TypeScript, focused on blockchain interaction. It uses Wagmi/Viem for wallet connection and reading contract data, as well as Ethers.js utilities to derive and display accurate exchange rates (quotes) from Uniswap V3 pools. The project highlights real-time blockchain data management and the integration of a reactive UI with Tailwind CSS.",
+    challenges: [
+        "Mastering the complex Uniswap V3 mathematical model to calculate prices from the square root of the price (sqrtPriceX96).",
+        "Ensuring the synchronization and performance of real-time data via Wagmi hooks (polling or WebSockets).",
+        "Integrating modern Web3 libraries (Viem) for efficient interactions with the EVM."
     ],
-    "learnings": [
-      "Mastery of the Wagmi and Ethers.js libraries for interacting with the EVM.",
-      "Understanding of DEX (Decentralized Exchange) smart contracts like Uniswap.",
-      "Handling complex blockchain transaction errors on the frontend."
-    ]
+    learnings: [
+        "Advanced use of Wagmi and Viem to build a professional-grade front-end DApp.",
+        "Practical understanding of a DEX (Decentralized Exchange) architecture and on-chain data reading.",
+        "Developing a performant user interface capable of managing and displaying critical financial data."
+    ],
   },
   {
     title: "Blockchain architecture and contract standards", 
@@ -358,6 +379,21 @@ const projectsEN_LANG: ProjectLang[] = [
       "Secure development in Solidity and understanding common vulnerabilities.",
       "Using Python (Brownie) and JavaScript (Hardhat) frameworks for the smart contract lifecycle.",
       "Interacting with deployed contracts from a frontend testing environment."
+    ]
+  },
+  {
+    "title": "Web3 Swap App",
+    "shortDescription": "Frontend DApp for exchanging cryptocurrencies on the Ethereum network via Uniswap.",
+    "fullDescription": "A Decentralized Application (DApp) allowing token exchange (swap) by interacting with the Uniswap smart contracts on the Ethereum network. The frontend handles Web3 wallet integration (Wagmi, RainbowKit), real-time price estimation, slippage calculation, and secure transaction submission via Ethers.js.",
+    "challenges": [
+      "Establishing a secure and stable connection with the user's wallet (wallet connection).",
+      "Managing and displaying slippage and gas estimations in real time.",
+      "Asynchronous interaction with smart contract functions (reading and writing data)."
+    ],
+    "learnings": [
+      "Mastery of the Wagmi and Ethers.js libraries for interacting with the EVM.",
+      "Understanding of DEX (Decentralized Exchange) smart contracts like Uniswap.",
+      "Handling complex blockchain transaction errors on the frontend."
     ]
   },
 ];
