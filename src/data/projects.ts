@@ -71,17 +71,22 @@ export const projectsBase: ProjectBase[] = [
     {
         id: 8,
         imageUrl: "/images/uniswapV3-quotes-frontend.png",
-        technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Ethers.js", "Wagmi", "RainbowKit", "Viem", "Foundry"],
+        technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Shadcn", "Ethers.js", "Wagmi", "RainbowKit", "Viem", "Foundry"],
         demoUrl:"https://nathanruer-frontend-uniswapv3-quotes.vercel.app/",
         githubUrl: "https://github.com/nathanruer/frontend-uniswapV3-quotes",
     },
     {
-        id: 9,
+        id: 9, 
+        technologies: ["Next.js", "TypeScript", "Shadcn", "Thirdweb", "Coinbase X402"],
+        githubUrl: "https://github.com/nathanruer/test-x402",
+    },
+    {
+        id: 10,
         technologies: ["Solidity", "Python (Brownie)", "JavaScript (Hardhat)", "Ethereum (EVM)", "ERC Standards"],
         githubUrl: "https://github.com/nathanruer/Wallet-Interaction",
     },
     {
-        id: 10,
+        id: 11,
         technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Ethers.js", "Wagmi", "RainbowKit"],
         githubUrl: "https://github.com/nathanruer/web3-frontend",
     },
@@ -212,7 +217,22 @@ const projectsFR_LANG: ProjectLang[] = [
     ],
   },
   {
-    title: "Architecture blockchain et standards de contrat", 
+      title: "Test d'intégration du paywall X402 (Coinbase)",
+      shortDescription: "Application Next.js (DApp) de démonstration implémentant un mécanisme de Paywall on-chain basé sur le protocole X402 de Coinbase, sur Base Sepolia.",
+      fullDescription: "Projet Next.js intégrant le protocole X402 de Coinbase pour créer un Paywall d'API on-chain sur Base Sepolia. Il utilise Thirdweb pour la connexion au portefeuille et la gestion des transactions, garantissant que seul un paiement vérifié débloque le contenu premium.",
+      challenges: [
+        "Gestion de la synchronisation client-serveur (verify / settle).",
+        "Sécurisation et validation des paiements on-chain.",
+        "Mise en place du facilitator Web3 pour l'autorisation des règlements X402.",
+      ],
+      learnings: [
+        "Maîtrise de l'architecture X402 (initiation vs. règlement du Paywall).",
+        "Intégration avancée des outils Thirdweb pour les interactions de micro-paiement.",
+        "Application des Layer 2 pour la monétisation d'API Web3.",
+      ]
+  },
+  {
+    title: "Architecture blockchain et standards de contrat",
     shortDescription: "Collection de contrats intelligents (Smart Contracts) pour l'apprentissage, mettant en œuvre des standards ERC (ERC-20, NFT).",
     fullDescription: "Divers projets d'architecture et de développement pour la machine virtuelle Ethereum (EVM). Ce travail se concentre sur l'implémentation sécurisée des standards de token (ERC-20, ERC-721) et la maîtrise du cycle de vie des contrats, y compris la rédaction de tests unitaires robustes. Les outils utilisés sont Solidity, Brownie (Python) et Hardhat (JavaScript) pour le déploiement et la vérification.",
     challenges: [
@@ -334,6 +354,7 @@ const projectsEN_LANG: ProjectLang[] = [
       "Structuring a Next.js application (managing API routes and Server/Client Components).",
       "Mastering complex forms and validation with React Hook Form."
     ],
+    disclaimer: PROJECT_DISCLAIMERS.NOT_UPDATED.en,
   },
   {
     title: "Interactive car catalog",
@@ -367,7 +388,22 @@ const projectsEN_LANG: ProjectLang[] = [
     ],
   },
   {
-    title: "Blockchain architecture and contract standards", 
+      title: "X402 paywall integration Test (Coinbase)",
+      shortDescription: "A demo Next.js (DApp) implementing an on-chain Paywall mechanism based on the Coinbase X402 protocol, deployed on Base Sepolia.",
+      fullDescription: "Next.js project integrating the Coinbase X402 protocol to create an on-chain API Paywall on Base Sepolia. It leverages Thirdweb for wallet connection and transaction management, ensuring only a verified payment unlocks premium content.",
+      challenges: [
+        "Managing client-server synchronization (verify / settle).",
+        "Securing and validating on-chain payments.",
+        "Implementing the Web3 `Facilitator` for X402 settlement authorization.",
+      ],
+      learnings: [
+        "Mastering X402 architecture (Paywall initiation vs. settlement).",
+        "Advanced integration of Thirdweb tools for micro-payment interactions.",
+        "Application of Layer 2 for Web3 API monetization.",
+      ]
+  },
+  {
+    title: "Blockchain architecture and contract standards",
     shortDescription: "Collection of Smart Contracts for learning, implementing ERC standards (ERC-20, NFT).",
     fullDescription: "Various architecture and development projects for the Ethereum Virtual Machine (EVM). This work focuses on the secure implementation of token standards (ERC-20, ERC-721) and mastering the contract lifecycle, including writing robust unit tests. The tools used are Solidity, Brownie (Python), and Hardhat (JavaScript) for deployment and verification.",
     challenges: [
@@ -382,15 +418,15 @@ const projectsEN_LANG: ProjectLang[] = [
     ]
   },
   {
-    "title": "Web3 Swap App",
-    "shortDescription": "Frontend DApp for exchanging cryptocurrencies on the Ethereum network via Uniswap.",
-    "fullDescription": "A Decentralized Application (DApp) allowing token exchange (swap) by interacting with the Uniswap smart contracts on the Ethereum network. The frontend handles Web3 wallet integration (Wagmi, RainbowKit), real-time price estimation, slippage calculation, and secure transaction submission via Ethers.js.",
-    "challenges": [
+    title: "Web3 Swap App",
+    shortDescription: "Frontend DApp for exchanging cryptocurrencies on the Ethereum network via Uniswap.",
+    fullDescription: "A Decentralized Application (DApp) allowing token exchange (swap) by interacting with the Uniswap smart contracts on the Ethereum network. The frontend handles Web3 wallet integration (Wagmi, RainbowKit), real-time price estimation, slippage calculation, and secure transaction submission via Ethers.js.",
+    challenges: [
       "Establishing a secure and stable connection with the user's wallet (wallet connection).",
       "Managing and displaying slippage and gas estimations in real time.",
       "Asynchronous interaction with smart contract functions (reading and writing data)."
     ],
-    "learnings": [
+    learnings: [
       "Mastery of the Wagmi and Ethers.js libraries for interacting with the EVM.",
       "Understanding of DEX (Decentralized Exchange) smart contracts like Uniswap.",
       "Handling complex blockchain transaction errors on the frontend."
