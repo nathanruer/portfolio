@@ -29,71 +29,76 @@ export const projectsBase: ProjectBase[] = [
     {
         id: 1,
         imageUrl: "/images/crypto-news-feed.png",
-        technologies: ["React", "TypeScript", "Tailwind CSS", "Supabase", "Node.js", "Context API"],
+        technologies: ["React", "TypeScript", "Tailwind CSS", "Node.js"],
         demoUrl: "https://crypto-news-feed.vercel.app/",
         githubUrl: "https://github.com/nathanruer/crypto-news-feed",
     },
     {
         id: 2,
-        imageUrl: "/images/crypto-prices-binance.png",
-        technologies: ["React", "TypeScript", "Tailwind CSS", "Binance API"],
-        demoUrl: "https://crypto-screener-application-nathanruer.vercel.app/",
-        githubUrl: "https://github.com/nathanruer/crypto-prices-binance",
-    },
-    {
-        id: 3,
-        technologies: ["Python", "FTX API (REST & WS)", "Pandas", "NumPy", "Asyncio", "Jupyter"],
-    },
-    {
-        id: 4,
-        imageUrl: "/images/airbnb-clone.png",
-        technologies: ["Next.js 13", "React", "TypeScript", "NextAuth", "MongoDB", "Prisma", "Tailwind CSS", "Leaflet"],
-        demoUrl: "https://airbnb-clone-nathanruer.vercel.app/",
-        githubUrl: "https://github.com/nathanruer/airbnb-clone",
-    },
-    {
-        id: 5,
-        technologies: ["Next.js 13", "React", "TypeScript", "NextAuth", "Prisma", "Tailwind CSS", "Pusher (WebSockets)"],
-        githubUrl: "https://github.com/nathanruer/messenger-clone",
-    },
-    {
-        id: 6,
-        technologies: ["Next.js 13", "React", "TypeScript", "NextAuth", "MongoDB", "Tailwind CSS", "React Hook Form"],
-        githubUrl: "https://github.com/nathanruer/twitter-clone",
-    },
-    {
-        id: 7,
-        imageUrl: "/images/carhub-app.png",
-        technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Headless UI", "RapidAPI"],
-        demoUrl: "https://carhub-nathanruer.vercel.app/",
-        githubUrl: "https://github.com/nathanruer/carhub-app",
-    },
-    {
-        id: 8,
         imageUrl: "/images/uniswapV3-quotes-frontend.png",
         technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Shadcn", "Ethers.js", "Wagmi", "RainbowKit", "Viem", "Foundry"],
         demoUrl:"https://nathanruer-frontend-uniswapv3-quotes.vercel.app/",
         githubUrl: "https://github.com/nathanruer/frontend-uniswapV3-quotes",
     },
     {
-        id: 9, 
+        id: 3,
+        technologies: ["Daydreams/Lucid Agents", "Ekubo API", "TypeScript", "Node.js", "Coinbase X402"],
+        githubUrl: "https://github.com/nathanruer/test-lucid-agent",
+    },
+    {
+        id: 4, 
         technologies: ["Next.js", "TypeScript", "Shadcn", "Thirdweb", "Coinbase X402"],
         githubUrl: "https://github.com/nathanruer/test-x402",
     },
     {
+        id: 5,
+        technologies: ["Python", "FTX API (REST & WS)", "Pandas", "NumPy", "Asyncio", "Jupyter"],
+    },
+    {
+        id: 6,
+        imageUrl: "/images/crypto-prices-binance.png",
+        technologies: ["React", "TypeScript", "Tailwind CSS", "Binance API"],
+        demoUrl: "https://crypto-screener-application-nathanruer.vercel.app/",
+        githubUrl: "https://github.com/nathanruer/crypto-prices-binance",
+    },
+    {
+        id: 7,
+        technologies: ["Next.js 13", "React", "TypeScript", "NextAuth", "Prisma", "Tailwind CSS", "Pusher (WebSockets)"],
+        githubUrl: "https://github.com/nathanruer/messenger-clone",
+    },
+    {
+        id: 8,
+        imageUrl: "/images/airbnb-clone.png",
+        technologies: ["Next.js 13", "React", "TypeScript", "NextAuth", "MongoDB", "Prisma", "Tailwind CSS", "Leaflet"],
+        demoUrl: "https://airbnb-clone-nathanruer.vercel.app/",
+        githubUrl: "https://github.com/nathanruer/airbnb-clone",
+    },
+    {
+        id: 9,
+        technologies: ["Next.js 13", "React", "TypeScript", "NextAuth", "MongoDB", "Tailwind CSS", "React Hook Form"],
+        githubUrl: "https://github.com/nathanruer/twitter-clone",
+    },
+    {
         id: 10,
+        imageUrl: "/images/carhub-app.png",
+        technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Headless UI", "RapidAPI"],
+        demoUrl: "https://carhub-nathanruer.vercel.app/",
+        githubUrl: "https://github.com/nathanruer/carhub-app",
+    },
+    {
+        id: 11,
         technologies: ["Solidity", "Python (Brownie)", "JavaScript (Hardhat)", "Ethereum (EVM)", "ERC Standards"],
         githubUrl: "https://github.com/nathanruer/Wallet-Interaction",
     },
     {
-        id: 11,
+        id: 12,
         technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Ethers.js", "Wagmi", "RainbowKit"],
         githubUrl: "https://github.com/nathanruer/web3-frontend",
     },
 ];
 
 
-const projectsFR_LANG: ProjectLang[] = [
+export const projectsFR_LANG: ProjectLang[] = [
   {
       title: "Fil d'actualité crypto en temps réel",
       shortDescription: "Application web affichant un flux continu de news sur les cryptomonnaies via une connexion WebSocket.",
@@ -110,17 +115,49 @@ const projectsFR_LANG: ProjectLang[] = [
       ]
   },
   {
-    title: "Dashboard de prix crypto",
-    shortDescription: "Dashboard d'affichage et de suivi des prix des cryptomonnaies en temps quasi-réel via l'API Binance.",
-    fullDescription: "Application web construite avec React et TypeScript utilisant l'API WebSocket de Binance pour obtenir et afficher les prix des principales paires de trading avec une latence réduite. Ce projet d'apprentissage visait à maîtriser la gestion des flux de données externes. Le dashboard se concentre sur l'affichage dynamique des variations de prix, le tout dans une interface rapide et responsive avec Tailwind CSS.",
+    title: "Frontend d'estimation de cotations Uniswap V3",
+    shortDescription: "Application front-end pour le calcul et l'affichage des taux de swap en temps réel des pools de liquidité Uniswap V3.",
+    fullDescription: "Application web construite avec Next.js et TypeScript, focalisée sur l'interaction avec la blockchain. Elle utilise Wagmi/Viem pour la connexion aux portefeuilles et la lecture des données de contrats, ainsi que les utilitaires Ethers.js pour dériver et afficher les taux de change (quotes) précis à partir des pools Uniswap V3. Le projet met en avant la gestion de données blockchain en temps réel et l'intégration d'une UI réactive avec Tailwind CSS.",
     challenges: [
-      "Maintenir une connexion WebSocket stable et gérer les reconnexions en cas d'interruption.",
-      "Normalisation et traitement des flux de données brutes reçues de l'API Binance en temps réel."
+        "Maîtriser le modèle mathématique complexe d'Uniswap V3 pour calculer les prix à partir de la racine carrée du prix (sqrtPriceX96).",
+        "Assurer la synchronisation et la performance des données en temps réel via les hooks Wagmi (polling ou WebSockets).",
+        "Intégrer les librairies Web3 modernes (Viem) pour des interactions efficaces avec l'EVM."
     ],
     learnings: [
-      "Gestion des appels API en temps réel et des protocoles WebSocket dans React.",
-      "Optimisation de l'affichage dynamique de données financières complexes côté client."
-    ]
+        "Utilisation avancée de Wagmi et Viem pour construire une DApp front-end de qualité professionnelle.",
+        "Compréhension pratique de l'architecture d'un DEX (Decentralized Exchange) et de la lecture des données on-chain.",
+        "Développement d'une interface utilisateur performante capable de gérer et d'afficher des données financières critiques."
+    ],
+  },
+  {
+    title: "Agent IA monétisé (x402) - Daydreams/Lucid",
+    shortDescription: "Agent d'IA (Daydreams/Lucid) intégrant le protocole x402 (Coinbase) pour monétiser les appels d'API à la requête, sur Starknet.",
+    fullDescription: "Développement d'un agent d'IA modulaire (Daydreams/Lucid Agents) exposant des points d'entrée d'API pour la lecture des données Starknet (solde de portefeuilles, prix Ekubo, etc...). Ce projet met en œuvre l'intégration native du protocole x402 de Coinbase pour sécuriser et monétiser chaque appel d'API. L'agent est configuré pour renvoyer le statut HTTP 402 Payment Required, obligeant le client (un autre agent ou une application) à effectuer un micropaiement on-chain pour débloquer l'accès à la donnée. Il sert de preuve de concept pour une économie d'API/services inter-agents basée sur l'usage réel.",
+    challenges: [
+        "Intégration de la logique de Paywall x402 dans un agent IA (Lucid/Daydreams).",
+        "Assurer la synchronisation entre la logique de l'agent et le règlement du micropaiement on-chain.",
+        "Gérer l'intégration de sources de données disparates (on-chain, API Ekubo, scraping).",
+    ],
+    learnings: [
+        "Maîtrise du développement d'agents autonomes et de leur monétisation via x402.",
+        "Application des Layer 2 (Starknet) pour des transactions financières rapides et à faible coût.",
+        "Techniques pour le développement d'APIs payantes natives au Web3.",
+    ],
+  },
+  {
+      title: "Test d'intégration du paywall X402 (Coinbase)",
+      shortDescription: "Application Next.js (DApp) de démonstration implémentant un mécanisme de Paywall on-chain basé sur le protocole X402 de Coinbase, sur Base Sepolia.",
+      fullDescription: "Projet Next.js intégrant le protocole X402 de Coinbase pour créer un Paywall d'API on-chain sur Base Sepolia. Il utilise Thirdweb pour la connexion au portefeuille et la gestion des transactions, garantissant que seul un paiement vérifié débloque le contenu premium.",
+      challenges: [
+        "Gestion de la synchronisation client-serveur (verify / settle).",
+        "Sécurisation et validation des paiements on-chain.",
+        "Mise en place du facilitator Web3 pour l'autorisation des règlements X402.",
+      ],
+      learnings: [
+        "Maîtrise de l'architecture X402 (initiation vs. règlement du Paywall).",
+        "Intégration avancée des outils Thirdweb pour les interactions de micro-paiement.",
+        "Application des Layer 2 pour la monétisation d'API Web3.",
+      ]
   },
   {
     title: "Bot de trading algorithmique",
@@ -138,20 +175,17 @@ const projectsFR_LANG: ProjectLang[] = [
     ]
   },
   {
-    title: "Clone Airbnb",
-    shortDescription: "Réplique fonctionnelle d'Airbnb avec authentification, réservation et affichage cartographique des logements.",
-    fullDescription: "Clone fonctionnel et complet d'Airbnb utilisant le stack moderne Next.js 13 et TypeScript. Ce projet inclut un système d'authentification robuste avec NextAuth (supportant Google Auth), la gestion des logements (création, édition), un système de réservation avec calcul des coûts, et l'affichage dynamique des propriétés sur une carte interactive grâce à Leaflet.",
+    title: "Dashboard de prix crypto",
+    shortDescription: "Dashboard d'affichage et de suivi des prix des cryptomonnaies en temps quasi-réel via l'API Binance.",
+    fullDescription: "Application web construite avec React et TypeScript utilisant l'API WebSocket de Binance pour obtenir et afficher les prix des principales paires de trading avec une latence réduite. Ce projet d'apprentissage visait à maîtriser la gestion des flux de données externes. Le dashboard se concentre sur l'affichage dynamique des variations de prix, le tout dans une interface rapide et responsive avec Tailwind CSS.",
     challenges: [
-      "Sécuriser l'authentification des utilisateurs (NextAuth) et gérer les sessions.",
-      "Implémenter une logique de dates de réservation complexes pour éviter les doubles réservations.",
-      "Affichage dynamique et performant des logements sur carte (Leaflet) en fonction des filtres."
+      "Maintenir une connexion WebSocket stable et gérer les reconnexions en cas d'interruption.",
+      "Normalisation et traitement des flux de données brutes reçues de l'API Binance en temps réel."
     ],
     learnings: [
-      "Intégration complète de NextAuth avec des fournisseurs externes comme Google.",
-      "Maîtrise de Prisma pour les opérations CRUD complexes sur une base de données MongoDB.",
-      "Gestion des relations entre les tables (Utilisateurs, Logements, Réservations) dans un environnement Full Stack."
-    ],
-    disclaimer: PROJECT_DISCLAIMERS.NOT_UPDATED.fr,
+      "Gestion des appels API en temps réel et des protocoles WebSocket dans React.",
+      "Optimisation de l'affichage dynamique de données financières complexes côté client."
+    ]
   },
   {
     title: "Clone Messenger",
@@ -166,6 +200,22 @@ const projectsFR_LANG: ProjectLang[] = [
       "Implémentation des WebSockets et des communications en temps réel (Pusher).",
       "Gestion des relations complexes (Un Utilisateur a plusieurs Conversations, une Conversation a plusieurs Messages, etc.) avec Prisma.",
       "Sécurisation des routes et des accès aux conversations privées via NextAuth."
+    ],
+    disclaimer: PROJECT_DISCLAIMERS.NOT_UPDATED.fr,
+  },
+  {
+    title: "Clone Airbnb",
+    shortDescription: "Réplique fonctionnelle d'Airbnb avec authentification, réservation et affichage cartographique des logements.",
+    fullDescription: "Clone fonctionnel et complet d'Airbnb utilisant le stack moderne Next.js 13 et TypeScript. Ce projet inclut un système d'authentification robuste avec NextAuth (supportant Google Auth), la gestion des logements (création, édition), un système de réservation avec calcul des coûts, et l'affichage dynamique des propriétés sur une carte interactive grâce à Leaflet.",
+    challenges: [
+      "Sécuriser l'authentification des utilisateurs (NextAuth) et gérer les sessions.",
+      "Implémenter une logique de dates de réservation complexes pour éviter les doubles réservations.",
+      "Affichage dynamique et performant des logements sur carte (Leaflet) en fonction des filtres."
+    ],
+    learnings: [
+      "Intégration complète de NextAuth avec des fournisseurs externes comme Google.",
+      "Maîtrise de Prisma pour les opérations CRUD complexes sur une base de données MongoDB.",
+      "Gestion des relations entre les tables (Utilisateurs, Logements, Réservations) dans un environnement Full Stack."
     ],
     disclaimer: PROJECT_DISCLAIMERS.NOT_UPDATED.fr,
   },
@@ -202,36 +252,6 @@ const projectsFR_LANG: ProjectLang[] = [
     disclaimer: PROJECT_DISCLAIMERS.NOT_UPDATED.fr,
   },
   {
-    title: "Frontend d'estimation de cotations Uniswap V3",
-    shortDescription: "Application front-end pour le calcul et l'affichage des taux de swap en temps réel des pools de liquidité Uniswap V3.",
-    fullDescription: "Application web construite avec Next.js et TypeScript, focalisée sur l'interaction avec la blockchain. Elle utilise Wagmi/Viem pour la connexion aux portefeuilles et la lecture des données de contrats, ainsi que les utilitaires Ethers.js pour dériver et afficher les taux de change (quotes) précis à partir des pools Uniswap V3. Le projet met en avant la gestion de données blockchain en temps réel et l'intégration d'une UI réactive avec Tailwind CSS.",
-    challenges: [
-        "Maîtriser le modèle mathématique complexe d'Uniswap V3 pour calculer les prix à partir de la racine carrée du prix (sqrtPriceX96).",
-        "Assurer la synchronisation et la performance des données en temps réel via les hooks Wagmi (polling ou WebSockets).",
-        "Intégrer les librairies Web3 modernes (Viem) pour des interactions efficaces avec l'EVM."
-    ],
-    learnings: [
-        "Utilisation avancée de Wagmi et Viem pour construire une DApp front-end de qualité professionnelle.",
-        "Compréhension pratique de l'architecture d'un DEX (Decentralized Exchange) et de la lecture des données on-chain.",
-        "Développement d'une interface utilisateur performante capable de gérer et d'afficher des données financières critiques."
-    ],
-  },
-  {
-      title: "Test d'intégration du paywall X402 (Coinbase)",
-      shortDescription: "Application Next.js (DApp) de démonstration implémentant un mécanisme de Paywall on-chain basé sur le protocole X402 de Coinbase, sur Base Sepolia.",
-      fullDescription: "Projet Next.js intégrant le protocole X402 de Coinbase pour créer un Paywall d'API on-chain sur Base Sepolia. Il utilise Thirdweb pour la connexion au portefeuille et la gestion des transactions, garantissant que seul un paiement vérifié débloque le contenu premium.",
-      challenges: [
-        "Gestion de la synchronisation client-serveur (verify / settle).",
-        "Sécurisation et validation des paiements on-chain.",
-        "Mise en place du facilitator Web3 pour l'autorisation des règlements X402.",
-      ],
-      learnings: [
-        "Maîtrise de l'architecture X402 (initiation vs. règlement du Paywall).",
-        "Intégration avancée des outils Thirdweb pour les interactions de micro-paiement.",
-        "Application des Layer 2 pour la monétisation d'API Web3.",
-      ]
-  },
-  {
     title: "Architecture blockchain et standards de contrat",
     shortDescription: "Collection de contrats intelligents (Smart Contracts) pour l'apprentissage, mettant en œuvre des standards ERC (ERC-20, NFT).",
     fullDescription: "Divers projets d'architecture et de développement pour la machine virtuelle Ethereum (EVM). Ce travail se concentre sur l'implémentation sécurisée des standards de token (ERC-20, ERC-721) et la maîtrise du cycle de vie des contrats, y compris la rédaction de tests unitaires robustes. Les outils utilisés sont Solidity, Brownie (Python) et Hardhat (JavaScript) pour le déploiement et la vérification.",
@@ -264,7 +284,7 @@ const projectsFR_LANG: ProjectLang[] = [
 ];
 
 
-const projectsEN_LANG: ProjectLang[] = [
+export const projectsEN_LANG: ProjectLang[] = [
   {
       title: "Real-time crypto news feed",
       shortDescription: "Web application displaying a continuous stream of cryptocurrency news using a WebSocket connection.",
@@ -281,17 +301,49 @@ const projectsEN_LANG: ProjectLang[] = [
       ]
   },
   {
-    title: "Crypto prices dashboard",
-    shortDescription: "Near real-time dashboard for tracking and displaying cryptocurrency prices via the Binance API.",
-    fullDescription: "Web app built with React and TypeScript utilizing the Binance API to fetch and display the prices of major trading pairs with low latency. This learning project focused on mastering external data stream management. The dashboard focuses on the dynamic display of price variations, all within a fast and responsive Tailwind CSS interface.",
+    title: "Uniswap V3 quotes frontend estimation",
+    shortDescription: "Front-end application for the calculation and display of real-time swap rates from Uniswap V3 liquidity pools.",
+    fullDescription: "Web application built with Next.js and TypeScript, focused on blockchain interaction. It uses Wagmi/Viem for wallet connection and reading contract data, as well as Ethers.js utilities to derive and display accurate exchange rates (quotes) from Uniswap V3 pools. The project highlights real-time blockchain data management and the integration of a reactive UI with Tailwind CSS.",
     challenges: [
-      "Maintaining a stable WebSocket connection and handling reconnections upon interruption.",
-      "Normalizing and processing raw data streams received from the Binance API in real-time."
+        "Mastering the complex Uniswap V3 mathematical model to calculate prices from the square root of the price (sqrtPriceX96).",
+        "Ensuring the synchronization and performance of real-time data via Wagmi hooks (polling or WebSockets).",
+        "Integrating modern Web3 libraries (Viem) for efficient interactions with the EVM."
     ],
     learnings: [
-      "Handling real-time API calls and WebSocket protocols in React.",
-      "Optimizing the dynamic display of complex financial data on the client-side."
-    ]
+        "Advanced use of Wagmi and Viem to build a professional-grade front-end DApp.",
+        "Practical understanding of a DEX (Decentralized Exchange) architecture and on-chain data reading.",
+        "Developing a performant user interface capable of managing and displaying critical financial data."
+    ],
+  },
+  {
+    title: "Monetized AI agent (x402) - Daydreams/Lucid",
+    shortDescription: "AI Agent (Daydreams/Lucid) integrating the x402 protocol (Coinbase) to monetize API calls on a per-request basis, deployed on Starknet.",
+    fullDescription: "Development of a modular AI agent (Daydreams/Lucid Agents) exposing API endpoints for reading Starknet data (wallet balances, Ekubo prices, etc...). This project implements the native integration of the x402 protocol to secure and monetize every API call. The agent is configured to return the HTTP status 402 Payment Required, requiring the client (another agent or application) to perform an on-chain micropayment to unlock data access. It serves as a proof of concept for a per-usage API/service economy between agents based on real-time value exchange.",
+    challenges: [
+        "Integrating the x402 Paywall logic within an AI Agent (Lucid/Daydreams).",
+        "Assuring synchronization between the agent's logic and the on-chain micropayment settlement.",
+        "Managing the integration of disparate data sources (on-chain, Ekubo API, scraping).",
+    ],
+    learnings: [
+        "Mastery of autonomous agent development and monetization via x402.",
+        "Application of Layer 2s (Starknet) for fast, low-cost financial transactions.",
+        "Techniques for developing Web3-native paid APIs.",
+    ],
+  },
+  {
+      title: "X402 paywall integration Test (Coinbase)",
+      shortDescription: "A demo Next.js (DApp) implementing an on-chain Paywall mechanism based on the Coinbase X402 protocol, deployed on Base Sepolia.",
+      fullDescription: "Next.js project integrating the Coinbase X402 protocol to create an on-chain API Paywall on Base Sepolia. It leverages Thirdweb for wallet connection and transaction management, ensuring only a verified payment unlocks premium content.",
+      challenges: [
+        "Managing client-server synchronization (verify / settle).",
+        "Securing and validating on-chain payments.",
+        "Implementing the Web3 `Facilitator` for X402 settlement authorization.",
+      ],
+      learnings: [
+        "Mastering X402 architecture (Paywall initiation vs. settlement).",
+        "Advanced integration of Thirdweb tools for micro-payment interactions.",
+        "Application of Layer 2 for Web3 API monetization.",
+      ]
   },
   {
     title: "Algorithmic trading bot",
@@ -309,20 +361,17 @@ const projectsEN_LANG: ProjectLang[] = [
     ]
   },
   {
-    title: "Airbnb clone",
-    shortDescription: "Functional Airbnb replica with authentication, booking, and map display of properties.",
-    fullDescription: "Complete and functional Airbnb clone built using the modern Next.js 13 and TypeScript stack. This project includes a robust authentication system with NextAuth (supporting Google Auth), property management (creation, editing), a booking system with cost calculation, and dynamic display of properties on an interactive map using Leaflet.",
+    title: "Crypto prices dashboard",
+    shortDescription: "Near real-time dashboard for tracking and displaying cryptocurrency prices via the Binance API.",
+    fullDescription: "Web app built with React and TypeScript utilizing the Binance API to fetch and display the prices of major trading pairs with low latency. This learning project focused on mastering external data stream management. The dashboard focuses on the dynamic display of price variations, all within a fast and responsive Tailwind CSS interface.",
     challenges: [
-      "Securing user authentication (NextAuth) and managing sessions.",
-      "Implementing complex booking date logic to prevent double bookings.",
-      "Dynamic and performant display of properties on maps (Leaflet) based on filters."
+      "Maintaining a stable WebSocket connection and handling reconnections upon interruption.",
+      "Normalizing and processing raw data streams received from the Binance API in real-time."
     ],
     learnings: [
-      "Full integration of NextAuth with external providers like Google.",
-      "Mastering Prisma for complex CRUD operations on a MongoDB database.",
-      "Managing relationships between tables (Users, Properties, Reservations) in a Full Stack environment."
-    ],
-    disclaimer: PROJECT_DISCLAIMERS.NOT_UPDATED.en,
+      "Handling real-time API calls and WebSocket protocols in React.",
+      "Optimizing the dynamic display of complex financial data on the client-side."
+    ]
   },
   {
     title: "Messenger clone",
@@ -337,6 +386,22 @@ const projectsEN_LANG: ProjectLang[] = [
       "Implementation of WebSockets and real-time communication (Pusher).",
       "Managing complex relationships (A User has many Conversations, a Conversation has many Messages, etc.) with Prisma.",
       "Securing routes and access to private conversations via NextAuth."
+    ],
+    disclaimer: PROJECT_DISCLAIMERS.NOT_UPDATED.en,
+  },
+  {
+    title: "Airbnb clone",
+    shortDescription: "Functional Airbnb replica with authentication, booking, and map display of properties.",
+    fullDescription: "Complete and functional Airbnb clone built using the modern Next.js 13 and TypeScript stack. This project includes a robust authentication system with NextAuth (supporting Google Auth), property management (creation, editing), a booking system with cost calculation, and dynamic display of properties on an interactive map using Leaflet.",
+    challenges: [
+      "Securing user authentication (NextAuth) and managing sessions.",
+      "Implementing complex booking date logic to prevent double bookings.",
+      "Dynamic and performant display of properties on maps (Leaflet) based on filters."
+    ],
+    learnings: [
+      "Full integration of NextAuth with external providers like Google.",
+      "Mastering Prisma for complex CRUD operations on a MongoDB database.",
+      "Managing relationships between tables (Users, Properties, Reservations) in a Full Stack environment."
     ],
     disclaimer: PROJECT_DISCLAIMERS.NOT_UPDATED.en,
   },
@@ -373,36 +438,6 @@ const projectsEN_LANG: ProjectLang[] = [
     disclaimer: PROJECT_DISCLAIMERS.NOT_UPDATED.en,
   },
   {
-    title: "Uniswap V3 quotes frontend estimation",
-    shortDescription: "Front-end application for the calculation and display of real-time swap rates from Uniswap V3 liquidity pools.",
-    fullDescription: "Web application built with Next.js and TypeScript, focused on blockchain interaction. It uses Wagmi/Viem for wallet connection and reading contract data, as well as Ethers.js utilities to derive and display accurate exchange rates (quotes) from Uniswap V3 pools. The project highlights real-time blockchain data management and the integration of a reactive UI with Tailwind CSS.",
-    challenges: [
-        "Mastering the complex Uniswap V3 mathematical model to calculate prices from the square root of the price (sqrtPriceX96).",
-        "Ensuring the synchronization and performance of real-time data via Wagmi hooks (polling or WebSockets).",
-        "Integrating modern Web3 libraries (Viem) for efficient interactions with the EVM."
-    ],
-    learnings: [
-        "Advanced use of Wagmi and Viem to build a professional-grade front-end DApp.",
-        "Practical understanding of a DEX (Decentralized Exchange) architecture and on-chain data reading.",
-        "Developing a performant user interface capable of managing and displaying critical financial data."
-    ],
-  },
-  {
-      title: "X402 paywall integration Test (Coinbase)",
-      shortDescription: "A demo Next.js (DApp) implementing an on-chain Paywall mechanism based on the Coinbase X402 protocol, deployed on Base Sepolia.",
-      fullDescription: "Next.js project integrating the Coinbase X402 protocol to create an on-chain API Paywall on Base Sepolia. It leverages Thirdweb for wallet connection and transaction management, ensuring only a verified payment unlocks premium content.",
-      challenges: [
-        "Managing client-server synchronization (verify / settle).",
-        "Securing and validating on-chain payments.",
-        "Implementing the Web3 `Facilitator` for X402 settlement authorization.",
-      ],
-      learnings: [
-        "Mastering X402 architecture (Paywall initiation vs. settlement).",
-        "Advanced integration of Thirdweb tools for micro-payment interactions.",
-        "Application of Layer 2 for Web3 API monetization.",
-      ]
-  },
-  {
     title: "Blockchain architecture and contract standards",
     shortDescription: "Collection of Smart Contracts for learning, implementing ERC standards (ERC-20, NFT).",
     fullDescription: "Various architecture and development projects for the Ethereum Virtual Machine (EVM). This work focuses on the secure implementation of token standards (ERC-20, ERC-721) and mastering the contract lifecycle, including writing robust unit tests. The tools used are Solidity, Brownie (Python), and Hardhat (JavaScript) for deployment and verification.",
@@ -423,11 +458,11 @@ const projectsEN_LANG: ProjectLang[] = [
     fullDescription: "A Decentralized Application (DApp) allowing token exchange (swap) by interacting with the Uniswap smart contracts on the Ethereum network. The frontend handles Web3 wallet integration (Wagmi, RainbowKit), real-time price estimation, slippage calculation, and secure transaction submission via Ethers.js.",
     challenges: [
       "Establishing a secure and stable connection with the user's wallet (wallet connection).",
-      "Managing and displaying slippage and gas estimations in real time.",
-      "Asynchronous interaction with smart contract functions (reading and writing data)."
+      "Managing and displaying slippage and gas estimations in real-time.",
+      "Asynchronously interacting with smart contract functions (reading and writing data)."
     ],
     learnings: [
-      "Mastery of the Wagmi and Ethers.js libraries for interacting with the EVM.",
+      "Mastery of Wagmi and Ethers.js libraries for interacting with the EVM.",
       "Understanding of DEX (Decentralized Exchange) smart contracts like Uniswap.",
       "Handling complex blockchain transaction errors on the frontend."
     ]
@@ -438,6 +473,7 @@ const projectsEN_LANG: ProjectLang[] = [
 const mergeProjects = (base: ProjectBase[], langData: ProjectLang[]): Project[] => {
     if (base.length !== langData.length) {
         console.error("Erreur de données: Les tableaux de base et de langue n'ont pas la même longueur.");
+        // Retourne le tableau de base si les longueurs ne correspondent pas, pour éviter un crash
         return base as any; 
     }
 
