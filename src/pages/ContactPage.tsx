@@ -69,7 +69,7 @@ const ContactPage = ({ currentLang }: ContactPageProps) => {
           />
 
           <LinkItem 
-            href="https://www.linkedin.com/in/nathan-ruer-ab4820222/" 
+            href="https://www.linkedin.com/in/nathan-ruer/" 
             title="Nathan Ruer"
             subtitle={t.linkedinSubtitle}
             target="_blank" 
