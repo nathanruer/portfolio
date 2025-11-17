@@ -52,14 +52,17 @@ export const projectsBase: ProjectBase[] = [
     },
     {
         id: 5,
-        technologies: ["Python", "FTX API (REST & WS)", "Pandas", "NumPy", "Asyncio", "Jupyter"],
-    },
-    {
-        id: 6,
         imageUrl: "/images/crypto-prices-binance.png",
         technologies: ["React", "TypeScript", "Tailwind CSS", "Binance API"],
         demoUrl: "https://crypto-screener-application-nathanruer.vercel.app/",
         githubUrl: "https://github.com/nathanruer/crypto-prices-binance",
+    },
+    {
+        id: 6,
+        imageUrl: "/images/digital-noise.png",
+        technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "Shadcn/ui", "Framer Motion", "Recharts"],
+        demoUrl: "https://nathanruer-digital-noise.vercel.app/",
+        githubUrl: "https://github.com/nathanruer/digital-noise",
     },
     {
         id: 7,
@@ -74,16 +77,20 @@ export const projectsBase: ProjectBase[] = [
         githubUrl: "https://github.com/nathanruer/airbnb-clone",
     },
     {
-        id: 9,
+        id: 8,
         technologies: ["Next.js 13", "React", "TypeScript", "NextAuth", "MongoDB", "Tailwind CSS", "React Hook Form"],
         githubUrl: "https://github.com/nathanruer/twitter-clone",
     },
     {
-        id: 10,
+        id: 9,
         imageUrl: "/images/carhub-app.png",
         technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Headless UI", "RapidAPI"],
         demoUrl: "https://carhub-nathanruer.vercel.app/",
         githubUrl: "https://github.com/nathanruer/carhub-app",
+    },
+    {
+        id: 10,
+        technologies: ["Python", "FTX API (REST & WS)", "Pandas", "NumPy", "Asyncio", "Jupyter"],
     },
     {
         id: 11,
@@ -160,21 +167,6 @@ export const projectsFR_LANG: ProjectLang[] = [
       ]
   },
   {
-    title: "Bot de trading algorithmique",
-    shortDescription: "Bot Python pour le trading sur FTX basé sur l'analyse technique et les annonces de marché.",
-    fullDescription: "Développement d'un robot de trading haute fréquence en Python utilisant les APIs WebSocket et REST de FTX (avant sa fermeture) pour exécuter des ordres. La stratégie était basée sur l'analyse technique (indicateurs classiques) couplée à une veille d'annonces/news pour anticiper les mouvements de volatilité (stratégie dite d'arbitrage d'information). Le bot gérait les ordres, les positions, et le risque de manière autonome.",
-    challenges: [
-      "Optimisation de la latence entre la réception des données (Websocket) et l'exécution des ordres (REST).",
-      "Conception d'un système robuste pour le suivi et l'analyse des annonces macroéconomiques pertinentes.",
-      "Mise en œuvre d'une gestion des risques (stop-loss et taille des ordres) en temps réel et tolérant aux pannes."
-    ],
-    learnings: [
-      "Gestion de la concurrence et des flux de données asynchrones avec Python (Asyncio).",
-      "Maîtrise des concepts de trading algorithmique : exécution, slippage, carnet d'ordres.",
-      "Utilisation avancée des librairies de calcul scientifique Pandas et NumPy pour l'analyse des données de marché."
-    ]
-  },
-  {
     title: "Dashboard de prix crypto",
     shortDescription: "Dashboard d'affichage et de suivi des prix des cryptomonnaies en temps quasi-réel via l'API Binance.",
     fullDescription: "Application web construite avec React et TypeScript utilisant l'API WebSocket de Binance pour obtenir et afficher les prix des principales paires de trading avec une latence réduite. Ce projet d'apprentissage visait à maîtriser la gestion des flux de données externes. Le dashboard se concentre sur l'affichage dynamique des variations de prix, le tout dans une interface rapide et responsive avec Tailwind CSS.",
@@ -185,6 +177,17 @@ export const projectsFR_LANG: ProjectLang[] = [
     learnings: [
       "Gestion des appels API en temps réel et des protocoles WebSocket dans React.",
       "Optimisation de l'affichage dynamique de données financières complexes côté client."
+    ]
+  },
+  {
+    title: "Digital Noise (design néo-brutaliste)",
+    shortDescription: "Landing Page stylisée en néo-brutalisme avec des animations GSAP et un curseur personnalisé pour une expérience ultra-fluide.",
+    fullDescription: "Projet expérimental axé sur le design web moderne et créatif. Il explore l'esthétique du néo-brutalisme via Tailwind CSS (couleurs vives, contrastes forts) et intègre des animations complexes. L'accent est mis sur l'amélioration de l'expérience utilisateur grâce à des interactions fluides comme le défilement Lenis et un curseur personnalisé réactif géré par GSAP.",
+    challenges: [
+      "Garantir la stabilité et la performance du curseur personnalisé et des animations complexes (GSAP) sans affecter le défilement ou le rendu du layout."
+    ],
+    learnings: [
+      "Maîtrise des bibliothèques d'animation (GSAP) et de défilement (Lenis) pour créer des expériences utilisateur de niveau production et explorer les techniques de design web créatif."
     ]
   },
   {
@@ -250,6 +253,22 @@ export const projectsFR_LANG: ProjectLang[] = [
       "Utilisation des librairies Headless UI pour construire des composants accessibles."
     ],
     disclaimer: PROJECT_DISCLAIMERS.NOT_UPDATED.fr,
+  },
+  // TODO
+  {
+    title: "Bot de trading algorithmique",
+    shortDescription: "Bot Python pour le trading sur FTX basé sur l'analyse technique et les annonces de marché.",
+    fullDescription: "Développement d'un robot de trading haute fréquence en Python utilisant les APIs WebSocket et REST de FTX (avant sa fermeture) pour exécuter des ordres. La stratégie était basée sur l'analyse technique (indicateurs classiques) couplée à une veille d'annonces/news pour anticiper les mouvements de volatilité (stratégie dite d'arbitrage d'information). Le bot gérait les ordres, les positions, et le risque de manière autonome.",
+    challenges: [
+      "Optimisation de la latence entre la réception des données (Websocket) et l'exécution des ordres (REST).",
+      "Conception d'un système robuste pour le suivi et l'analyse des annonces macroéconomiques pertinentes.",
+      "Mise en œuvre d'une gestion des risques (stop-loss et taille des ordres) en temps réel et tolérant aux pannes."
+    ],
+    learnings: [
+      "Gestion de la concurrence et des flux de données asynchrones avec Python (Asyncio).",
+      "Maîtrise des concepts de trading algorithmique : exécution, slippage, carnet d'ordres.",
+      "Utilisation avancée des librairies de calcul scientifique Pandas et NumPy pour l'analyse des données de marché."
+    ]
   },
   {
     title: "Architecture blockchain et standards de contrat",
@@ -346,21 +365,6 @@ export const projectsEN_LANG: ProjectLang[] = [
       ]
   },
   {
-    title: "Algorithmic trading bot",
-    shortDescription: "Python bot for high-frequency trading on FTX based on technical analysis and market news.",
-    fullDescription: "Development of a high-frequency trading robot in Python using the FTX WebSocket and REST APIs (prior to its closure) to execute orders. The strategy was based on technical analysis (classic indicators) coupled with monitoring news/announcements to anticipate volatility movements (information arbitrage strategy). The bot autonomously managed orders, positions, and risk.",
-    challenges: [
-      "Optimizing latency between data reception (WebSocket) and order execution (REST).",
-      "Designing a robust system for tracking and analyzing relevant macroeconomic announcements.",
-      "Implementing real-time and fault-tolerant risk management (stop-loss and order sizing)."
-    ],
-    learnings: [
-      "Managing concurrency and asynchronous data streams with Python (Asyncio).",
-      "Mastery of algorithmic trading concepts: execution, slippage, order book dynamics.",
-      "Advanced use of scientific computing libraries Pandas and NumPy for market data analysis."
-    ]
-  },
-  {
     title: "Crypto prices dashboard",
     shortDescription: "Near real-time dashboard for tracking and displaying cryptocurrency prices via the Binance API.",
     fullDescription: "Web app built with React and TypeScript utilizing the Binance API to fetch and display the prices of major trading pairs with low latency. This learning project focused on mastering external data stream management. The dashboard focuses on the dynamic display of price variations, all within a fast and responsive Tailwind CSS interface.",
@@ -371,6 +375,17 @@ export const projectsEN_LANG: ProjectLang[] = [
     learnings: [
       "Handling real-time API calls and WebSocket protocols in React.",
       "Optimizing the dynamic display of complex financial data on the client-side."
+    ]
+  },
+  {
+    title: "Digital Noise (neo-brutalist design)",
+    shortDescription: "A Neo-Brutalist styled landing page with GSAP animations and a custom cursor for an ultra-smooth user experience.",
+    fullDescription: "An experimental project focused on modern and creative web design. It explores the aesthetics of Neo-Brutalism using Tailwind CSS (bright colors, strong contrasts) and integrates complex animations. The focus is on enhancing the user experience through fluid interactions like Lenis scrolling and a reactive custom cursor managed by GSAP.",
+    challenges: [
+      "Ensuring the stability and performance of the custom cursor and complex animations (GSAP) without affecting scrolling or layout rendering."
+    ],
+    learnings: [
+      "Mastery of animation (GSAP) and scrolling (Lenis) libraries to create production-grade user experiences and explore creative web design techniques."
     ]
   },
   {
@@ -436,6 +451,21 @@ export const projectsEN_LANG: ProjectLang[] = [
       "Using Headless UI libraries to build accessible components."
     ],
     disclaimer: PROJECT_DISCLAIMERS.NOT_UPDATED.en,
+  },
+  {
+    title: "Algorithmic trading bot",
+    shortDescription: "Python bot for high-frequency trading on FTX based on technical analysis and market news.",
+    fullDescription: "Development of a high-frequency trading robot in Python using the FTX WebSocket and REST APIs (prior to its closure) to execute orders. The strategy was based on technical analysis (classic indicators) coupled with monitoring news/announcements to anticipate volatility movements (information arbitrage strategy). The bot autonomously managed orders, positions, and risk.",
+    challenges: [
+      "Optimizing latency between data reception (WebSocket) and order execution (REST).",
+      "Designing a robust system for tracking and analyzing relevant macroeconomic announcements.",
+      "Implementing real-time and fault-tolerant risk management (stop-loss and order sizing)."
+    ],
+    learnings: [
+      "Managing concurrency and asynchronous data streams with Python (Asyncio).",
+      "Mastery of algorithmic trading concepts: execution, slippage, order book dynamics.",
+      "Advanced use of scientific computing libraries Pandas and NumPy for market data analysis."
+    ]
   },
   {
     title: "Blockchain architecture and contract standards",
