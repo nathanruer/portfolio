@@ -1,13 +1,13 @@
 import { Badge } from "@/components/ui/badge";
-import { Project } from "@/data/projects";
+import { LocalizedProject } from "@/data/projects";
 import CardSpotlight from "../ui/card-spotlight";
 import { 
   DialogTrigger, 
 } from "@/components/ui/dialog"; 
 
 interface ProjectCardProps {
-    project: Project;
-    onClick: (p: Project) => void;
+    project: LocalizedProject;
+    onClick: (p: LocalizedProject) => void;
     index: number;
 }
 

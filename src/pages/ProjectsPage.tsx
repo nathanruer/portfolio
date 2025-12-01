@@ -1,4 +1,4 @@
-import { projectsFR, projectsEN, Project } from "@/data/projects";
+import { projectsFR, projectsEN, LocalizedProject } from "@/data/projects";
 import { 
   Dialog, 
   DialogContent, 
@@ -15,8 +15,8 @@ interface ProjectsPageProps {
 }
 
 const ProjectsPage = ({ currentLang, setIsDialogOpen }: ProjectsPageProps) => {
-  const projects = currentLang === 'fr' ? projectsFR : projectsEN; 
-  const [selectedProject, setSelectedProject] = React.useState<Project | null>(null);
+  const projects = currentLang === 'fr' ? projectsFR : projectsEN;
+  const [selectedProject, setSelectedProject] = React.useState<LocalizedProject | null>(null);
   
   const isDialogOpen = selectedProject !== null; 
 

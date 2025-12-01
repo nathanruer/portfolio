@@ -1,17 +1,17 @@
 import { Badge } from "@/components/ui/badge";
-import { Project } from "@/data/projects"; 
-import { 
-  DialogHeader, 
-  DialogTitle, 
+import { LocalizedProject } from "@/data/projects";
+import {
+  DialogHeader,
+  DialogTitle,
   DialogDescription,
   DialogFooter
-} from "@/components/ui/dialog"; 
+} from "@/components/ui/dialog";
 import * as React from "react";
 import { useState } from "react";
 import { Loader } from "../Loader";
 
 interface ProjectDetailsContentProps {
-    project: Project;
+    project: LocalizedProject;
     locale: 'fr' | 'en';
 }
 
@@ -24,13 +24,34 @@ const getLabels = (isFrench: boolean) => ({
 });
 
 const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, locale }) => {
-    
-    const isFrench = locale === 'fr'; 
+
+    const isFrench = locale === 'fr';
     const labels = getLabels(isFrench);
-    
+
     const hasLinks = project.demoUrl || project.githubUrl;
-    
-    const [imageLoaded, setImageLoaded] = useState(false); 
+
+    const [imageLoaded, setImageLoaded] = useState(false);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    const images = project.imageUrl
+        ? Array.isArray(project.imageUrl)
+            ? project.imageUrl
+            : [project.imageUrl]
+        : [];
+
+    const hasMultipleImages = images.length > 1;
+
+    const goToNextImage = (e?: React.MouseEvent) => {
+        e?.stopPropagation();
+        setImageLoaded(false);
+        setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    };
+
+    const goToPreviousImage = (e?: React.MouseEvent) => {
+        e?.stopPropagation();
+        setImageLoaded(false);
+        setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+    }; 
 
     const LinkButton: React.FC<{ url: string; label: string; icon: string; style: string }> = ({ url, label, icon, style }) => (
         <a 
@@ -64,10 +85,10 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, 
                 </DialogDescription>
             </DialogHeader>
             
-            {project.imageUrl && (
-                <div 
-                    className="relative w-full mt-6 mb-8 rounded-xl overflow-hidden shadow-xl bg-background-tertiary 
-                    h-64 sm:h-80 flex items-center justify-center" 
+            {images.length > 0 && (
+                <div
+                    className="relative w-full mt-6 mb-8 rounded-xl overflow-hidden shadow-xl bg-background-tertiary
+                    h-64 sm:h-80 flex items-center justify-center group"
                 >
                     {!imageLoaded && (
                         <div className="absolute inset-0 flex items-center justify-center bg-background-tertiary z-10">
@@ -75,13 +96,66 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, 
                         </div>
                     )}
 
-                    <img 
-                        src={project.imageUrl} 
-                        alt={`Aperçu du projet ${project.title}`}
-                        onLoad={() => setImageLoaded(true)} 
-                        onError={() => setImageLoaded(true)} 
-                        className={`w-full h-full object-cover transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`} 
+                    <img
+                        src={images[currentImageIndex]}
+                        alt={`Aperçu du projet ${project.title} - Image ${currentImageIndex + 1}`}
+                        onLoad={() => setImageLoaded(true)}
+                        onError={() => setImageLoaded(true)}
+                        className={`w-full h-full object-cover transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
                     />
+
+                    {hasMultipleImages && (
+                        <>
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    goToPreviousImage(e);
+                                }}
+                                className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-200 opacity-0 group-hover:opacity-100 z-20"
+                                aria-label="Image précédente"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </button>
+
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    goToNextImage(e);
+                                }}
+                                className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-200 opacity-0 group-hover:opacity-100 z-20"
+                                aria-label="Image suivante"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+
+                            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 text-white px-3 py-1 rounded-full text-sm z-20">
+                                {currentImageIndex + 1} / {images.length}
+                            </div>
+
+                            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                                {images.map((_, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={(e) => {
+                                            e.stopPropagation(); // Ajout ici pour être sûr dans la modale normale
+                                            setImageLoaded(false);
+                                            setCurrentImageIndex(index);
+                                        }}
+                                        className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                                            index === currentImageIndex
+                                                ? 'bg-white w-6'
+                                                : 'bg-white/50 hover:bg-white/75'
+                                        }`}
+                                        aria-label={`Aller à l'image ${index + 1}`}
+                                    />
+                                ))}
+                            </div>
+                        </>
+                    )}
                 </div>
             )}
             
@@ -124,7 +198,6 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, 
 
                 <SectionSeparator />
 
-                {/* Apprentissages */}
                 <div>
                     <SectionTitle>{labels.learnings}</SectionTitle>
                     <ul className="list-disc list-inside text-foreground-muted space-y-2 ml-4">
@@ -136,18 +209,18 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, 
             {hasLinks && (
                 <DialogFooter className="flex flex-col sm:flex-row sm:justify-end sm:space-x-4 pt-8 mt-8 border-t border-primary-dark">
                     {project.demoUrl && (
-                        <LinkButton 
-                            url={project.demoUrl} 
-                            label={labels.demo} 
-                            icon="↗" 
+                        <LinkButton
+                            url={project.demoUrl}
+                            label={labels.demo}
+                            icon="↗"
                             style="text-primary-foreground transform transition-all duration-300 hover:scale-[1.03]"
                         />
                     )}
                     {project.githubUrl && (
-                        <LinkButton 
-                            url={project.githubUrl} 
-                            label={labels.github} 
-                            icon="↗" 
+                        <LinkButton
+                            url={project.githubUrl}
+                            label={labels.github}
+                            icon="↗"
                             style="bg-background-secondary rounded-xl border border-gray-600/50 text-foreground-muted transform transition-all duration-300 hover:scale-[1.03]"
                         />
                     )}
