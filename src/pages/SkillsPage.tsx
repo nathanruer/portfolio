@@ -1,32 +1,31 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
-import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from '@/components/ui/tooltip';
-
-import { skills } from '@/data/skills'; 
-import { getContrastColor } from '@/lib/utils'; 
+import { skills, skillCategories, groupSkillsByCategory } from '@/data/skills';
+import { ModernSkillCard } from '@/components/skills/ModernSkillCard'; 
 
 interface SkillsPageProps {
     currentLang: 'fr' | 'en';
 }
 
-// Fonction utilitaire pour déterminer la couleur d'ombre
-const getShadowColor = (color: string) => {
-    const darkColors = ["#000000", "#363636", "#303030", "#3776AB"]; 
-    
-    if (darkColors.includes(color.toUpperCase())) { 
-        return "#AAAAAA";   
-    }
-    return color;
-};
-
 const SkillsPage = ({ currentLang }: SkillsPageProps) => {
-    const [anim, setanim] = useState(false);
+    const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+    const groupedSkills = groupSkillsByCategory();
 
     const text = {
-        fr: { title: "Mes compétences" },
-        en: { title: "My skills" },
+        fr: { 
+            title: "Mes compétences",
+            all: "Tout voir"
+        },
+        en: { 
+            title: "My skills",
+            all: "View all"
+        },
     }[currentLang];
+
+    const filteredSkills = selectedCategory
+        ? groupedSkills[selectedCategory as keyof typeof skillCategories]
+        : skills;
 
     return (
         <section 
@@ -38,85 +37,69 @@ const SkillsPage = ({ currentLang }: SkillsPageProps) => {
                     <h1 className="text-4xl font-bold text-primary uppercase tracking-wide">{text.title}</h1>
                 </div>
             </div>
-            
-            <div className="w-full"> 
+
+            <div className="container mx-auto px-6 relative z-10 mt-12">
                 <motion.div
-                    initial={{}}
-                    whileInView={{}} 
-                    transition={{
-                        delay: 0,
-                        duration: 0,
-                    }}
-                    onViewportEnter={() => setanim(true)}
-                    viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-                    className="w-full max-h-80d relative z-50 pt-5 pb-5" 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    className="flex flex-wrap gap-3 mb-12 justify-center"
                 >
-                    <div className="flex justify-center w-full mt-0 px-4 md:px-0"> 
-                        <div className="flex justify-center items-center gap-10 md:gap-14 flex-wrap max-w-5xl my-20">
-                            {skills.map(({ Icon, name, color }, index) => {
-                                const contrastColor = getContrastColor(color);
-                                const shadowColor = getShadowColor(color);
-
-                                return (
-                                    <div key={name} className="flex flex-col items-center">
-                                        <TooltipProvider delayDuration={300}>
-                                            <Tooltip>
-                                                <TooltipTrigger asChild>
-                                                    <motion.span
-                                                        animate={anim ? {
-                                                            boxShadow: [
-                                                                `0 0 0px ${shadowColor}00`,
-                                                                `0 0 25px ${shadowColor}30`, 
-                                                                `0 0 0px ${shadowColor}00`,
-                                                                `0 0 40px ${shadowColor}60`,
-                                                                `0 0 15px ${shadowColor}30`,
-                                                                `0 0 30px ${shadowColor}9a`,
-                                                            ],
-                                                        } : undefined}
-                                                        transition={anim ? {
-                                                            duration: 0.5,
-                                                            times: [0, 0.1, 0.3, 0.5, 0.7, 1],
-                                                            ease: "easeInOut",
-                                                            delay: 0.3 + index * 0.1, 
-                                                        } : undefined}
-
-                                                        viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-                                                        className="text-3xl md:text-5xl rounded-full p-4 md:p-5 backdrop-blur-md hover:scale-105 transition duration-500 cursor-pointer"
-                                                        style={{
-                                                            background: color,
-                                                            boxShadow: `0 0 8px ${shadowColor}60`,
-                                                            color: contrastColor,
-                                                        }}
-                                                    >
-                                                        <Icon />
-                                                    </motion.span>
-                                                </TooltipTrigger>
-                                                
-                                                <TooltipContent 
-                                                    sideOffset={8}
-                                                    className="px-3 py-2 rounded-md text-sm font-medium hidden lg:block max-w-xs"
-                                                    style={{
-                                                        background: color,
-                                                        color: contrastColor,
-                                                    }}
-                                                >
-                                                    {name}
-                                                </TooltipContent>
-                                            </Tooltip>
-                                        </TooltipProvider>
-
-                                        <p 
-                                            className="mt-1 font-medium text-center lg:hidden max-w-[80px] break-words leading-none text-[10px]"
-                                            style={{ color: shadowColor }}
-                                        >
-                                            {name}
-                                        </p>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    </div>
+                    <motion.button
+                        onClick={() => setSelectedCategory(null)}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className={`
+                            px-6 py-2.5 rounded-full text-sm font-medium
+                            transition-all duration-300 border
+                            ${selectedCategory === null 
+                                ? 'bg-white/20 border-white/40 text-white shadow-lg' 
+                                : 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10'
+                            }
+                        `}
+                    >
+                        {text.all}
+                    </motion.button>
+                    
+                    {Object.entries(skillCategories).map(([key, { label, color }]) => (
+                        <motion.button
+                            key={key}
+                            onClick={() => setSelectedCategory(key)}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className={`
+                                px-6 py-2.5 rounded-full text-sm font-medium
+                                transition-all duration-300 border
+                                ${selectedCategory === key
+                                    ? 'shadow-lg text-white'
+                                    : 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10'
+                                }
+                            `}
+                            style={{
+                                background: selectedCategory === key ? `${color}30` : undefined,
+                                borderColor: selectedCategory === key ? `${color}60` : undefined,
+                            }}
+                        >
+                            {label[currentLang]}
+                        </motion.button>
+                    ))}
                 </motion.div>
+
+                <div
+                    key={selectedCategory || 'all'}
+                    className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 pb-20"
+                >
+                    {filteredSkills.map((skill, index) => (
+                        <ModernSkillCard
+                            key={skill.name}
+                            {...skill}
+                            index={index}
+                            category={skillCategories[skill.category].label[currentLang]}
+                            categoryColor={skillCategories[skill.category].color}
+                        />
+                    ))}
+                </div>
             </div>
         </section>
     );
