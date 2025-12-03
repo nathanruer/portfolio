@@ -199,7 +199,7 @@ const projects: FullProject[] = [
       shortDescription:
         "DApp Next.js 16 avec optimisation multi-path pour quotes Uniswap V3, recherche ERC20 dynamique et support multi-chaînes (Ethereum/Base).",
       fullDescription:
-        "Application DeFi construite avec Next.js 16 et React 19, spécialisée dans le calcul optimisé de cotations Uniswap V3. Implémente un système de routing multi-path intelligent qui teste automatiquement 68 routes possibles (paths directs + multi-hop via USDC/WETH/WBTC) pour identifier le meilleur prix. Utilise Multicall3 pour batching RPC : agrège toutes les requêtes en un seul appel (temps réduit de 98%, ~13s → ~200ms). L'encodage des paths suit le format packed bytes d'Uniswap V3 via Viem. Gère nativement ETH avec conversion automatique vers WETH pour compatibilité pools. Support multi-chaînes (Ethereum, Base, Sepolia) avec configs RPC Infura et token lists filtrées par chainId. L'interface permet la recherche dynamique d'ERC20 (lecture on-chain de symbol/decimals), affiche les prix USD via CoinGecko, et intègre RainbowKit pour la connexion wallet. Stack Web3 type-safe avec Wagmi 2.x, Viem et TanStack Query.",
+        "Application DeFi construite avec Next.js 16 et React 19, spécialisée dans le calcul optimisé de cotations Uniswap V3. Implémente un système de routing multi-path intelligent qui teste automatiquement 68 routes possibles (paths directs + multi-hop via USDC/WETH/WBTC) pour identifier le meilleur prix. Utilise Multicall3 pour batching RPC : agrège toutes les requêtes en un seul appel (temps réduit de 98%). L'encodage des paths suit le format packed bytes d'Uniswap V3 via Viem. Gère nativement ETH avec conversion automatique vers WETH pour compatibilité pools. Support multi-chaînes (Ethereum, Base, Sepolia) avec configs RPC Infura et token lists filtrées par chainId. L'interface permet la recherche dynamique d'ERC20 (lecture on-chain de symbol/decimals), affiche les prix USD via CoinGecko, et intègre RainbowKit pour la connexion wallet. Stack Web3 type-safe avec Wagmi, Viem et TanStack Query.",
       challenges: [
         "Implémentation du système d'encodage de paths Uniswap V3 au format packed bytes : token (20 bytes) + fee (3 bytes) + token, avec gestion multi-hop récursive et conversion des fee tiers en hex 3-bytes (3000 → 0x000bb8).",
         "Optimisation RPC critique via Multicall3 : agrégation de 68 calls (4 direct paths × 4 fee tiers + 64 multi-hop routes) en 1 seul appel batch avec allowFailure: true pour gérer les pools inexistants (temps réduit de ~13s à ~200ms).",
@@ -211,7 +211,7 @@ const projects: FullProject[] = [
       learnings: [
         "Maîtrise avancée d'Uniswap V3 : architecture QuoterV2 pour quotes read-only, fonctionnement des concentrated liquidity pools, stratégie de routing multi-hop, et understanding des fee tiers (100/500/3000/10000 bps).",
         "Patterns d'optimisation DeFi production-grade : batch RPC avec Multicall3 (utilisé par 1inch/Matcha), allowFailure pour tolérance aux erreurs, et encodage ABI manuel avec Viem (encodeFunctionData/decodeFunctionResult).",
-        "Stack Web3 moderne type-safe : Wagmi 2.x pour hooks React (useReadContract, useBalance, useAccount), Viem pour interactions EVM avec types Hex/Address stricts, et TanStack Query pour cache/invalidation des données blockchain.",
+        "Stack Web3 moderne type-safe : Wagmi pour hooks React (useReadContract, useBalance, useAccount), Viem pour interactions EVM avec types Hex/Address stricts, et TanStack Query pour cache/invalidation des données blockchain.",
         "Architecture multi-chaînes robuste : configuration par chainId (RPC, addresses, tokens), détection automatique de network switch (useChainId), et gestion des inconsistances cross-chain (token addresses différentes).",
         "Développement DApp front-end complet : RainbowKit pour wallet connection (MetaMask, Coinbase, WalletConnect), gestion states asynchrones (loading, error, success), et debouncing (300ms) pour prévenir quote spam.",
         "Compréhension approfondie des protocoles DeFi : différence entre read operations (staticcall) et write (transactions), rôle des Quoter contracts (off-chain simulations), et nécessité du WETH wrapping pour native ETH.",
@@ -224,7 +224,7 @@ const projects: FullProject[] = [
       shortDescription:
         "Next.js 16 DApp with multi-path optimization for Uniswap V3 quotes, dynamic ERC20 lookup, and multi-chain support (Ethereum/Base).",
       fullDescription:
-        "DeFi application built with Next.js 16 and React 19, specialized in optimized Uniswap V3 quote calculations. Implements an intelligent multi-path routing system that automatically tests 68 possible routes (direct paths + multi-hop via USDC/WETH/WBTC) to identify the best price. Uses Multicall3 for RPC batching: aggregates all requests into a single call (98% time reduction, ~13s → ~200ms). Path encoding follows Uniswap V3's packed bytes format via Viem. Natively handles ETH with automatic WETH conversion for pool compatibility. Multi-chain support (Ethereum, Base, Sepolia) with Infura RPC configs and chainId-filtered token lists. The interface enables dynamic ERC20 lookup (on-chain symbol/decimals reads), displays USD prices via CoinGecko, and integrates RainbowKit for wallet connection. Type-safe Web3 stack with Wagmi 2.x, Viem, and TanStack Query.",
+        "DeFi application built with Next.js 16 and React 19, specialized in optimized Uniswap V3 quote calculations. Implements an intelligent multi-path routing system that automatically tests 68 possible routes (direct paths + multi-hop via USDC/WETH/WBTC) to identify the best price. Uses Multicall3 for RPC batching: aggregates all requests into a single call (98% time reduction). Path encoding follows Uniswap V3's packed bytes format via Viem. Natively handles ETH with automatic WETH conversion for pool compatibility. Multi-chain support (Ethereum, Base, Sepolia) with Infura RPC configs and chainId-filtered token lists. The interface enables dynamic ERC20 lookup (on-chain symbol/decimals reads), displays USD prices via CoinGecko, and integrates RainbowKit for wallet connection. Type-safe Web3 stack with Wagmi, Viem, and TanStack Query.",
       challenges: [
         "Implementing Uniswap V3 packed bytes path encoding: token (20 bytes) + fee (3 bytes) + token, with recursive multi-hop handling and fee tier conversion to 3-byte hex (3000 → 0x000bb8).",
         "Critical RPC optimization via Multicall3: aggregating 68 calls (4 direct paths × 4 fee tiers + 64 multi-hop routes) into 1 batch call with allowFailure: true to handle non-existent pools (time reduced from ~13s to ~200ms).",
@@ -236,7 +236,7 @@ const projects: FullProject[] = [
       learnings: [
         "Advanced Uniswap V3 mastery: QuoterV2 architecture for read-only quotes, concentrated liquidity pool mechanics, multi-hop routing strategy, and understanding of fee tiers (100/500/3000/10000 bps).",
         "Production-grade DeFi optimization patterns: batch RPC with Multicall3 (used by 1inch/Matcha), allowFailure for error tolerance, and manual ABI encoding with Viem (encodeFunctionData/decodeFunctionResult).",
-        "Modern type-safe Web3 stack: Wagmi 2.x for React hooks (useReadContract, useBalance, useAccount), Viem for EVM interactions with strict Hex/Address types, and TanStack Query for blockchain data cache/invalidation.",
+        "Modern type-safe Web3 stack: Wagmi for React hooks (useReadContract, useBalance, useAccount), Viem for EVM interactions with strict Hex/Address types, and TanStack Query for blockchain data cache/invalidation.",
         "Robust multi-chain architecture: chainId-based configuration (RPC, addresses, tokens), automatic network switch detection (useChainId), and handling of cross-chain inconsistencies (different token addresses).",
         "Complete DApp frontend development: RainbowKit for wallet connection (MetaMask, Coinbase, WalletConnect), async state management (loading, error, success), and debouncing (300ms) to prevent quote spam.",
         "Deep understanding of DeFi protocols: difference between read operations (staticcall) and writes (transactions), role of Quoter contracts (off-chain simulations), and necessity of WETH wrapping for native ETH.",
@@ -269,10 +269,10 @@ const projects: FullProject[] = [
       shortDescription:
         "Agrégateur temps réel de news crypto avec WebSocket résilient, recherche avancée et système de filtrage à double colonne (Articles/Tweets).",
       fullDescription:
-        "Application web moderne construite avec React 18 et Vite, offrant un flux temps réel de news sur les cryptomonnaies via WebSocket (wss://news.treeofalpha.com). L'architecture repose sur un custom hook WebSocket avancé avec reconnexion automatique (5 tentatives, intervalle 3s), gestion de la mémoire par sliding window (limite 50 items visibles), et détection de doublons par ID. L'interface propose une disposition responsive à deux colonnes (Articles | Tweets) avec recherche indépendante multi-champs (titre, contenu, symboles), modes d'affichage (50 récents vs historique complet), et animations smooth pour les nouveaux éléments (slide-in 500ms). Les NewsCard incluent des boutons d'action pour accéder directement aux paires de trading sur les exchanges (décodage BINFUT, BIN, BYBIT). Le système de design utilise shadcn/ui et des tokens HSL personnalisés avec support dark mode. Performance optimisée via useMemo/useCallback, debouncing des erreurs, et cleanup automatique des ressources.",
+        "Application web moderne construite avec React 18 et Vite, offrant un flux temps réel de news sur les cryptomonnaies via WebSocket (wss://news.treeofalpha.com). L'architecture repose sur un custom hook WebSocket avancé avec reconnexion automatique, gestion de la mémoire par sliding window, et détection de doublons par ID. L'interface propose une disposition responsive à deux colonnes (Articles | Tweets) avec recherche indépendante multi-champs (titre, contenu, symboles), modes d'affichage (50 récents vs historique complet), et animations smooth pour les nouveaux éléments. Les NewsCard incluent des boutons d'action pour accéder directement aux paires de trading sur les exchanges (Binance et Bybit, Spot et Futures). Le système de design utilise shadcn/ui et des tokens HSL personnalisés avec support dark mode. Performance optimisée via useMemo/useCallback, debouncing des erreurs, et cleanup automatique des ressources.",
       challenges: [
-        "Conception d'un custom hook WebSocket robuste avec reconnexion automatique (max 5 tentatives, 3s interval), gestion des erreurs avec debouncing (1s), et cleanup pour prévenir les memory leaks (isMountedRef, refs WebSocket).",
-        "Architecture de state management à trois niveaux : dual-buffer (50 visibles + historique complet), détection de doublons par _id, et séparation articles/tweets avec type discrimination automatique.",
+        "Conception d'un custom hook WebSocket robuste avec reconnexion automatique, gestion des erreurs avec debouncing, et cleanup pour prévenir les memory leaks (isMountedRef, refs WebSocket).",
+        "Architecture de state management à trois niveaux : dual-buffer (50 visibles + historique complet) et séparation articles/tweets avec type discrimination automatique.",
         "Optimisation des performances pour le rendu de listes dynamiques : useMemo pour filtrage multi-champs, useCallback pour callbacks, sliding window pour limiter les items DOM, et animations CSS GPU-accelerated.",
         "Gestion de la complexité UI : deux colonnes avec états indépendants (search, view mode), click propagation pour actions imbriquées (cards + boutons), et dropdown auto-close avec click outside detection.",
         "Décodage et parsing des actions d'échange : logique de mapping exchange codes → URLs (BINFUT, BIN, BYBIT, etc.) avec gestion des edge cases et intégration seamless dans les NewsCards.",
@@ -292,10 +292,10 @@ const projects: FullProject[] = [
       shortDescription:
         "Real-time crypto news aggregator with resilient WebSocket, advanced search, and dual-column filtering system (Articles/Tweets).",
       fullDescription:
-        "Modern web application built with React 18 and Vite, providing a real-time cryptocurrency news stream via WebSocket (wss://news.treeofalpha.com). The architecture relies on an advanced custom WebSocket hook with automatic reconnection (5 attempts, 3s interval), sliding window memory management (50 visible items limit), and duplicate detection by ID. The interface features a responsive two-column layout (Articles | Tweets) with independent multi-field search (title, content, symbols), display modes (50 recent vs complete history), and smooth animations for new items (slide-in 500ms). NewsCards include action buttons for direct access to trading pairs on exchanges (BINFUT, BIN, BYBIT decoding). The design system uses shadcn/ui and custom HSL tokens with dark mode support. Performance optimized via useMemo/useCallback, error debouncing, and automatic resource cleanup.",
+        "Modern web application built with React 18 and Vite, providing a real-time cryptocurrency news stream via WebSocket (wss://news.treeofalpha.com). The architecture relies on an advanced custom WebSocket hook with automatic reconnection, sliding window memory management, and duplicate detection by ID. The interface features a responsive two-column layout (Articles | Tweets) with independent multi-field search (title, content, symbols), display modes (50 recent vs complete history), and smooth animations for new items. NewsCards include action buttons for direct access to trading pairs on exchanges (Binance and Bybit, Spot and Futures). The design system uses shadcn/ui and custom HSL tokens with dark mode support. Performance optimized via useMemo/useCallback, error debouncing, and automatic resource cleanup.",
       challenges: [
-        "Designing a robust custom WebSocket hook with automatic reconnection (max 5 attempts, 3s interval), debounced error handling (1s), and cleanup to prevent memory leaks (isMountedRef, WebSocket refs).",
-        "Three-level state management architecture: dual-buffer (50 visible + complete history), duplicate detection by _id, and articles/tweets separation with automatic type discrimination.",
+        "Designing a robust custom WebSocket hook with automatic reconnection, debounced error handling, and cleanup to prevent memory leaks (isMountedRef, WebSocket refs).",
+        "Three-level state management architecture: dual-buffer (50 visible + complete history) and articles/tweets separation with automatic type discrimination.",
         "Performance optimization for dynamic list rendering: useMemo for multi-field filtering, useCallback for callbacks, sliding window to limit DOM items, and GPU-accelerated CSS animations.",
         "Managing UI complexity: two columns with independent state (search, view mode), click propagation for nested actions (cards + buttons), and auto-close dropdown with click outside detection.",
         "Exchange action decoding and parsing: mapping logic for exchange codes → URLs (BINFUT, BIN, BYBIT, etc.) with edge case handling and seamless NewsCard integration.",
@@ -317,44 +317,53 @@ const projects: FullProject[] = [
     order: 5,
     githubUrl: "https://github.com/nathanruer/test-lucid-agent",
     technologies: [
-      "Daydreams/Lucid Agents",
-      "Ekubo API",
       "TypeScript",
-      "Node.js",
+      "Bun",
+      "Lucid Agents",
+      "Starknet.js",
       "Coinbase X402",
+      "Ekubo API",
+      "Playwright",
+      "Zod",
     ],
     fr: {
-      title: "Agent IA monétisé (x402) - Daydreams/Lucid",
+      title: "Agent IA monétisé Starknet (x402)",
       shortDescription:
-        "Agent d'IA (Daydreams/Lucid) intégrant le protocole x402 (Coinbase) pour monétiser les appels d'API à la requête, sur Starknet.",
+        "Agent autonome monétisé (Lucid/x402) exposant des endpoints Starknet : portfolio holdings, prix tokens Ekubo, et top tokens par métriques.",
       fullDescription:
-        "Développement d'un agent d'IA modulaire (Daydreams/Lucid Agents) exposant des points d'entrée d'API pour la lecture des données Starknet (solde de portefeuilles, prix Ekubo, etc...). Ce projet met en œuvre l'intégration native du protocole x402 de Coinbase pour sécuriser et monétiser chaque appel d'API. L'agent est configuré pour renvoyer le statut HTTP 402 Payment Required, obligeant le client (un autre agent ou une application) à effectuer un micropaiement on-chain pour débloquer l'accès à la donnée. Il sert de preuve de concept pour une économie d'API/services inter-agents basée sur l'usage réel.",
+        "Agent d'IA autonome construit avec Lucid Agent Kit, exposant 4 endpoints API monétisés pour les données Starknet. L'agent combine scraping Playwright de Starkscan pour la découverte de portfolio et intégration API Ekubo pour le pricing DeFi (VWAP). Implémente le protocole x402 de Coinbase pour la monétisation native : chaque appel retourne HTTP 402 Payment Required, obligeant un micropaiement on-chain (Base/Starknet) avant l'accès aux données. Architecture hybride on-chain/off-chain avec fallback automatique : lecture RPC Starknet.js pour balances, scraper Starkscan en cas d'échec, et cache in-memory pour les prix. Les endpoints incluent get_portfolio (holdings + USD value), get_token_price (VWAP Ekubo), list_priceable_tokens (directory), et get_top_tokens (classement par volume/TVL). Configuration flexible via variables d'env (facilitator URL, payment network, default price). Mode développement sans paiement pour debugging local.",
       challenges: [
-        "Intégration de la logique de Paywall x402 dans un agent IA (Lucid/Daydreams).",
-        "Assurer la synchronisation entre la logique de l'agent et le règlement du micropaiement on-chain.",
-        "Gérer l'intégration de sources de données disparates (on-chain, API Ekubo, scraping).",
+        "Intégration complète du protocole x402 dans le cycle de vie de l'agent : configuration du facilitator Coinbase, gestion du payment network (Base/Starknet), et validation des micropaiements avant retour des données.",
+        "Architecture hybride de récupération de données avec stratégie de fallback : tentative RPC on-chain via Starknet.js, fallback automatique vers scraping Playwright en cas d'échec, et normalisation des formats de données hétérogènes.",
+        "Système d'enrichissement de prix multi-sources : résolution des tokens via directory Ekubo (adresse/symbole), fetching parallèle des prix VWAP par paire, calcul des valeurs USD, et cache avec TTL pour optimiser les appels API.",
+        "Web scraping robuste de Starkscan avec Playwright : gestion des timeouts, parsing HTML dynamique, extraction des balances/symboles, et détection des erreurs de chargement.",
       ],
       learnings: [
-        "Maîtrise du développement d'agents autonomes et de leur monétisation via x402.",
-        "Application des Layer 2 (Starknet) pour des transactions financières rapides et à faible coût.",
-        "Techniques pour le développement d'APIs payantes natives au Web3.",
+        "Développement d'agents autonomes avec Lucid Agent Kit : création d'entrypoints typés (input/output schemas Zod), configuration des payments x402, et déploiement sur Bun runtime.",
+        "Monétisation d'APIs Web3 natives via x402 : intégration du facilitator Coinbase, gestion des réseaux L2 (Base/Starknet), et implémentation de paywalls on-chain pour économie inter-agents.",
+        "Intégration Starknet complète : interaction avec l'API Ekubo pour pricing DeFi, lecture de balances on-chain, et understanding de l'écosystème Starknet (explorers, DEXs, tokens).",
+        "Patterns d'architecture résilient : stratégies de fallback multi-niveaux, gestion d'erreurs avec retry, caching avec expiration, et orchestration de sources de données hétérogènes (on-chain, API, scraping).",
+        "Web scraping production-grade avec Playwright : navigation headless, attente d'éléments dynamiques, extraction robuste de données, et gestion des edge cases (pages vides, timeouts).",
       ],
     },
     en: {
-      title: "Monetized AI agent (x402) - Daydreams/Lucid",
+      title: "Monetized Starknet AI Agent (x402)",
       shortDescription:
-        "AI Agent (Daydreams/Lucid) integrating the x402 protocol (Coinbase) to monetize API calls on a per-request basis, deployed on Starknet.",
+        "Autonomous monetized agent (Lucid/x402) exposing Starknet endpoints: portfolio holdings, Ekubo token prices, and top tokens by metrics.",
       fullDescription:
-        "Development of a modular AI agent (Daydreams/Lucid Agents) exposing API endpoints for reading Starknet data (wallet balances, Ekubo prices, etc...). This project implements the native integration of the x402 protocol to secure and monetize every API call. The agent is configured to return the HTTP status 402 Payment Required, requiring the client (another agent or application) to perform an on-chain micropayment to unlock data access. It serves as a proof of concept for a per-usage API/service economy between agents based on real-time value exchange.",
+        "Autonomous AI agent built with Lucid Agent Kit, exposing 4 monetized API endpoints for Starknet data. The agent combines Playwright scraping of Starkscan for portfolio discovery and Ekubo API integration for DeFi pricing (VWAP). Implements Coinbase's x402 protocol for native monetization: each call returns HTTP 402 Payment Required, requiring an on-chain micropayment (Base/Starknet) before data access. Hybrid on-chain/off-chain architecture with automatic fallback: Starknet.js RPC reads for balances, Starkscan scraper on failure, and in-memory cache for prices. Endpoints include get_portfolio (holdings + USD value), get_token_price (Ekubo VWAP), list_priceable_tokens (directory), and get_top_tokens (ranked by volume/TVL). Flexible configuration via env variables (facilitator URL, payment network, default price). Development mode without payments for local debugging.",
       challenges: [
-        "Integrating the x402 Paywall logic within an AI Agent (Lucid/Daydreams).",
-        "Assuring synchronization between the agent's logic and the on-chain micropayment settlement.",
-        "Managing the integration of disparate data sources (on-chain, Ekubo API, scraping).",
+        "Complete x402 protocol integration into agent lifecycle: Coinbase facilitator configuration, payment network management (Base/Starknet), and micropayment validation before data return.",
+        "Hybrid data retrieval architecture with fallback strategy: on-chain RPC attempts via Starknet.js, automatic fallback to Playwright scraping on failure, and normalization of heterogeneous data formats.",
+        "Multi-source price enrichment system: token resolution via Ekubo directory (address/symbol), parallel VWAP price fetching per pair, USD value calculations, and TTL cache to optimize API calls.",
+        "Robust Starkscan web scraping with Playwright: timeout handling, dynamic HTML parsing, balance/symbol extraction, and loading error detection.",
       ],
       learnings: [
-        "Mastery of autonomous agent development and monetization via x402.",
-        "Application of Layer 2s (Starknet) for fast, low-cost financial transactions.",
-        "Techniques for developing Web3-native paid APIs.",
+        "Autonomous agent development with Lucid Agent Kit: typed entrypoint creation (Zod input/output schemas), x402 payment configuration, and Bun runtime deployment.",
+        "Native Web3 API monetization via x402: Coinbase facilitator integration, L2 network management (Base/Starknet), and on-chain paywall implementation for inter-agent economy.",
+        "Complete Starknet integration: Ekubo API integration for DeFi pricing, on-chain balance reading, and understanding of the Starknet ecosystem (explorers, DEXs, tokens).",
+        "Resilient architecture patterns: multi-level fallback strategies, error handling with retry, cache with expiration, and orchestration of heterogeneous data sources (on-chain, API, scraping).",
+        "Production-grade web scraping with Playwright: headless navigation, dynamic element waiting, robust data extraction, and edge case handling (empty pages, timeouts).",
       ],
     },
   },
@@ -365,7 +374,7 @@ const projects: FullProject[] = [
     githubUrl: "https://github.com/nathanruer/test-x402",
     technologies: ["Next.js", "TypeScript", "Shadcn", "Thirdweb", "Coinbase X402"],
     fr: {
-      title: "Test d'intégration du paywall X402 (Coinbase)",
+      title: "Intégration du paywall X402 (Coinbase)",
       shortDescription:
         "Application Next.js (DApp) de démonstration implémentant un mécanisme de Paywall on-chain basé sur le protocole X402 de Coinbase, sur Base Sepolia.",
       fullDescription:
@@ -382,7 +391,7 @@ const projects: FullProject[] = [
       ],
     },
     en: {
-      title: "X402 paywall integration Test (Coinbase)",
+      title: "X402 paywall integration (Coinbase)",
       shortDescription:
         "A demo Next.js (DApp) implementing an on-chain Paywall mechanism based on the Coinbase X402 protocol, deployed on Base Sepolia.",
       fullDescription:
