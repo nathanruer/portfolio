@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 import { skills, skillCategories, groupSkillsByCategory } from '@/data/skills';
-import { ModernSkillCard } from '@/components/skills/ModernSkillCard'; 
+import { ModernSkillCard } from '@/components/skills/SkillCard'; 
 
 interface SkillsPageProps {
     currentLang: 'fr' | 'en';

@@ -9,6 +9,7 @@ import {
 import * as React from "react";
 import { useState } from "react";
 import { Loader } from "../Loader";
+import ImageLightbox from "../ImageLightbox";
 
 interface ProjectDetailsContentProps {
     project: LocalizedProject;
@@ -32,6 +33,7 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, 
 
     const [imageLoaded, setImageLoaded] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [lightboxOpen, setLightboxOpen] = useState(false);
 
     const images = project.imageUrl
         ? Array.isArray(project.imageUrl)
@@ -51,7 +53,11 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, 
         e?.stopPropagation();
         setImageLoaded(false);
         setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
-    }; 
+    };
+
+    const openLightbox = () => {
+        setLightboxOpen(true);
+    };
 
     const LinkButton: React.FC<{ url: string; label: string; icon: string; style: string }> = ({ url, label, icon, style }) => (
         <a 
@@ -88,7 +94,8 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, 
             {images.length > 0 && (
                 <div
                     className="relative w-full mt-6 mb-8 rounded-xl overflow-hidden shadow-xl bg-background-tertiary
-                    h-64 sm:h-80 flex items-center justify-center group"
+                    h-64 sm:h-80 flex items-center justify-center group cursor-pointer"
+                    onClick={openLightbox}
                 >
                     {!imageLoaded && (
                         <div className="absolute inset-0 flex items-center justify-center bg-background-tertiary z-10">
@@ -103,6 +110,14 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, 
                         onError={() => setImageLoaded(true)}
                         className={`w-full h-full object-cover transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
                     />
+
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/60 p-3 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                            </svg>
+                        </div>
+                    </div>
 
                     {hasMultipleImages && (
                         <>
@@ -141,7 +156,7 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, 
                                     <button
                                         key={index}
                                         onClick={(e) => {
-                                            e.stopPropagation(); // Ajout ici pour être sûr dans la modale normale
+                                            e.stopPropagation();
                                             setImageLoaded(false);
                                             setCurrentImageIndex(index);
                                         }}
@@ -158,6 +173,14 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, 
                     )}
                 </div>
             )}
+
+            <ImageLightbox
+                images={images}
+                initialIndex={currentImageIndex}
+                open={lightboxOpen}
+                onOpenChange={setLightboxOpen}
+                title={`${project.title} - ${isFrench ? "Galerie d'images" : "Image Gallery"}`}
+            />
             
             {project.disclaimer && (
                 <div className="p-4 rounded-lg bg-yellow-900/20 border border-yellow-800/50 text-yellow-300 my-6">

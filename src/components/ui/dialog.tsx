@@ -52,6 +52,35 @@ const DialogContent = React.forwardRef<
 ))
 DialogContent.displayName = DialogPrimitive.Content.displayName
 
+// --- Fullscreen Dialog Content pour le lightbox ---
+const DialogContentFullscreen = React.forwardRef<
+  React.ElementRef<typeof DialogPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
+>(({ className, children, ...props }, ref) => (
+  <DialogPortal>
+    <DialogPrimitive.Overlay
+      className="fixed inset-0 z-[100] bg-black/95 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
+    />
+    <DialogPrimitive.Content
+      ref={ref}
+      className={cn(
+        "fixed inset-0 z-[100] flex items-center justify-center duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+        className
+      )}
+      {...props}
+    >
+      {children}
+      <DialogPrimitive.Close 
+        className="absolute right-4 top-4 z-[110] bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-all duration-200 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white/50"
+      >
+        <X className="h-6 w-6" />
+        <span className="sr-only">Close</span>
+      </DialogPrimitive.Close>
+    </DialogPrimitive.Content>
+  </DialogPortal>
+))
+DialogContentFullscreen.displayName = "DialogContentFullscreen"
+
 // --- 3. DialogHeader (Alignement de la tête de modale) ---
 const DialogHeader = ({
   className,
@@ -120,6 +149,7 @@ export {
   DialogClose,
   DialogTrigger,
   DialogContent,
+  DialogContentFullscreen,
   DialogHeader,
   DialogFooter,
   DialogTitle,
