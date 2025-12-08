@@ -80,7 +80,7 @@ const ImageLightbox: React.FC<ImageLightboxProps> = ({
                         alt={`${title} - Image ${currentIndex + 1}`}
                         onLoad={() => setImageLoaded(true)}
                         onError={() => setImageLoaded(true)}
-                        className={`max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                        className={`max-w-full max-h-[80vh] object-contain rounded-lg border border-gray-700/50 shadow-2xl transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
                     />
                 </div>
 
