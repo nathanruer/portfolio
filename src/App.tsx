@@ -98,6 +98,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, currentLang);
+    document.documentElement.lang = currentLang;
   }, [currentLang]);
 
 
