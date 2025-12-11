@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { Loader } from "./Loader";
+import OptimizedImage from "./OptimizedImage";
 
 interface ImageLightboxProps {
     images: string[];
@@ -75,7 +76,7 @@ const ImageLightbox: React.FC<ImageLightboxProps> = ({
                             <Loader />
                         </div>
                     )}
-                    <img
+                    <OptimizedImage
                         src={images[currentIndex]}
                         alt={`${title} - Image ${currentIndex + 1}`}
                         onLoad={() => setImageLoaded(true)}

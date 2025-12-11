@@ -10,6 +10,7 @@ import * as React from "react";
 import { useState } from "react";
 import { Loader } from "../Loader";
 import ImageLightbox from "../ImageLightbox";
+import OptimizedImage from "../OptimizedImage";
 
 interface ProjectDetailsContentProps {
     project: LocalizedProject;
@@ -103,7 +104,7 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, 
                         </div>
                     )}
 
-                    <img
+                    <OptimizedImage
                         src={images[currentImageIndex]}
                         alt={`Aperçu du projet ${project.title} - Image ${currentImageIndex + 1}`}
                         onLoad={() => setImageLoaded(true)}
