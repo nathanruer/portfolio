@@ -1,10 +1,19 @@
 import { LinkItem } from "@/components/ui/link-item";
+import { useSEO } from "@/hooks/use-seo";
 
 interface ContactPageProps {
   currentLang: 'fr' | 'en';
 }
 
 const ContactPage = ({ currentLang }: ContactPageProps) => {
+  useSEO({
+    title: currentLang === 'fr' ? 'Nathan Ruer | Contact' : 'Nathan Ruer | Contact',
+    description: currentLang === 'fr'
+      ? "Contactez Nathan Ruer pour vos projets de développement web. Email, LinkedIn, GitHub et CV disponibles."
+      : "Contact Nathan Ruer for your web development projects. Email, LinkedIn, GitHub and resume available.",
+    ogUrl: 'https://nathanruer.vercel.app/contact'
+  });
+
   const texts = {
     fr: {
       title: 'Me contacter', 

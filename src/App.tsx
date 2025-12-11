@@ -9,6 +9,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import Navigation from "./components/ui/navigation";
 import { PageTransition } from './components/PageTransition';
+import StructuredData from "./components/StructuredData";
 import Index from "./pages/Index";
 import ProjectsPage from "./pages/ProjectsPage";
 import SkillsPage from "./pages/SkillsPage";
@@ -101,10 +102,26 @@ const App: React.FC = () => {
     document.documentElement.lang = currentLang;
   }, [currentLang]);
 
+  // Données structurées JSON-LD globales
+  const personSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Nathan Ruer',
+    jobTitle: currentLang === 'fr' ? 'Développeur Web' : 'Web Developer',
+    url: 'https://nathanruer.vercel.app',
+    sameAs: [
+      'https://www.linkedin.com/in/nathan-ruer',
+      'https://github.com/nathanruer'
+    ],
+    description: currentLang === 'fr'
+      ? "Développeur web spécialisé dans la création d'applications et de solutions web innovantes."
+      : "Web developer specialized in creating innovative web applications and solutions."
+  };
 
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
+        <StructuredData data={personSchema} />
         <Toaster />
         <Sonner />
         

@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import React, { Dispatch, SetStateAction } from 'react';
+import { useSEO } from "@/hooks/use-seo";
 
 interface NotFoundProps {
   currentLang: 'fr' | 'en';
@@ -9,6 +10,14 @@ interface NotFoundProps {
 
 const NotFound: React.FC<NotFoundProps> = ({ currentLang, onLanguageChange }) => {
   const location = useLocation();
+
+  useSEO({
+    title: currentLang === 'fr' ? 'Nathan Ruer | Page non trouvée' : 'Nathan Ruer | Page not found',
+    description: currentLang === 'fr'
+      ? "La page que vous cherchez n'existe pas. Retournez à l'accueil du portfolio."
+      : "The page you are looking for does not exist. Return to the portfolio home.",
+    ogUrl: 'https://nathanruer.vercel.app'
+  });
 
   const content = {
     fr: {

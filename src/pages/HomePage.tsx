@@ -5,7 +5,8 @@ import { Environment, MeshTransmissionMaterial, Text, useGLTF } from '@react-thr
 import { GLTF } from 'three-stdlib';
 import { Loader } from '../components/Loader';
 import { SpaceBackground } from '@/components/home/SpaceBackground';
-import ErrorBoundary from '../components/ErrorBoundary'; 
+import ErrorBoundary from '../components/ErrorBoundary';
+import { useSEO } from '../hooks/use-seo'; 
 
 useGLTF.preload('/medias/torus.glb');
 
@@ -200,6 +201,14 @@ function Torus({ currentLang }: TorusProps) {
 
 const HomePage: React.FC<HomePageProps> = ({ currentLang }) => {
   const [is3dLoaded, setIs3dLoaded] = useState(false);
+
+  useSEO({
+    title: 'Nathan Ruer | Portfolio',
+    description: currentLang === 'fr'
+      ? "Découvrez le portfolio de Nathan Ruer, développeur web spécialisé dans la création d'applications et de solutions web innovantes."
+      : "Discover Nathan Ruer's portfolio, a web developer specialized in creating innovative web applications and solutions.",
+    ogUrl: 'https://nathanruer.vercel.app'
+  });
 
   const onCanvasReady = useCallback(() => {
     setTimeout(() => {

@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 import { skills, skillCategories, groupSkillsByCategory } from '@/data/skills';
-import { ModernSkillCard } from '@/components/skills/SkillCard'; 
+import { ModernSkillCard } from '@/components/skills/SkillCard';
+import { useSEO } from '@/hooks/use-seo'; 
 
 interface SkillsPageProps {
     currentLang: 'fr' | 'en';
@@ -11,6 +12,14 @@ interface SkillsPageProps {
 const SkillsPage = ({ currentLang }: SkillsPageProps) => {
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
     const groupedSkills = groupSkillsByCategory();
+
+    useSEO({
+        title: currentLang === 'fr' ? 'Nathan Ruer | Compétences' : 'Nathan Ruer | Skills',
+        description: currentLang === 'fr'
+            ? "Découvrez mes compétences techniques : JavaScript, TypeScript, React, Node.js, Blockchain, et plus encore."
+            : "Discover my technical skills: JavaScript, TypeScript, React, Node.js, Blockchain, and more.",
+        ogUrl: 'https://nathanruer.vercel.app/skills'
+    });
 
     const text = {
         fr: { 

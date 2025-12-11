@@ -1,13 +1,14 @@
 import { projectsFR, projectsEN, LocalizedProject } from "@/data/projects";
-import { 
-  Dialog, 
-  DialogContent, 
-} from "@/components/ui/dialog"; 
+import {
+  Dialog,
+  DialogContent,
+} from "@/components/ui/dialog";
 import * as React from "react";
-import Masonry from "react-masonry-css"; 
+import Masonry from "react-masonry-css";
 
 import ProjectDetailsContent from "@/components/projects/ProjectDetailsContent";
 import ProjectCard from "@/components/projects/ProjectCard";
+import { useSEO } from "@/hooks/use-seo";
 
 interface ProjectsPageProps {
   currentLang: 'fr' | 'en';
@@ -17,8 +18,16 @@ interface ProjectsPageProps {
 const ProjectsPage = ({ currentLang, setIsDialogOpen }: ProjectsPageProps) => {
   const projects = currentLang === 'fr' ? projectsFR : projectsEN;
   const [selectedProject, setSelectedProject] = React.useState<LocalizedProject | null>(null);
-  
-  const isDialogOpen = selectedProject !== null; 
+
+  const isDialogOpen = selectedProject !== null;
+
+  useSEO({
+    title: currentLang === 'fr' ? 'Nathan Ruer | Projets' : 'Nathan Ruer | Projects',
+    description: currentLang === 'fr'
+      ? "Découvrez mes projets de développement web : applications blockchain, web3, full-stack et plus encore."
+      : "Discover my web development projects: blockchain applications, web3, full-stack and more.",
+    ogUrl: 'https://nathanruer.vercel.app/projects'
+  });
 
   React.useEffect(() => {
       setIsDialogOpen(isDialogOpen);
