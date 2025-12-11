@@ -6,7 +6,8 @@ import { GLTF } from 'three-stdlib';
 import { Loader } from '../components/Loader';
 import { SpaceBackground } from '@/components/home/SpaceBackground';
 import ErrorBoundary from '../components/ErrorBoundary';
-import { useSEO } from '../hooks/use-seo'; 
+import { useSEO } from '../hooks/use-seo';
+import { useReducedMotion } from '../hooks/use-reduced-motion'; 
 
 useGLTF.preload('/medias/torus.glb');
 
@@ -49,7 +50,8 @@ function Torus({ currentLang }: TorusProps) {
   const isHovered = useRef(false);
 
   const [isPaused, setIsPaused] = useState(false);
-  
+  const prefersReducedMotion = useReducedMotion();
+
   const jobTitle = currentLang === 'fr' ? 'développeur web' : 'web developer';
   
   useEffect(() => {
@@ -105,17 +107,18 @@ function Torus({ currentLang }: TorusProps) {
   useFrame((_, delta) => {
     if (!torus.current) return;
 
-    if (isPaused) {
+    // Désactiver animations si page cachée ou si l'utilisateur préfère réduire les mouvements
+    if (isPaused || prefersReducedMotion) {
         return;
     }
 
-    const maxDelta = 0.05; 
+    const maxDelta = 0.05;
     const clampedDelta = Math.min(delta, maxDelta);
-    
+
     const baseRotationSpeedX = clampedDelta * 0.5;
     const baseRotationSpeedY = clampedDelta * 1.0;
 
-    const mouseInfluence = 0.5; 
+    const mouseInfluence = 0.5;
     const smoothFactor = 0.05;
 
     if (!isHovered.current) {

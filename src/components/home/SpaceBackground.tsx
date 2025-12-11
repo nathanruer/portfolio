@@ -2,9 +2,11 @@ import React, { useRef, useMemo, useCallback } from 'react';
 import * as THREE from 'three';
 import { useFrame } from '@react-three/fiber';
 import { Stars } from '@react-three/drei';
+import { useReducedMotion } from '@/hooks/use-reduced-motion';
 
 const Meteors3D: React.FC<{ count?: number, speed?: number }> = ({ count = 30, speed = 10 }) => {
   const mesh = useRef<THREE.Points>(null!);
+  const prefersReducedMotion = useReducedMotion();
   const TRAIL_LENGTH = 150;
   const Z_START = 80;      
   const Z_END = -70;      
@@ -34,6 +36,9 @@ const Meteors3D: React.FC<{ count?: number, speed?: number }> = ({ count = 30, s
 
   useFrame((state, delta) => {
     if (!mesh.current) return;
+
+    // Désactiver animations des météores si l'utilisateur préfère réduire les mouvements
+    if (prefersReducedMotion) return;
 
     const positionsArray = mesh.current.geometry.attributes.position.array as Float32Array;
 
@@ -84,6 +89,7 @@ const Meteors3D: React.FC<{ count?: number, speed?: number }> = ({ count = 30, s
 
 const DiagonalGalaxy: React.FC = () => {
   const mesh = useRef<THREE.Points>(null!);
+  const prefersReducedMotion = useReducedMotion();
   const count = 10000; 
   
   const PATTERN_LENGTH = 15; 
@@ -131,10 +137,13 @@ const DiagonalGalaxy: React.FC = () => {
   useFrame((state, delta) => {
     if (!mesh.current) return;
 
+    // Désactiver animations de la galaxie si l'utilisateur préfère réduire les mouvements
+    if (prefersReducedMotion) return;
+
     const positionsArray = mesh.current.geometry.attributes.position.array as Float32Array;
 
     for (let i = 0; i < count * 3; i += 3) {
-      positionsArray[i] -= delta * SPEED;    
+      positionsArray[i] -= delta * SPEED;
       positionsArray[i + 1] += delta * SPEED; 
     
       if (positionsArray[i] < -BOUNDARY) {
