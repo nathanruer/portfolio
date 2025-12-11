@@ -108,7 +108,12 @@ const App: React.FC = () => {
         <Toaster />
         <Sonner />
         
-        <BrowserRouter>
+        <BrowserRouter
+          future={{
+            v7_startTransition: true,
+            v7_relativeSplatPath: true,
+          }}
+        >
           <div className="w-screen h-screen overflow-hidden font-sans">
             
             {!isDialogOpenGlobally && (

@@ -21,7 +21,9 @@ const Navigation = ({ currentLang, onLanguageChange }: NavigationProps) => {
   ];
 
   return (
-    <nav className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 
+    <nav
+      aria-label={currentLang === 'fr' ? "Navigation principale" : "Main navigation"}
+      className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50
       bg-[#27272A]/70 backdrop-blur-md rounded-full px-6 py-2 flex items-center gap-6 shadow-lg"
     >
       <TooltipProvider delayDuration={300}> 
@@ -46,6 +48,8 @@ const Navigation = ({ currentLang, onLanguageChange }: NavigationProps) => {
                 <button
                   onClick={() => navigate(item.path)}
                   className={buttonClasses}
+                  aria-label={item.label}
+                  aria-current={isActive ? "page" : undefined}
                 >
                   <IconComponent className="w-6 h-6" />
                 </button>
@@ -64,6 +68,7 @@ const Navigation = ({ currentLang, onLanguageChange }: NavigationProps) => {
               size="sm"
               onClick={() => onLanguageChange(currentLang === 'fr' ? 'en' : 'fr')}
               className="ml-4 p-2 bg-transparent text-white relative group"
+              aria-label={currentLang === 'fr' ? 'Changer la langue' : 'Change language'}
             >
               <Languages className="w-5 h-5" />
               <span className="ml-1 text-xs">{currentLang.toUpperCase()}</span>
