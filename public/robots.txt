@@ -11,3 +11,6 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# Sitemap
+Sitemap: https://nathanruer.vercel.app/sitemap.xml
