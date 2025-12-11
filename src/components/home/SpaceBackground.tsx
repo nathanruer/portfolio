@@ -3,11 +3,6 @@ import * as THREE from 'three';
 import { useFrame } from '@react-three/fiber';
 import { Stars } from '@react-three/drei';
 
-// ====================================================================
-// COMPOSANT METEORS 3D
-// Simule une pluie de météores 3D en utilisant des particules (Points)
-// ====================================================================
-
 const Meteors3D: React.FC<{ count?: number, speed?: number }> = ({ count = 30, speed = 10 }) => {
   const mesh = useRef<THREE.Points>(null!);
   const TRAIL_LENGTH = 150;
@@ -86,10 +81,6 @@ const Meteors3D: React.FC<{ count?: number, speed?: number }> = ({ count = 30, s
     </points>
   );
 };
-
-// ====================================================================
-// COMPOSANT INTERNE : GALAXIE DIAGONALE (Code inchangé)
-// ====================================================================
 
 const DiagonalGalaxy: React.FC = () => {
   const mesh = useRef<THREE.Points>(null!);
@@ -189,25 +180,17 @@ const DiagonalGalaxy: React.FC = () => {
   );
 };
 
-// ====================================================================
-// COMPOSANT PRINCIPAL : SpaceBackground (Contenu R3F)
-// ====================================================================
-
 export const SpaceBackground: React.FC = () => (
   <>
     <color attach="background" args={['#000']} />
-    {/* La lumière est importante pour voir les météores 3D */}
     <ambientLight intensity={0.3} />
     <directionalLight intensity={3} position={[5, 5, 5]} />
     <pointLight intensity={1} position={[-5, -5, 5]} />
     
-    {/* Étoiles lointaines */}
     <Stars radius={100} depth={50} count={5000} factor={4} fade speed={0.5} />
     
-    {/* Galaxie qui se déplace en diagonale */}
     <DiagonalGalaxy />
     
-    {/* Les météores 3D qui se déplacent vers la caméra */}
     <Meteors3D count={3} speed={40} />
   </>
 );

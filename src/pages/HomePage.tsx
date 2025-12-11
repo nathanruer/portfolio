@@ -3,8 +3,9 @@ import * as THREE from 'three';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Environment, MeshTransmissionMaterial, Text, useGLTF } from '@react-three/drei';
 import { GLTF } from 'three-stdlib';
-import { Loader } from '../components/Loader'; 
-import { SpaceBackground } from '../components/SpaceBackground'; 
+import { Loader } from '../components/Loader';
+import { SpaceBackground } from '@/components/home/SpaceBackground';
+import ErrorBoundary from '../components/ErrorBoundary'; 
 
 useGLTF.preload('/medias/torus.glb');
 
@@ -214,27 +215,29 @@ const HomePage: React.FC<HomePageProps> = ({ currentLang }) => {
 
   return (
     <div className="w-full h-screen relative">
-      <Canvas 
-        className="w-full h-full"
-        style={{ opacity: is3dLoaded ? 1 : 0, transition: 'opacity 0.7s ease-in-out' }}
-        camera={{ position: [0, 0, 5], fov: 45 }}
-      >
-        <ContextDisposer /> 
+      <ErrorBoundary>
+        <Canvas
+          className="w-full h-full"
+          style={{ opacity: is3dLoaded ? 1 : 0, transition: 'opacity 0.7s ease-in-out' }}
+          camera={{ position: [0, 0, 5], fov: 45 }}
+        >
+          <ContextDisposer />
 
-        <Suspense fallback={<group />}>
-          <group>
-           <SpaceBackground /> 
-            <Torus currentLang={currentLang} /> 
-            <Environment preset="studio" />
-          </group>
-        </Suspense>
-      </Canvas>
+          <Suspense fallback={<group />}>
+            <group>
+             <SpaceBackground />
+              <Torus currentLang={currentLang} />
+              <Environment preset="studio" />
+            </group>
+          </Suspense>
+        </Canvas>
 
-      {!is3dLoaded && (
-        <div className="absolute inset-0 flex items-center justify-center">
-          <Loader /> 
-        </div>
-      )}
+        {!is3dLoaded && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Loader />
+          </div>
+        )}
+      </ErrorBoundary>
     </div>
   );
 };
