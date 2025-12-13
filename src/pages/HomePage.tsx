@@ -1,9 +1,8 @@
-import React, { useState, useRef, Suspense, useCallback, useEffect } from 'react';
+import React, { useState, useRef, Suspense, useEffect } from 'react';
 import * as THREE from 'three';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Environment, MeshTransmissionMaterial, Text, useGLTF } from '@react-three/drei';
 import { GLTF } from 'three-stdlib';
-import { Loader } from '../components/Loader';
 import { SpaceBackground } from '@/components/home/SpaceBackground';
 import ErrorBoundary from '../components/ErrorBoundary';
 import { useSEO } from '../hooks/use-seo';
@@ -203,8 +202,6 @@ function Torus({ currentLang }: TorusProps) {
 }
 
 const HomePage: React.FC<HomePageProps> = ({ currentLang }) => {
-  const [is3dLoaded, setIs3dLoaded] = useState(false);
-
   useSEO({
     title: 'Nathan Ruer | Portfolio',
     description: currentLang === 'fr'
@@ -213,24 +210,11 @@ const HomePage: React.FC<HomePageProps> = ({ currentLang }) => {
     ogUrl: 'https://nathanruer.vercel.app'
   });
 
-  const onCanvasReady = useCallback(() => {
-    setTimeout(() => {
-      setIs3dLoaded(true);
-    }, 100);
-  }, []);
-
-  useEffect(() => {
-    if (!is3dLoaded) {
-      onCanvasReady();
-    }
-  }, [is3dLoaded, onCanvasReady]);
-
   return (
     <div className="w-full h-screen relative">
       <ErrorBoundary>
         <Canvas
           className="w-full h-full"
-          style={{ opacity: is3dLoaded ? 1 : 0, transition: 'opacity 0.7s ease-in-out' }}
           camera={{ position: [0, 0, 5], fov: 45 }}
         >
           <ContextDisposer />
@@ -243,12 +227,6 @@ const HomePage: React.FC<HomePageProps> = ({ currentLang }) => {
             </group>
           </Suspense>
         </Canvas>
-
-        {!is3dLoaded && (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <Loader />
-          </div>
-        )}
       </ErrorBoundary>
     </div>
   );
