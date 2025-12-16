@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+import { Analytics } from '@vercel/analytics/react';
 
 import { Toaster } from "./components/ui/toaster";
 import { Toaster as Sonner } from "./components/ui/sonner";
@@ -10,6 +11,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Navigation from "./components/ui/navigation";
 import { PageTransition } from './components/PageTransition';
 import StructuredData from "./components/StructuredData";
+import { useGoogleAnalytics } from './hooks/use-analytics';
 import Index from "./pages/Index";
 import ProjectsPage from "./pages/ProjectsPage";
 import SkillsPage from "./pages/SkillsPage";
@@ -31,15 +33,17 @@ const getInitialLang = (): Lang => {
   return 'fr';
 };
 
-const RouterWrapper: React.FC<{ 
-  currentLang: Lang; 
-  setCurrentLang: React.Dispatch<React.SetStateAction<Lang>>; 
-  setIsDialogOpen: (isOpen: boolean) => void; 
+const RouterWrapper: React.FC<{
+  currentLang: Lang;
+  setCurrentLang: React.Dispatch<React.SetStateAction<Lang>>;
+  setIsDialogOpen: (isOpen: boolean) => void;
 }> = ({ currentLang, setCurrentLang, setIsDialogOpen }) => {
   const location = useLocation();
 
+  useGoogleAnalytics();
+
   return (
-    <AnimatePresence mode="wait"> 
+    <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route
           path="/"
@@ -124,7 +128,8 @@ const App: React.FC = () => {
         <StructuredData data={personSchema} />
         <Toaster />
         <Sonner />
-        
+        <Analytics />
+
         <BrowserRouter
           future={{
             v7_startTransition: true,
@@ -132,22 +137,22 @@ const App: React.FC = () => {
           }}
         >
           <div className="w-screen h-screen overflow-hidden font-sans">
-            
+
             {!isDialogOpenGlobally && (
-                <Navigation 
-                  currentLang={currentLang} 
-                  onLanguageChange={setCurrentLang} 
+                <Navigation
+                  currentLang={currentLang}
+                  onLanguageChange={setCurrentLang}
                 />
             )}
-            
+
             <main className="w-full h-full relative overflow-y-auto">
-              <RouterWrapper 
-                currentLang={currentLang} 
+              <RouterWrapper
+                currentLang={currentLang}
                 setCurrentLang={setCurrentLang}
-                setIsDialogOpen={setIsDialogOpenGlobally} 
+                setIsDialogOpen={setIsDialogOpenGlobally}
               />
             </main>
-            
+
           </div>
         </BrowserRouter>
       </TooltipProvider>

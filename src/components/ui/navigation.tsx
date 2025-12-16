@@ -2,6 +2,7 @@ import { Home, Mail, Briefcase, User, Languages } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/components/ui/tooltip";
+import { analyticsEvents } from "@/hooks/use-analytics";
 
 interface NavigationProps {
   currentLang: 'fr' | 'en';
@@ -66,7 +67,11 @@ const Navigation = ({ currentLang, onLanguageChange }: NavigationProps) => {
             <Button
               variant="nav"
               size="sm"
-              onClick={() => onLanguageChange(currentLang === 'fr' ? 'en' : 'fr')}
+              onClick={() => {
+                const newLang = currentLang === 'fr' ? 'en' : 'fr';
+                analyticsEvents.changeLanguage(newLang);
+                onLanguageChange(newLang);
+              }}
               className="ml-4 p-2 bg-transparent text-white relative group"
               aria-label={currentLang === 'fr' ? 'Changer la langue' : 'Change language'}
             >
