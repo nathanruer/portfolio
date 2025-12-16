@@ -23,7 +23,6 @@ export const useGoogleAnalytics = () => {
       return;
     }
 
-    // Initialiser GA4 si ce n'est pas déjà fait
     if (!window.gtag) {
       const script1 = document.createElement('script');
       script1.async = true;
@@ -48,7 +47,6 @@ export const useGoogleAnalytics = () => {
     }
   }, []);
 
-  // Tracker les changements de page
   useEffect(() => {
     if (window.gtag && GA_MEASUREMENT_ID) {
       window.gtag('config', GA_MEASUREMENT_ID, {
@@ -58,7 +56,6 @@ export const useGoogleAnalytics = () => {
   }, [location]);
 };
 
-// Fonction helper pour tracker des événements personnalisés
 export const trackEvent = (
   eventName: string,
   eventParams?: Record<string, unknown>
@@ -68,7 +65,6 @@ export const trackEvent = (
   }
 };
 
-// Événements prédéfinis pour votre portfolio
 export const analyticsEvents = {
   viewProject: (projectName: string) => {
     trackEvent('view_project', {
@@ -76,9 +72,42 @@ export const analyticsEvents = {
     });
   },
 
+  clickProjectDemo: (projectName: string) => {
+    trackEvent('click_project_demo', {
+      project_name: projectName,
+    });
+  },
+
+  clickProjectGithub: (projectName: string) => {
+    trackEvent('click_project_github', {
+      project_name: projectName,
+    });
+  },
+
+  openImageLightbox: (projectName: string, imageIndex: number) => {
+    trackEvent('open_image_lightbox', {
+      project_name: projectName,
+      image_index: imageIndex,
+    });
+  },
+
+  navigateProjectImage: (projectName: string, direction: 'next' | 'previous', imageIndex: number) => {
+    trackEvent('navigate_project_image', {
+      project_name: projectName,
+      direction: direction,
+      image_index: imageIndex,
+    });
+  },
+
   clickContact: (method: string) => {
     trackEvent('contact_click', {
       contact_method: method,
+    });
+  },
+
+  downloadCV: (language: string) => {
+    trackEvent('download_cv', {
+      language: language,
     });
   },
 
@@ -92,9 +121,5 @@ export const analyticsEvents = {
     trackEvent('change_language', {
       language: language,
     });
-  },
-
-  downloadCV: () => {
-    trackEvent('download_cv');
   },
 };

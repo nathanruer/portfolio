@@ -1,9 +1,8 @@
 import { Badge } from "@/components/ui/badge";
 import { LocalizedProject } from "@/data/projects";
 import CardSpotlight from "../ui/card-spotlight";
-import { 
-  DialogTrigger, 
-} from "@/components/ui/dialog"; 
+import { DialogTrigger } from "@/components/ui/dialog";
+import { analyticsEvents } from "@/hooks/use-analytics"; 
 
 interface ProjectCardProps {
     project: LocalizedProject;
@@ -23,8 +22,11 @@ const ProjectCard = ({ project, onClick, index }: ProjectCardProps) => {
             <DialogTrigger asChild>
                 <button
                     aria-label={`View ${project.title} details`}
-                    className="block break-inside-avoid w-full text-left" 
-                    onClick={() => onClick(project)}
+                    className="block break-inside-avoid w-full text-left"
+                    onClick={() => {
+                        analyticsEvents.viewProject(project.title);
+                        onClick(project);
+                    }}
                 >
                     <CardSpotlight 
                         className="group border-gray-700/50 hover:border-white/70 shadow-lg hover:shadow-white/10 active:translate-y-0">

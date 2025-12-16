@@ -11,6 +11,7 @@ import { useState } from "react";
 import { Loader } from "../Loader";
 import ImageLightbox from "../ImageLightbox";
 import OptimizedImage from "../OptimizedImage";
+import { analyticsEvents } from "@/hooks/use-analytics";
 
 interface ProjectDetailsContentProps {
     project: LocalizedProject;
@@ -47,27 +48,33 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, 
     const goToNextImage = (e?: React.MouseEvent) => {
         e?.stopPropagation();
         setImageLoaded(false);
-        setCurrentImageIndex((prev) => (prev + 1) % images.length);
+        const newIndex = (currentImageIndex + 1) % images.length;
+        setCurrentImageIndex(newIndex);
+        analyticsEvents.navigateProjectImage(project.title, 'next', newIndex);
     };
 
     const goToPreviousImage = (e?: React.MouseEvent) => {
         e?.stopPropagation();
         setImageLoaded(false);
-        setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+        const newIndex = (currentImageIndex - 1 + images.length) % images.length;
+        setCurrentImageIndex(newIndex);
+        analyticsEvents.navigateProjectImage(project.title, 'previous', newIndex);
     };
 
     const openLightbox = () => {
         setLightboxOpen(true);
+        analyticsEvents.openImageLightbox(project.title, currentImageIndex);
     };
 
-    const LinkButton: React.FC<{ url: string; label: string; icon: string; style: string }> = ({ url, label, icon, style }) => (
-        <a 
-            href={url} 
-            target="_blank" 
-            rel="noopener noreferrer" 
+    const LinkButton: React.FC<{ url: string; label: string; icon: string; style: string; onClick?: () => void }> = ({ url, label, icon, style, onClick }) => (
+        <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={onClick}
             className={`inline-flex items-center justify-center text-sm transition-colors focus-visible:outline-none focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none h-10 py-2 px-4 ${style}`}
         >
-            {label} <span className="ml-1.5">{icon}</span> 
+            {label} <span className="ml-1.5">{icon}</span>
         </a>
     );
     
@@ -238,6 +245,7 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, 
                             label={labels.demo}
                             icon="↗"
                             style="text-primary-foreground transform transition-all duration-300 hover:scale-[1.03]"
+                            onClick={() => analyticsEvents.clickProjectDemo(project.title)}
                         />
                     )}
                     {project.githubUrl && (
@@ -246,6 +254,7 @@ const ProjectDetailsContent: React.FC<ProjectDetailsContentProps> = ({ project, 
                             label={labels.github}
                             icon="↗"
                             style="bg-background-secondary rounded-xl border border-gray-600/50 text-foreground-muted transform transition-all duration-300 hover:scale-[1.03]"
+                            onClick={() => analyticsEvents.clickProjectGithub(project.title)}
                         />
                     )}
                 </DialogFooter>

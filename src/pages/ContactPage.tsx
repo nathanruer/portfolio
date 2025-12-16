@@ -1,5 +1,6 @@
 import { LinkItem } from "@/components/ui/link-item";
 import { useSEO } from "@/hooks/use-seo";
+import { analyticsEvents } from "@/hooks/use-analytics";
 
 interface ContactPageProps {
   currentLang: 'fr' | 'en';
@@ -35,7 +36,6 @@ const ContactPage = ({ currentLang }: ContactPageProps) => {
 
   const t = texts[currentLang];
   
-  // Logic to determine the correct suffix for the CV file
   const cvSuffix = currentLang === 'fr' ? '-fr' : '-eng';
   const cvLink = `${window.location.origin}/medias/CV_RUER_Nathan_2025${cvSuffix}.pdf`;
 
@@ -70,33 +70,37 @@ const ContactPage = ({ currentLang }: ContactPageProps) => {
         </h1>
 
         <div className="space-y-4 mb-12" role="group" aria-label={t.title}>
-          
-          <LinkItem 
+
+          <LinkItem
             href="mailto:nath.ruer@gmail.com"
             title="nath.ruer@gmail.com"
             subtitle={t.emailSubtitle}
+            onClick={() => analyticsEvents.clickContact('email')}
           />
 
-          <LinkItem 
-            href="https://www.linkedin.com/in/nathan-ruer/" 
+          <LinkItem
+            href="https://www.linkedin.com/in/nathan-ruer/"
             title="Nathan Ruer"
             subtitle={t.linkedinSubtitle}
-            target="_blank" 
+            target="_blank"
+            onClick={() => analyticsEvents.clickContact('linkedin')}
           />
 
-          <LinkItem 
-            href="https://github.com/nathanruer" 
+          <LinkItem
+            href="https://github.com/nathanruer"
             title="@nathanruer"
             subtitle={t.githubSubtitle}
-            target="_blank" 
+            target="_blank"
+            onClick={() => analyticsEvents.clickContact('github')}
           />
-          
+
           <LinkItem
             href={cvLink}
             title={t.cvTitle}
             subtitle={t.cvSubtitle}
             target="_blank"
             isPrimary={true}
+            onClick={() => analyticsEvents.downloadCV(currentLang)}
           />
         </div>
       </div>
